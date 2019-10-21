@@ -1,0 +1,108 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>JSDoc: validaCorMenuAtivo.js</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./build/entry.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:100,400,700|Oswald:300|Inconsolata,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+</head>
+
+<body>
+    <div id="stickyNavbarOverlay"></div>
+    <div class="top-navbar">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    
+                    
+                        <h1 class="navbar-item">Documentation</h1>
+                    
+                    <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3" id="sidebarNav">
+                <div class="sidebar">
+                    <nav>
+                        <h2><a href="index.html">Home</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#abreCadastro">abreCadastro</a></li><li><a href="global.html#acessaCadastro">acessaCadastro</a></li><li><a href="global.html#acessaCadastroF2">acessaCadastroF2</a></li><li><a href="global.html#acessaMenu">acessaMenu</a></li><li><a href="global.html#acessaPastaDocumentos">acessaPastaDocumentos</a></li><li><a href="global.html#acessaRelatorio">acessaRelatorio</a></li><li><a href="global.html#acessarPagina">acessarPagina</a></li><li><a href="global.html#aguardaEmissaoRelatorio">aguardaEmissaoRelatorio</a></li><li><a href="global.html#aguardaListagem">aguardaListagem</a></li><li><a href="global.html#desordenarListagem">desordenarListagem</a></li><li><a href="global.html#editaRegistro">editaRegistro</a></li><li><a href="global.html#esperaFoco">esperaFoco</a></li><li><a href="global.html#esperaToastRegistroSalvo">esperaToastRegistroSalvo</a></li><li><a href="global.html#fechaJanela">fechaJanela</a></li><li><a href="global.html#fecharAba">fecharAba</a></li><li><a href="global.html#inativaRegistro">inativaRegistro</a></li><li><a href="global.html#limpaComboBox">limpaComboBox</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#pesquisaCadastro">pesquisaCadastro</a></li><li><a href="global.html#pesquisaDocumentos">pesquisaDocumentos</a></li><li><a href="global.html#rodaArquivo">rodaArquivo</a></li><li><a href="global.html#salvaCadastro">salvaCadastro</a></li><li><a href="global.html#setaComboBox">setaComboBox</a></li><li><a href="global.html#setaSearchfield">setaSearchfield</a></li><li><a href="global.html#setaTextField">setaTextField</a></li><li><a href="global.html#validaCampoObrigatorio">validaCampoObrigatorio</a></li><li><a href="global.html#validaCorMenuAtivo">validaCorMenuAtivo</a></li><li><a href="global.html#validaCorMenuInativo">validaCorMenuInativo</a></li><li><a href="global.html#validaLimiteDeCaracteres">validaLimiteDeCaracteres</a></li><li><a href="global.html#validaRegistroCampoTexto">validaRegistroCampoTexto</a></li><li><a href="global.html#validaRegistroCelulaGrid">validaRegistroCelulaGrid</a></li><li><a href="global.html#validaRegistroInativo">validaRegistroInativo</a></li></ul></div>
+                    </nav>
+                </div>
+            </div>
+            <div class="column is-9-desktop">
+                <div class="content" id="main-content-wrapper">
+                    <header class="page-title">
+                        <p>Source</p>
+                        <h1>validaCorMenuAtivo.js</h1>
+                    </header>
+                    
+                    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>module.exports = {
+    /**
+     * @function validaCorMenuAtivo
+     * @description - Verifica se o ícone do menu está setado como ativo e com a cor correta após ter sido aberto
+     * @param {string} nomeDoMenu - Nome do menu
+     * @example 
+     * browser.validaCorMenuAtivo("Plano de ação")
+     * @author Cássio
+    */
+    command: function (nomeDoMenu) {
+        this.useXpath()
+            .verify.cssProperty("//div[starts-with(@id, 'mainWest-innerCt')] //div[@data-qtip='" + nomeDoMenu + "']", "color", "rgba(36, 152, 219, 1)", "O ícone do menu não está com a cor esperada para menus ativos.")
+            .useCss();
+
+        return this;
+    },
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Mon Oct 21 2019 11:20:36 GMT-0300 (GMT-03:00)</p>
+        <p class="sidebar-created-by">
+            <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+            <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+        </p>
+    </div>
+</footer>
+
+<script src="scripts/app.min.js"></script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

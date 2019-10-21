@@ -1,0 +1,53 @@
+// @ts-nocheck
+const util = require("../page_objects/util");
+
+module.exports = {
+    /**
+     * @function login
+     * @category Commands
+     * @class
+     * @description - Faz login no sistema utilizando o usuário e senha passados por parâmetro
+     * @param {string} usuario - Usuário de acesso ao sistema 
+     * @param {string} senha - Senha de acesso ao sistema
+     * @param {string} [esquemaBanco = null] - **Opcional** Nome do esquema do banco a ser selecionado
+     * @param {string} [elementoDeEspera = null] - **Opcional** Localizador **Css** ou **Xpath** do último elemento a carregar no sistema. O teste espera esse elemento antes de prosseguir. Caso não informado, o elemento padrão é a foto do usuário no canto superior direito.
+     * @example 
+     * browser.url('https://app.doo.com.br')
+     *        .login({usuario: "fulano", senha: "senha", esquemaBanco: "Q2NETDESENV/SRV_DESENV", elementoDeEspera: "localizador"})
+     * @author Cássio
+    */
+    // @ts-ignore
+    command: function ({ usuario, senha, esquemaBanco = null, elementoDeEspera = null }) {
+        this.waitForElementVisible(util.login.campoUsuario)
+            .clearValue(util.login.campoUsuario)
+            .sendKeys(util.login.campoUsuario, usuario)
+            .waitForElementVisible(util.login.campoSenha)
+            .clearValue(util.login.campoSenha)
+            .sendKeys(util.login.campoSenha, senha);
+
+        if (esquemaBanco != null) {
+            this.waitForElementVisible(util.login.campoBanco)
+                .click(util.login.campoBanco)
+                .waitForElementVisible("option[value= '" + esquemaBanco + "']")
+                .click("option[value= '" + esquemaBanco + "']");
+        }
+
+        this.waitForElementVisible(util.login.btnLogar)
+            .click(util.login.btnLogar);
+
+        if (elementoDeEspera != null) {
+            if (util._isXpath(elementoDeEspera)) {
+                this.useXpath()
+                    .waitForElementVisible(elementoDeEspera, 30000)
+                    .useCss();
+            } else {
+                this.waitForElementVisible(elementoDeEspera, 30000)
+            }
+        } else {
+            this.waitForElementVisible(util.geral.fotoUsuario, 30000);
+        }
+
+        return this;
+    },
+
+};
