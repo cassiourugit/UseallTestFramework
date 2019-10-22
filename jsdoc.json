@@ -14,7 +14,7 @@
     ],
     "opts": {
         "encoding": "utf8",
-        "destination": "docs/",
+        "destination": "C:/Users/cassio.beninca/Documents/GitHub/cassiourugit.github.io/",
         "readme": "readme.md",
         "recurse": true,
         "verbose": true,
