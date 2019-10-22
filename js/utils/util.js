@@ -177,34 +177,6 @@ module.exports = {
     },
 
     /**
-     * @function _gera_random
-     * @category Utils
-     * @class
-     * @private
-     * @description - Função privada que gera número randômico. Utilizada pelas funções geraCpf e geraCnpj
-     * @param {number} n - Número limite do random
-     * @author Cássio
-    */
-    _gera_random: function (n) {
-        var ranNum = Math.round(Math.random() * n);
-        return ranNum;
-    },
-
-    /**
-     * @function _mod
-     * @category Utils
-     * @class
-     * @private
-     * @description - Função privada que gera os 2 dígitos verificadores para criar CPF ou CNPJ válidos
-     * @param {number} dividendo - Dividendo da conta
-     * @param {number} divisor - Divisor da conta
-     * @author Cássio
-    */
-    _mod: function (dividendo, divisor) {
-        return Math.round(dividendo - (Math.floor(dividendo / divisor) * divisor));
-    },
-
-    /**
      * @function _isXpath
      * @category Utils
      * @class

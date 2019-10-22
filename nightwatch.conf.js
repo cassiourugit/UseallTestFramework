@@ -1,7 +1,7 @@
 const chromedriver = require('chromedriver');
 
 module.exports = {
-    page_objects_path: 'js/page_objects',
+    page_objects_path: 'js/utils',
     test_settings: {
         default: {
             webdriver: {
