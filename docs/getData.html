@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: editaRegistro</title>
+    <title>JSDoc: getData</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -68,7 +68,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Class</p>
-                        <h1>editaRegistro</h1>
+                        <h1>getData</h1>
                     </header>
                     
                     
@@ -80,7 +80,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>editaRegistro<span class="signature">(lapisLinhaRegistro, campoComFoco)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>getData<span class="signature">()</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -96,11 +96,11 @@
 
 
     
-    <h4 class="name" id="editaRegistro">
+    <h4 class="name" id="getData">
         
         <span class="code-name">
             
-                new editaRegistro<span class="signature">(lapisLinhaRegistro, campoComFoco)</span><span class="type-signature"></span>
+                new getData<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -110,7 +110,7 @@
     
     <div class="description">
         <ul>
-<li>Clica no lápis para edição de um registro na grid e aguarda até que o campo indicado por parâmetro receba o foco após a abertura da janela</li>
+<li>Retorna uma string da data atual no formato &quot;dd/mm/aaaa&quot;</li>
 </ul>
     </div>
     
@@ -122,81 +122,6 @@
 
 
 
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        
-<tr class="deep-level-0">
-  
-      <td class="name"><code>lapisLinhaRegistro</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">String</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>Localizador <strong>Css</strong> ou <strong>Xpath</strong> com o ícone do lápis da linha a ser editada</p></td>
-</tr>
-
-
-    
-
-        
-<tr class="deep-level-0">
-  
-      <td class="name"><code>campoComFoco</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">String</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>Localizador <strong>Css</strong> ou <strong>Xpath</strong> correspondente ao primeiro campo a receber foco após a abertura da janela</p></td>
-</tr>
-
-
-    
-    </tbody>
-</table>
 
 
 
@@ -242,9 +167,9 @@
 
     
         <p class="tag-source">
-            <a href="commands_editaRegistro.js.html" class="button">View Source</a>
+            <a href="utils_util.js.html" class="button">View Source</a>
             <span>
-                <a href="commands_editaRegistro.js.html">commands/editaRegistro.js</a>, <a href="commands_editaRegistro.js.html#line5">line 5</a>
+                <a href="utils_util.js.html">utils/util.js</a>, <a href="utils_util.js.html#line117">line 117</a>
             </span>
         </p>
     
@@ -273,7 +198,7 @@
     <h5>Example</h5>
     
     
-        <pre class="prettyprint"><code>browser.editaRegistro(".x-grid-item:nth-child(1) .x-grid-cell:nth-child(1)", "input[data-test-id='Descricao']")</code></pre>
+        <pre class="prettyprint"><code>var data = util.getData();</code></pre>
     
 
 

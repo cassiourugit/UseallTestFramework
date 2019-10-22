@@ -93,15 +93,15 @@ module.exports = {
     },
 
     /**
-     * @function getDataFormatada
+     * @function getDataHora
      * @category Utils
      * @class
-     * @description - Retorna a data atual no formato "dd/mm/aaaa-HH:mm:ss:mls"
+     * @description - Retorna uma string da data atual no formato "dd/mm/aaaa-HH:mm:ss:mls"
      * @example 
-     * var data = util.getDataFormatada();
+     * var data = util.getDataHora();
      * @author Cássio
     */
-    getDataFormatada: function () {
+    getDataHora: function () {
         var today = new Date();
         var data = today.getDate().toString().padStart(2, '0')
             + '/' + (today.getMonth() + 1).toString().padStart(2, '0')
@@ -115,15 +115,15 @@ module.exports = {
     },
 
     /**
-     * @function getDataSimples
+     * @function getData
      * @category Utils
      * @class
-     * @description - Retorna a data atual no formato "dd/mm/aaaa"
+     * @description - Retorna uma string da data atual no formato "dd/mm/aaaa"
      * @example 
-     * var data = util.getDataSimples();
+     * var data = util.getData();
      * @author Cássio
     */
-    getDataSimples: function () {
+    getData: function () {
         var today = new Date();
         var data = today.getDate().toString().padStart(2, '0')
             + '/' + (today.getMonth() + 1).toString().padStart(2, '0')
@@ -132,40 +132,71 @@ module.exports = {
     },
 
     /**
-     * @function getDataSimplesSomaDias
+     * @function somaDias
      * @category Utils
      * @class
-     * @description - Retorna a data atual no formato "dd/mm/aaaa" somando o número de dias informado por parâmetro
-     * @param {number} dias - Número de dias que devem ser acrescidos na data.
+     * @description - Retorna a data acrescida com o número de dias informado por parâmetro
+     * @param {date} data - Data que deve ter os dias acrescidos
+     * @param {number} dias - Número de dias que devem ser acrescidos na data
+     * @param {boolean} [retornaString = true] - **Opcional** Retorna uma String da data no formato "dd/mm/aaaa"
      * @example 
-     * var dataMais30Dias = util.getDataSimplesSomaDias(30);
+     * var dataMais30Dias = util.somaDias(data, 30);
      * @author Cássio
     */
-    getDataSimplesSomaDias: function (dias) {
-        var data = new Date();
-        data.setDate(data.getDate() + dias)
-        var dataPronta = data.getDate().toString().padStart(2, '0')
-            + '/' + (data.getMonth() + 1).toString().padStart(2, '0')
-            + '/' + data.getFullYear();
+    somaDias: function (data, dias, retornaString = true) {
+        var dataPronta = data.setDate(data.getDate() + dias);
+        if (retornaString) {
+            dataPronta = data.getDate().toString().padStart(2, '0')
+                + '/' + (data.getMonth() + 1).toString().padStart(2, '0')
+                + '/' + data.getFullYear();
+        }
+
         return dataPronta;
     },
 
     /**
-     * @function getDataSimplesSomaMeses
+     * @function somaMeses
      * @category Utils
      * @class
-     * @description - Retorna a data atual no formato "dd/mm/aaaa" somando o número de meses informado por parâmetro
-     * @param {number} meses - Número de meses que devem ser acrescidos na data.
+     * @description - Retorna a data acrescida com o número de meses informado por parâmetro
+     * @param {date} data - Data que deve ter os meses acrescidos
+     * @param {number} meses - Número de meses que devem ser acrescidos na data
+     * @param {boolean} [retornaString = true] - **Opcional** Retorna uma String da data no formato "dd/mm/aaaa"
      * @example 
-     * var dataMais6Meses = util.getDataSimplesSomaMeses(6);
+     * var dataMais6Meses = util.somaMeses(data, 6);
      * @author Cássio
     */
-    getDataSimplesSomaMeses: function (meses) {
-        var data = new Date();
-        data.setMonth(data.getMonth() + meses)
-        var dataPronta = data.getDate().toString().padStart(2, '0')
-            + '/' + (data.getMonth() + 1).toString().padStart(2, '0')
-            + '/' + data.getFullYear();
+    somaMeses: function (data, meses, retornaString = true) {
+        var dataPronta = data.setMonth(data.getMonth() + meses);
+        if (retornaString) {
+            dataPronta = data.getDate().toString().padStart(2, '0')
+                + '/' + (data.getMonth() + 1).toString().padStart(2, '0')
+                + '/' + data.getFullYear();
+        }
+
+        return dataPronta;
+    },
+
+    /**
+     * @function somaAnos
+     * @category Utils
+     * @class
+     * @description - Retorna a data acrescida com o número de anos informado por parâmetro
+     * @param {date} data - Data que deve ter os anos acrescidos
+     * @param {number} anos - Número de anos que devem ser acrescidos na data
+     * @param {boolean} [retornaString = true] - **Opcional** Retorna uma String da data no formato "dd/mm/aaaa"
+     * @example 
+     * var dataMais5Anos = util.somaAnos(data, 5);
+     * @author Cássio
+    */
+    somaAnos: function (data, anos, retornaString = true) {
+        var dataPronta = data.setFullYear(data.getFullYear() + anos);
+        if (retornaString) {
+            dataPronta = data.getDate().toString().padStart(2, '0')
+                + '/' + (data.getMonth() + 1).toString().padStart(2, '0')
+                + '/' + data.getFullYear();
+        }
+
         return dataPronta;
     },
 
