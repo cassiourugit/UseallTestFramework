@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -12,7 +12,7 @@ module.exports = {
     */
     command: function () {
         this.pause(200)
-            .waitForElementNotPresent(util.geral.loadmask);
+            .waitForElementNotPresent(loc.geral.loadmask);
 
         return this;
     },

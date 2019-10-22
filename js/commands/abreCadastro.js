@@ -1,5 +1,6 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const util = require("../utils/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -13,8 +14,8 @@ module.exports = {
      * @author Cássio
     */
     command: function (campoComFoco) {
-        this.waitForElementPresent(util.geral.btnNovo)
-            .click(util.geral.btnNovo);
+        this.waitForElementPresent(loc.geral.btnNovo)
+            .click(loc.geral.btnNovo);
 
         if (util._isXpath(campoComFoco)) {
             this.useXpath()

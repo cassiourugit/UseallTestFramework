@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -12,8 +12,8 @@ module.exports = {
     */
     command: function () {
         this.useXpath()
-            .waitForElementPresent(util.geral.cabecalhoColunaCodigoX)
-            .click(util.geral.cabecalhoColunaCodigoX)
+            .waitForElementPresent(loc.geral.cabecalhoColunaCodigoX)
+            .click(loc.geral.cabecalhoColunaCodigoX)
             .useCss()
             .aguardaListagem();
 

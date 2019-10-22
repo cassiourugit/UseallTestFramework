@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -13,11 +13,11 @@ module.exports = {
     command: function () {
         this.pause(200)
             .useXpath()
-            .waitForElementNotPresent(util.geral.loadmaskRelX, 30000)
+            .waitForElementNotPresent(loc.geral.loadmaskRelX, 30000)
             .useCss()
-            .element("css selector", util.geral.messageBox, function (visivel) {
+            .element("css selector", loc.geral.messageBox, function (visivel) {
                 if (visivel.status != -1) {
-                    this.getAttribute(util.geral.messageBox, "textContent", function (result) {
+                    this.getAttribute(loc.geral.messageBox, "textContent", function (result) {
                         this.assert.ok(false, result.value);
                     });
                 }

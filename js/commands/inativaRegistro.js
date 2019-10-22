@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -11,14 +11,14 @@ module.exports = {
      * @author Cássio
     */
     command: function () {
-        this.waitForElementVisible(util.geral.linkAtivo)
-            .click(util.geral.linkAtivo)
-            .waitForElementPresent(util.geral.messageBox)
-            .assert.attributeContains(util.geral.messageBox, "textContent", "Ao inativar, não será mais possível utilizar o registro no sistema, confirma?")
+        this.waitForElementVisible(loc.geral.linkAtivo)
+            .click(loc.geral.linkAtivo)
+            .waitForElementPresent(loc.geral.messageBox)
+            .assert.attributeContains(loc.geral.messageBox, "textContent", "Ao inativar, não será mais possível utilizar o registro no sistema, confirma?")
             .useXpath()
-            .click(util.geral.btnSimMessageBoxX)
+            .click(loc.geral.btnSimMessageBoxX)
             .useCss()
-            .assert.attributeContains(util.geral.linkAtivo, "textContent", "Ativar");
+            .assert.attributeContains(loc.geral.linkAtivo, "textContent", "Ativar");
 
         return this;
     },

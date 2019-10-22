@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -17,13 +17,13 @@ module.exports = {
         this.useXpath()
             .waitForElementPresent("//div[text()= '" + nomeDaJanela + "']")
             .useCss()
-            .click(util.geral.btnSalvar)
+            .click(loc.geral.btnSalvar)
             .esperaToastRegistroSalvo()
             .element("xpath", "//div[text()= '" + nomeDaJanela + "']", function (visible) {
                 if (visible.status != -1)
                     this.useCss()
-                        .waitForElementPresent(util.geral.btnCancelar)
-                        .click(util.geral.btnCancelar);
+                        .waitForElementPresent(loc.geral.btnCancelar)
+                        .click(loc.geral.btnCancelar);
             })
             .useXpath()
             .assert.elementNotPresent("//div[text()= '" + nomeDaJanela + "']")

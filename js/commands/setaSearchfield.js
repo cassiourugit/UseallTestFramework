@@ -1,5 +1,6 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const util = require("../utils/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -20,10 +21,10 @@ module.exports = {
                 .sendKeys(campo, texto)
                 .useCss()
                 .aguardaListagem()
-                .expect.elements(util.geral.listaSearchfield).count.to.equal(1);
+                .expect.elements(loc.geral.listaSearchfield).count.to.equal(1);
 
-            this.assert.attributeContains(util.geral.listaSearchfield, "textContent", texto)
-                .click(util.geral.listaSearchfield)
+            this.assert.attributeContains(loc.geral.listaSearchfield, "textContent", texto)
+                .click(loc.geral.listaSearchfield)
                 .useXpath()
                 .assert.attributeContains(campo, "value", texto)
                 .useCss();
@@ -31,10 +32,10 @@ module.exports = {
             this.waitForElementVisible(campo)
                 .sendKeys(campo, texto)
                 .aguardaListagem()
-                .expect.elements(util.geral.listaSearchfield).count.to.equal(1);
+                .expect.elements(loc.geral.listaSearchfield).count.to.equal(1);
 
-            this.assert.attributeContains(util.geral.listaSearchfield, "textContent", texto)
-                .click(util.geral.listaSearchfield)
+            this.assert.attributeContains(loc.geral.listaSearchfield, "textContent", texto)
+                .click(loc.geral.listaSearchfield)
                 .assert.attributeContains(campo, "value", texto)
         }
 

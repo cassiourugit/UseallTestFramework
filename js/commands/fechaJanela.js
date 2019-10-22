@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -16,7 +16,7 @@ module.exports = {
     */
     command: function (nomeDaJanela) {
         this.keys(this.Keys.ESCAPE);
-        this.element("css selector", util.geral.messageBox, function (visible) {
+        this.element("css selector", loc.geral.messageBox, function (visible) {
             if (visible.status != -1)
                 this.useXpath()
                     .waitForElementPresent("//span[text()='Sim']")

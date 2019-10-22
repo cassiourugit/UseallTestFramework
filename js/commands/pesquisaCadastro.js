@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const util = require("../utils/util");
 
 module.exports = {
     /**

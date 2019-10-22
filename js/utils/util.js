@@ -8,7 +8,6 @@ module.exports = {
      * @description - Gera uma string com o tamanho informado
      * @param {number} tamanho - Tamanho que a string gerada deve ter
      * @example 
-     * const util = require("./node_modules/usealltestframework/js/page_objects/util");
      * var stringDe100Caracteres = util.geraString(100);
      * @author Cássio
     */
@@ -28,8 +27,7 @@ module.exports = {
      * @class
      * @description - Gera um CPF válido
      * @param {boolean} [comMascara = false] - **Opcional** Se o parâmetro for "true" o CPF será gerado com máscara. Caso não seja informado, o padrão é gerar CPF sem máscara.
-     * @example 
-     * const util = require("./node_modules/usealltestframework/js/page_objects/util");
+     * @example
      * var cpf = util.geraCpf();
      * @author Cássio
     */
@@ -64,7 +62,6 @@ module.exports = {
      * @description - Gera um CNPJ válido
      * @param {boolean} [comMascara = false] - **Opcional** Se o parâmetro for "true" o CNPJ será gerado com máscara. Caso não seja informado, o padrão é gerar CNPJ sem máscara.
      * @example 
-     * const util = require("./node_modules/usealltestframework/js/page_objects/util");
      * var cnpj = util.geraCnpj();
      * @author Cássio
     */
@@ -101,7 +98,6 @@ module.exports = {
      * @class
      * @description - Retorna a data atual no formato "dd/mm/aaaa-HH:mm:ss:mls"
      * @example 
-     * const util = require("./node_modules/usealltestframework/js/page_objects/util");
      * var data = util.getDataFormatada();
      * @author Cássio
     */
@@ -124,7 +120,6 @@ module.exports = {
      * @class
      * @description - Retorna a data atual no formato "dd/mm/aaaa"
      * @example 
-     * const util = require("./node_modules/usealltestframework/js/page_objects/util");
      * var data = util.getDataSimples();
      * @author Cássio
     */
@@ -143,7 +138,6 @@ module.exports = {
      * @description - Retorna a data atual no formato "dd/mm/aaaa" somando o número de dias informado por parâmetro
      * @param {number} dias - Número de dias que devem ser acrescidos na data.
      * @example 
-     * const util = require("./node_modules/usealltestframework/js/page_objects/util");
      * var dataMais30Dias = util.getDataSimplesSomaDias(30);
      * @author Cássio
     */
@@ -163,7 +157,6 @@ module.exports = {
      * @description - Retorna a data atual no formato "dd/mm/aaaa" somando o número de meses informado por parâmetro
      * @param {number} meses - Número de meses que devem ser acrescidos na data.
      * @example 
-     * const util = require("./node_modules/usealltestframework/js/page_objects/util");
      * var dataMais6Meses = util.getDataSimplesSomaMeses(6);
      * @author Cássio
     */
@@ -174,6 +167,34 @@ module.exports = {
             + '/' + (data.getMonth() + 1).toString().padStart(2, '0')
             + '/' + data.getFullYear();
         return dataPronta;
+    },
+
+    /**
+     * @function _gera_random
+     * @category Utils
+     * @class
+     * @private
+     * @description - Função privada que gera número randômico. Utilizada pelas funções geraCpf e geraCnpj
+     * @param {number} n - Número limite do random
+     * @author Cássio
+    */
+    _gera_random: function (n) {
+        var ranNum = Math.round(Math.random() * n);
+        return ranNum;
+    },
+
+    /**
+     * @function _mod
+     * @category Utils
+     * @class
+     * @private
+     * @description - Função privada que gera os 2 dígitos verificadores para criar CPF ou CNPJ válidos
+     * @param {number} dividendo - Dividendo da conta
+     * @param {number} divisor - Divisor da conta
+     * @author Cássio
+    */
+    _mod: function (dividendo, divisor) {
+        return Math.round(dividendo - (Math.floor(dividendo / divisor) * divisor));
     },
 
     /**
@@ -194,44 +215,4 @@ module.exports = {
             return false;
         }
     },
-
-    geral: {
-        campoPesquisar: 'input[data-test-id="filtro_pesquisa_geral"]',
-        campoModeloRel: "input[id^='report-combo-model'][id$='inputEl']",
-        btnPesquisar: 'span[data-test-id="btn_pesquisar"]',
-        btnNovo: "span[data-test-id='btn_novo']",
-        btnSalvar: "span[data-test-id='btn_salvar']",
-        btnCancelar: "span[data-test-id='btn_cancelar']",
-        btnFechar: "span[id^='use-closebutton'][id$='btnInnerEl']",
-        btnEmitir: "span[id^='use-splitbutton'][id$='btnInnerEl']",
-        btnEmitirArrow: "span[id^='use-splitbutton'][id$='arrowEl']",
-        btnEmitirArrowEmitirX: "//span[text()='Emitir relatório']",
-        btnEmitirArrowExportarX: "//span[text()='Exportar XLS']",
-        btnEmitirArrowEnviarX: "//span[text()='Enviar por e-mail']",
-        btnListas: "div[id^='tile-geral-listas'][id$='innerCt']",
-        cabecalhoColunaCodigoX: "//div[starts-with(@id, 'gridcolumn')]//span[text()= 'Código']",
-        menuRncArrowX: "//div[starts-with(@id, 'mainWest-innerCt')] //div[@data-qtip='Não conformidades']/preceding-sibling::div[@class='x-mi mi-arrow-drop-down']",
-        listaSearchfield: "[id$='-picker-listWrap'] ul li",
-        menuAtivoX: "//div[@class='item-menu active ']",
-        toast: ".x-toast",
-        toastRel: "div[id^= 'toast'][id$='innerCt']",
-        loadmask: "div[aria-describedby^='loadmask']",
-        loadmaskRelX: "//div[text()= 'Emitindo relatório...']",
-        messageBox: "div[id^='use-messagebox'][id$='msg']",
-        btnSimMessageBoxX: "//div[starts-with(@id, 'use-messagebox')] //span[contains(text(),'Sim')]",
-        btnNaoMessageBoxX: "//div[starts-with(@id, 'use-messagebox')] //span[contains(text(),'Não')]",
-        linkAtivo: "label[id^='use-linkativo']",
-        fotoUsuario: "img[alt='Foto usuário']",
-        janelaF2: "div[id^='use-pesquisageral-panel'][style*='block']",
-        janelaF2Fechada: "div[id^='use-pesquisageral-panel'][style*='none']",
-        campoBuscaF2: "div[id^='use-pesquisageral-panel'] input",
-    },
-
-    login: {
-        campoUsuario: "input[id='usuario']",
-        campoSenha: "input[id='senha']",
-        campoBanco: "select[id='banco']",
-        btnLogar: "input[id='submitFormLogin']",
-
-    }
 }

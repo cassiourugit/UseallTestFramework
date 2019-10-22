@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -12,7 +12,7 @@ module.exports = {
     */
     command: function () {
         this.useCss()
-            .waitForElementPresent(util.geral.toast)
+            .waitForElementPresent(loc.geral.toast)
             .pause(400);
 
         return this;

@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -15,7 +15,7 @@ module.exports = {
      * @author Cássio
     */
     command: function () {
-        var lista = util.geral.listaSearchfield;
+        var lista = loc.geral.listaSearchfield;
 
         this.execute(
             function (lista) {

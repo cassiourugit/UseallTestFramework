@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -13,7 +13,7 @@ module.exports = {
      * @author Cássio
     */
     command: function (link) {
-        this.click(util.geral.btnListas)
+        this.click(loc.geral.btnListas)
             .moveToElement('link text', link, 10, 10)
             .click('link text', link)
             .useXpath()

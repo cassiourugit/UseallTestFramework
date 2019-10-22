@@ -1,6 +1,4 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
-
 module.exports = {
     /**
      * @function limpaComboBox

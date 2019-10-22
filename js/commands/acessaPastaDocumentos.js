@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -13,7 +13,7 @@ module.exports = {
     */
     command: function (texto) {
         this.pesquisaDocumentos(texto)
-            .click(util.documentos.colunaIcon)
+            .click(loc.documentos.colunaIcon)
             .aguardaListagem();
 
         return this;

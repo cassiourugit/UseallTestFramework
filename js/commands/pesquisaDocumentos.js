@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const loc = require("../locators");
 /**
  * @function pesquisaDocumentos
  * @category Commands
@@ -12,12 +12,12 @@ const util = require("../page_objects/util");
 */
 module.exports = {
     command: function (texto) {
-        this.waitForElementVisible(util.documentos.campoPesquisar)
-            .setValue(util.documentos.campoPesquisar, texto)
-            .click(util.documentos.campoPesquisar)
-            .click(util.documentos.btnPesquisar)
+        this.waitForElementVisible(loc.documentos.campoPesquisar)
+            .setValue(loc.documentos.campoPesquisar, texto)
+            .click(loc.documentos.campoPesquisar)
+            .click(loc.documentos.btnPesquisar)
             .aguardaListagem()
-            .assert.attributeContains(util.documentos.colunaNome, "textContent", texto)
+            .assert.attributeContains(loc.documentos.colunaNome, "textContent", texto)
 
         return this;
     },

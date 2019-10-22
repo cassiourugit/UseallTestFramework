@@ -1,5 +1,6 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const util = require("../utils/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -18,22 +19,22 @@ module.exports = {
     */
     // @ts-ignore
     command: function ({ usuario, senha, esquemaBanco = null, elementoDeEspera = null }) {
-        this.waitForElementVisible(util.login.campoUsuario)
-            .clearValue(util.login.campoUsuario)
-            .sendKeys(util.login.campoUsuario, usuario)
-            .waitForElementVisible(util.login.campoSenha)
-            .clearValue(util.login.campoSenha)
-            .sendKeys(util.login.campoSenha, senha);
+        this.waitForElementVisible(loc.login.campoUsuario)
+            .clearValue(loc.login.campoUsuario)
+            .sendKeys(loc.login.campoUsuario, usuario)
+            .waitForElementVisible(loc.login.campoSenha)
+            .clearValue(loc.login.campoSenha)
+            .sendKeys(loc.login.campoSenha, senha);
 
         if (esquemaBanco != null) {
-            this.waitForElementVisible(util.login.campoBanco)
-                .click(util.login.campoBanco)
+            this.waitForElementVisible(loc.login.campoBanco)
+                .click(loc.login.campoBanco)
                 .waitForElementVisible("option[value= '" + esquemaBanco + "']")
                 .click("option[value= '" + esquemaBanco + "']");
         }
 
-        this.waitForElementVisible(util.login.btnLogar)
-            .click(util.login.btnLogar);
+        this.waitForElementVisible(loc.login.btnLogar)
+            .click(loc.login.btnLogar);
 
         if (elementoDeEspera != null) {
             if (util._isXpath(elementoDeEspera)) {
@@ -44,7 +45,7 @@ module.exports = {
                 this.waitForElementVisible(elementoDeEspera, 30000)
             }
         } else {
-            this.waitForElementVisible(util.geral.fotoUsuario, 30000);
+            this.waitForElementVisible(loc.geral.fotoUsuario, 30000);
         }
 
         return this;

@@ -1,5 +1,5 @@
 // @ts-nocheck
-const util = require("../page_objects/util");
+const loc = require("../locators");
 
 module.exports = {
     /**
@@ -14,12 +14,12 @@ module.exports = {
     */
     command: function (nome) {
         this.keys(this.Keys.F2)
-            .waitForElementPresent(util.geral.janelaF2)
-            .waitForElementVisible(util.geral.campoBuscaF2)
-            .sendKeys(util.geral.campoBuscaF2, nome)
+            .waitForElementPresent(loc.geral.janelaF2)
+            .waitForElementVisible(loc.geral.campoBuscaF2)
+            .sendKeys(loc.geral.campoBuscaF2, nome)
             .waitForElementVisible("div[id^='use-pesquisageral-panel'] div[title='" + nome + "']")
             .click("div[id^='use-pesquisageral-panel'] div[title='" + nome + "']")
-            .waitForElementNotPresent(util.geral.janelaF2Fechada)
+            .waitForElementNotPresent(loc.geral.janelaF2Fechada)
             .useXpath()
             .waitForElementPresent('//span[contains(text(), "' + nome + '")]')
             .assert.elementPresent('//span[contains(text(), "' + nome + '")]', "A aba do cadastro não foi aberta corretamente.")
