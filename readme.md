@@ -47,7 +47,7 @@ A linha acima instancia o pacote de funções no arquivo de teste. Agora, basta 
 
 ```
 var cpf = util.geraCpf();
-var data = util.getDataSimples();
+var data = util.getData();
 var stringCom4000Caracteres = util.geraString(4000);
 ```
 &nbsp;
