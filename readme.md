@@ -63,4 +63,4 @@ Você pode conferir todas as funções disponíveis no menu "Utils".
 * [Better-Docs](https://github.com/SoftwareBrothers/better-docs) - Plugin para personalizar documentações do JSDocs
 
 ## Author
-* **Cássio Benincá**
+**Cássio Benincá**

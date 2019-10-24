@@ -13,7 +13,7 @@ module.exports = {
     command: function () {
         this.useCss()
             .waitForElementPresent(loc.geral.toast)
-            .pause(400);
+            .pause(500);
 
         return this;
     },
