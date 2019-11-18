@@ -1,13 +1,13 @@
 // @ts-nocheck
-const loc = require("../locators");
+const loc = require("../commumLocators");
 
 module.exports = {
     /**
      * @function aguardaEmissaoRelatorio
      * @category Commands
-     * @class
+     * @module
      * @description - Após emitir um espelho ou relatório, essa função espera até que o mesmo seja emitido com sucesso. O tempo máximo de espera é 30 segundos. Caso haja alguma falha, a mensagem de erro é capturada e exibida no resultado do teste
-     * @example browser.aguardaRemissaoRelatorio()
+     * @example browser.aguardaEmissaoRelatorio()
      * @author Cássio
     */
     command: function () {

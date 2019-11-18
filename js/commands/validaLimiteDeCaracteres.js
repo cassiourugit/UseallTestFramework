@@ -5,7 +5,7 @@ module.exports = {
     /**
      * @function validaLimiteDeCaracteres
      * @category Commands
-     * @class
+     * @module
      * @description - Verifica se o campo possui o limite de caracteres informado
      * @param {string} campo - Localizador **Css** do campo
      * Observação: Essa função requer que o localizador do campo seja um Css,

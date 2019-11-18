@@ -1,12 +1,12 @@
 // @ts-nocheck
 const util = require("../utils/util");
-const loc = require("../locators");
+const loc = require("../commumLocators");
 
 module.exports = {
     /**
      * @function abreCadastro
      * @category Commands
-     * @class
+     * @module
      * @description - Abre uma nova janela de cadastro e aguarda ela estar pronta para interação.
      * @param {String} campoComFoco - Localizador **Css** ou **XPath** correspondente ao primeiro campo a receber foco após a abertura da janela.
      * @example 
@@ -19,10 +19,10 @@ module.exports = {
 
         if (util._isXpath(campoComFoco)) {
             this.useXpath()
-                .esperaFoco(campoComFoco)
+                .aguardaFoco(campoComFoco)
                 .useCss();
         } else {
-            this.esperaFoco(campoComFoco);
+            this.aguardaFoco(campoComFoco);
         }
 
         return this;

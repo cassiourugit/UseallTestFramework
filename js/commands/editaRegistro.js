@@ -5,7 +5,7 @@ module.exports = {
     /**
      * @function editaRegistro
      * @category Commands
-     * @class
+     * @module
      * @description - Clica no lápis para edição de um registro na grid e aguarda até que o campo indicado por parâmetro receba o foco após a abertura da janela
      * @param {String} lapisLinhaRegistro - Localizador **Css** ou **Xpath** com o ícone do lápis da linha a ser editada
      * @param {String} campoComFoco - Localizador **Css** ou **Xpath** correspondente ao primeiro campo a receber foco após a abertura da janela
@@ -25,10 +25,10 @@ module.exports = {
 
         if (util._isXpath(campoComFoco)) {
             this.useXpath()
-                .esperaFoco(campoComFoco)
+                .aguardaFoco(campoComFoco)
                 .useCss();
         } else {
-            this.esperaFoco(campoComFoco);
+            this.aguardaFoco(campoComFoco);
         }
 
         return this;

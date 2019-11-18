@@ -1,9 +1,9 @@
 // @ts-nocheck
-const loc = require("../locators");
+const loc = require("../commumLocators");
 /**
  * @function pesquisaDocumentos
  * @category Commands
- * @class
+ * @module
  * @description - Efetua a busca de um documento ou pasta na listagem de documentos, e valida se a primeira linha da listagem de fato mostra o registro buscado
  * @param {string} texto - Texto com o nome do documento ou pasta a ser buscado
  * @example 

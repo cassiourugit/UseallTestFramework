@@ -3,7 +3,7 @@ module.exports = {
     /**
      * @function acessarPagina
      * @category Commands
-     * @class
+     * @module
      * @description - Limpa os cookies e acessa uma nova página através da URL passada por parâmetro
      * @param {String} linkUrl - URL de acesso a página
      * @example browser.acessarPagina("https://useall.useallcloud.com.br/")

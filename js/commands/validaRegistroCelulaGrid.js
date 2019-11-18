@@ -5,7 +5,7 @@ module.exports = {
     /**
      * @function validaRegistroCelulaGrid
      * @category Commands
-     * @class
+     * @module
      * @description - Verifica se a célula da grid possui o texto informado
      * @param {string} celula - Localizador **Css** ou **Xpath** da célula
      * @param {string} texto - Texto que deve estar sendo exibido na célula

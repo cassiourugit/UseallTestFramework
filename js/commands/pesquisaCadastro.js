@@ -5,7 +5,7 @@ module.exports = {
     /**
      * @function pesquisaCadastro
      * @category Commands
-     * @class
+     * @module
      * @description - Efetua a busca em um campo de pesquisa de um cadastro ou processo e aguarda até que a listagem termine a busca.
      * Observação: Essa função não valida se a informação foi encontrada corretamente, ela apenas efetua a busca e espera a listagem carregar. 
      * @param {string} campoPesquisar - Localizador **Css** ou **Xpath** do campo de busca

@@ -3,7 +3,7 @@ module.exports = {
     /**
      * @function acessaRelatorio
      * @category Commands
-     * @class
+     * @module
      * @description - Acessa um relatório através do menu de Relatórios
      * @param {String} link - Nome do relatório no menu
      * @example browser.acessaRelatorio("Espelho de plano de ação")

@@ -1,11 +1,11 @@
 // @ts-nocheck
-const loc = require("../locators");
+const loc = require("../commumLocators");
 
 module.exports = {
     /**
      * @function acessaMenu
      * @category Commands
-     * @class
+     * @module
      * @description - Abre um módulo pelo menu do sistema
      * @param {String} nomeDoMenu - Nome do menu
      * @example browser.acessaMenu("Plano de ação")

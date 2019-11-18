@@ -5,7 +5,7 @@ module.exports = {
     /**
      * @function validaCampoObrigatorio
      * @category Commands
-     * @class
+     * @module
      * @description - Verifica se o campo informado é obrigatório
      * @param {string} campo - Localizador **Css** ou **Xpath** do campo
      * @example 

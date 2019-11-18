@@ -1,11 +1,11 @@
 // @ts-nocheck
-const loc = require("../locators");
+const loc = require("../commumLocators");
 
 module.exports = {
     /**
      * @function acessaPastaDocumentos
      * @category Commands
-     * @class
+     * @module
      * @description - Pesquisa e acessa uma pasta do módulo Documentos
      * @param {String} texto - Nome da pasta
      * @example browser.acessaPastaDocumentos("Pasta")

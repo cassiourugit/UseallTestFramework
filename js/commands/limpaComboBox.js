@@ -3,7 +3,7 @@ module.exports = {
     /**
      * @function limpaComboBox
      * @category Commands
-     * @class
+     * @module
      * @description - Injeta um código javascript no browser que força um campo do tipo combobox a ficar vazio.
      * Essa função também poderia ser utilizada com outros campos que não sejam combobox, porém isso não foi testado e pode não funcionar.
      * @param {String} campo - Localizador **Css** do campo combobox que deve ser limpo

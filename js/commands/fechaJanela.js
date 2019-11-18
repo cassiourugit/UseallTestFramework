@@ -1,11 +1,11 @@
 // @ts-nocheck
-const loc = require("../locators");
+const loc = require("../commumLocators");
 
 module.exports = {
     /**
      * @function fechaJanela
      * @category Commands
-     * @class
+     * @module
      * @description - Procura por pela janela que contém o nome indicado por parâmetro e tecla "ESC" para fechar.
      * Caso a seguinte mensagem apareça "Você possui modificações a serem salvas. Deseja sair assim mesmo?", o botão "Sim" será clicado automaticamente.
      * Após isso o teste espera que a janela seja fechada antes de prosseguir
@@ -23,7 +23,7 @@ module.exports = {
                     .click("//span[text()='Sim']")
         })
         this.useXpath()
-            .assert.elementNotPresent("//div[text()= '" + nomeDaJanela + "']")
+            .assert.elementNotPresent("//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']")
             .useCss();
 
         return this;

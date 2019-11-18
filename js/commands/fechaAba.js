@@ -3,7 +3,7 @@ module.exports = {
     /**
      * @function fecharAba
      * @category Commands
-     * @class
+     * @module
      * @description - Procura a aba contendo o nome indicado pelo parâmetro e clica no X para fechar
      * @param {String} nomeDaAba - Nome da aba que será fechada
      * @example browser.fechaAba("Plano de ação")

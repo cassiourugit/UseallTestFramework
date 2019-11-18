@@ -1,12 +1,12 @@
 // @ts-nocheck
 const util = require("../utils/util");
-const loc = require("../locators");
+const loc = require("../commumLocators");
 
 module.exports = {
     /**
      * @function setaSearchfield
      * @category Commands
-     * @class
+     * @module
      * @description - Busca e seta o valor informado por parâmetro no searchfield
      * @param {string} campo - Localizador **Css** ou **Xpath** do campo do tipo searchfield
      * @param {string} texto - Texto a ser buscado

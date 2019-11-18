@@ -5,7 +5,7 @@ module.exports = {
     /**
      * @function validaRegistroCampoTexto
      * @category Commands
-     * @class
+     * @module
      * @description - Verifica se o campo possui o texto informado
      * @param {string} campo - Localizador **Css** ou **Xpath** do campo
      * @param {string} texto - Texto que deve estar sendo exibido no campo

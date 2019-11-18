@@ -1,11 +1,11 @@
 // @ts-nocheck
-const loc = require("../locators");
+const loc = require("../commumLocators");
 
 module.exports = {
     /**
      * @function acessaCadastroF2
      * @category Commands
-     * @class
+     * @module
      * @description - Acessa um cadastro através do menu F2
      * @param {String} link - Nome do cadastro no menu
      * @example 

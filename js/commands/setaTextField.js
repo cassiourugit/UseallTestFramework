@@ -5,7 +5,7 @@ module.exports = {
     /**
      * @function setaTextField
      * @category Commands
-     * @class
+     * @module
      * @description - Digita o valor passapor parâmetro no campo de texto
      * @param {string} campo - Localizador **Css** ou **Xpath** do campo de texto
      * @param {string} texto - Texto a ser digitado no campo

@@ -5,7 +5,7 @@ module.exports = {
     /**
      * @function setaComboBox
      * @category Commands
-     * @class
+     * @module
      * @description - Busca e seta o valor informado por parâmetro dentro da combobox
      * @param {string} campo - Localizador **Css** ou **Xpath** do campo do tipo combobox que será setado
      * @param {string} opcao - Nome da opção a ser setada no campo

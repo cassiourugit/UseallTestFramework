@@ -1,11 +1,11 @@
 // @ts-nocheck
-const loc = require("../locators");
+const loc = require("../commumLocators");
 
 module.exports = {
     /**
      * @function desordenarListagem
      * @category Commands
-     * @class
+     * @module
      * @description - Clica no cabeçalho da coluna código de uma listagem para desordenar a lista
      * @example browser.aguardaRemissaoRelatorio()
      * @author Cássio

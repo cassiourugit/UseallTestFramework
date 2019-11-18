@@ -1,12 +1,12 @@
 // @ts-nocheck
 const util = require("../utils/util");
-const loc = require("../locators");
+const loc = require("../commumLocators");
 
 module.exports = {
     /**
      * @function login
      * @category Commands
-     * @class
+     * @module
      * @description - Faz login no sistema utilizando o usuário e senha passados por parâmetro
      * @param {string} usuario - Usuário de acesso ao sistema 
      * @param {string} senha - Senha de acesso ao sistema

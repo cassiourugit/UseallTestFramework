@@ -3,7 +3,7 @@ module.exports = {
     /**
      * @function rodaArquivo
      * @category Commands
-     * @class
+     * @module
      * @description - Roda um arquivo executável
      * Pode ser utilizado para rodar qualquer arquivo necessário para o teste.
      * Por exemplo fazer o upload de um arquivo. Quando o windows abre a janela de seleção de arquivo,

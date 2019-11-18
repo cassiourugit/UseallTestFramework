@@ -3,7 +3,7 @@ module.exports = {
     /**
      * @function validaRegistroInativo
      * @category Commands
-     * @class
+     * @module
      * @description - Verifica se a célula da grid está em uma linha inativa
      * @param {string} celula - Localizador **Css** da célula
      * Observação: Essa função requer que o localizador da célula seja um Css,

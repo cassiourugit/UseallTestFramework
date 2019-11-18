@@ -1,11 +1,11 @@
 // @ts-nocheck
-const loc = require("../locators");
+const loc = require("../commumLocators");
 
 module.exports = {
     /**
      * @function inativaRegistro
      * @category Commands
-     * @class
+     * @module
      * @description - Inativa o registro que está aberto na tela
      * @example browser.inativaRegistro()
      * @author Cássio

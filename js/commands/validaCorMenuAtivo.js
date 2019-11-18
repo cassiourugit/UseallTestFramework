@@ -3,7 +3,7 @@ module.exports = {
     /**
      * @function validaCorMenuAtivo
      * @category Commands
-     * @class
+     * @module
      * @description - Verifica se o ícone do menu está setado como ativo e com a cor correta após ter sido aberto
      * @param {string} nomeDoMenu - Nome do menu
      * @example 
