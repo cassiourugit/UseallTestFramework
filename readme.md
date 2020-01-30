@@ -1,4 +1,6 @@
 Métodos para automação de testes dos sistemas Useall
+Este framework conta com funções que permitem interagir com vários elementos e funcionalidades comuns para os sistemas da Useall.
+Além disso também existem disponíveis funções para interagir com a mensageria, presente em vários sistemas da Useall. 
 
 ## Pré-requisitos
 * Nightwatch
@@ -15,11 +17,14 @@ npm install usealltestframework
 ```
 
 ## Como configurar
-Você deve inserir a seguinte linha dentro do "module.exports" no seu arquivo "nightwatch.conf.js"
+Você deve inserir as seguintes linhas dentro do "module.exports" no seu arquivo "nightwatch.conf.js"
+A linha terminada em "coreCommands" habilita as funções padrão para os sistemas da Useall.
+A linha terminada em "msgCommands" habilita as funções para controle de elementos da mensageria.
 
 ```
     custom_commands_path: [
-        "node_modules/usealltestframework/js/commands",
+        "node_modules/usealltestframework/js/coreCommands",
+        "node_modules/usealltestframework/js/msgCommands"
     ],
 
 ```
@@ -53,6 +58,12 @@ var stringCom4000Caracteres = util.geraString(4000);
 &nbsp;
 
 Você pode conferir todas as funções disponíveis no menu "Utils".
+
+
+## Novidades a caminho
+
+Está em desenvolvimento um conjunto de funções que irá permitir a validação de espelhos e relatórios.
+Elas serão capazes de baixar o PDF gerado no sistema e comparar com um modelo previamente salvo, apontando as diferenças encontradas.
 
 
 ## Construído com:

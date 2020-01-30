@@ -18,7 +18,7 @@ module.exports = {
             .element("css selector", loc.geral.messageBox, function (visivel) {
                 if (visivel.status != -1) {
                     this.getAttribute(loc.geral.messageBox, "textContent", function (result) {
-                        this.assert.ok(false, result.value);
+                        this.verify.fail(result.value);
                     });
                 }
             });

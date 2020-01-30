@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: fecharAba</title>
+    <title>JSDoc: somaMeses</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -68,7 +68,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Module</p>
-                        <h1>fecharAba</h1>
+                        <h1>somaMeses</h1>
                     </header>
                     
                     
@@ -91,7 +91,7 @@
     
         
             <div class="description"><ul>
-<li>Procura a aba contendo o nome indicado pelo parâmetro e clica no X para fechar</li>
+<li>Retorna a data acrescida com o número de meses informado por parâmetro</li>
 </ul></div>
         
 
@@ -120,7 +120,11 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -133,23 +137,113 @@
         
 <tr class="deep-level-0">
   
-      <td class="name"><code>nomeDaAba</code></td>
+      <td class="name"><code>data</code></td>
   
 
   <td class="type">
   
       
-<span class="param-type">String</span>
+<span class="param-type">date</span>
 
 
   
   </td>
 
   
+      <td class="attributes">
+      
 
+      
+
+      
+      </td>
   
 
-  <td class="description last"><p>Nome da aba que será fechada</p></td>
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last"><p>Data que deve ter os meses acrescidos</p></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>meses</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+      <td class="default">
+      
+      </td>
+  
+
+  <td class="description last"><p>Número de meses que devem ser acrescidos na data</p></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>retornaString</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">boolean</span>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+      <td class="default">
+      
+          true
+      
+      </td>
+  
+
+  <td class="description last"><p><strong>Opcional</strong> Retorna uma String da data no formato &quot;dd/mm/aaaa&quot;</p></td>
 </tr>
 
 
@@ -201,9 +295,9 @@
 
     
         <p class="tag-source">
-            <a href="commands_fechaAba.js.html" class="button">View Source</a>
+            <a href="utils_util.js.html" class="button">View Source</a>
             <span>
-                <a href="commands_fechaAba.js.html">commands/fechaAba.js</a>, <a href="commands_fechaAba.js.html#line3">line 3</a>
+                <a href="utils_util.js.html">utils/util.js</a>, <a href="utils_util.js.html#line214">line 214</a>
             </span>
         </p>
     
@@ -232,7 +326,7 @@
     <h5>Example</h5>
     
     
-        <pre class="prettyprint"><code>browser.fechaAba("Plano de ação")</code></pre>
+        <pre class="prettyprint"><code>var dataMais6Meses = util.somaMeses(data, 6);</code></pre>
     
 
 

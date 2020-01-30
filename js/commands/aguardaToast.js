@@ -6,8 +6,8 @@ module.exports = {
      * @function aguardaToast
      * @category Commands
      * @module
-     * @description - Aguarda até que o Toast apareca, e depois aguarda mais 400 milisegundos antes de prosseguir o teste
-     * @param {string} [mensagemToast = null] - **Opcional** Caso este parâmetro seja informado, será verificado se o toast contém o texto informado.
+     * @description - Aguarda até que o Toast indicando que o registro foi salvo apareca, e depois aguarda mais 400 milisegundos antes de prosseguir o teste
+     * @param {string} [mensagemToast = null] - **Opcional** Texto que deve ser exibido no toast
      * @example browser.aguardaToast("Registro salvo com sucesso!")
      * @author Cássio
     */
