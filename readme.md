@@ -1,6 +1,10 @@
-Métodos para automação de testes dos sistemas Useall
-Este framework conta com funções que permitem interagir com vários elementos e funcionalidades comuns para os sistemas da Useall.
-Além disso também existem disponíveis funções para interagir com a mensageria, presente em vários sistemas da Useall. 
+Métodos para automação de testes dos sistemas Useall 
+ 
+Este framework conta com funções que permitem interagir com vários elementos e funcionalidades comuns para os sistemas da Useall.  
+Além disso também estão disponíveis funções para interagir com a mensageria, presente em vários sistemas da Useall.  
+
+A documentação completa pode ser consultada [aqui](https://cassiourugit.github.io/UseallTestFramework/)
+
 
 ## Pré-requisitos
 * Nightwatch
