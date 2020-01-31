@@ -6,7 +6,7 @@ module.exports = {
 
     /**
      * @function aplicaRegexString
-     * @category Commands
+     * @category Utils
      * @module
      * @description - Extrai parte de uma string através de uma expressão regex
      * @param {String} string - Nome do menu

@@ -18,7 +18,8 @@
         "readme": "readme.md",
         "recurse": true,
         "verbose": true,
-        "template": "node_modules/better-docs"
+        "template": "node_modules/better-docs",
+        "title": "My title"
     },
     "templates": {
         "better-docs": {
