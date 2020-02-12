@@ -4,7 +4,7 @@ const loc = require("../commumLocators");
 module.exports = {
     /**
      * @function acessaCadastro
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Acessa um cadastro através do menu de Listas
      * @param {String} link - Nome do cadastro no menu
@@ -13,12 +13,17 @@ module.exports = {
      * @author Cássio
     */
     command: function (link) {
-        this.click(loc.geral.btnListas)
+        if (link == "" || link == null || link == undefined) {
+            this.assert.fail("O parâmetro 'link' não foi informado")
+            return this;
+        }
+
+        this.useCss()
+            .click(loc.geral.btnListas)
             .moveToElement('link text', link, 10, 10)
             .click('link text', link)
             .useXpath()
-            .waitForElementPresent('//span[contains(text(), "' + link + '")]')
-            .assert.elementPresent('//span[contains(text(), "' + link + '")]', "A aba do cadastro não foi aberta corretamente.")
+            .waitForElementPresent('//span[contains(text(), "' + link + '")]', "A aba do cadastro não foi aberta corretamente.")
             .useCss()
 
         return this;

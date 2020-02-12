@@ -4,7 +4,7 @@ const util = require("../utils/util");
 module.exports = {
     /**
      * @function aguardaFoco
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Aguarda até que o campo indicado por parâmetro receba o foco
      * @param {String} campoComFoco - Localizador **Css** ou **Xpath** correspondente ao primeiro campo que receberá o foco
@@ -12,9 +12,14 @@ module.exports = {
      * @author Cássio
     */
     command: function (campo) {
+        if (campo == "" || campo == null || campo == undefined) {
+            this.assert.fail("O parâmetro 'campo' não foi informado")
+            return this;
+        }
+
         if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementPresent(campo + "[contains(@module, 'x-field-default-form-focus')]")
+                .waitForElementPresent(campo + "[contains(@class, 'x-field-default-form-focus')]")
                 .useCss();
         } else {
             this.waitForElementPresent(campo + ".x-field-default-form-focus");

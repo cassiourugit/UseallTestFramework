@@ -2,7 +2,7 @@
 module.exports = {
     /**
      * @function limpaComboBox
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Injeta um código javascript no browser que força um campo do tipo combobox a ficar vazio.
      * Essa função também poderia ser utilizada com outros campos que não sejam combobox, porém isso não foi testado e pode não funcionar.
@@ -13,6 +13,11 @@ module.exports = {
      * @author Cássio
     */
     command: function (campo) {
+        if (campo == "" || campo == null || campo == undefined) {
+            this.assert.fail("O parâmetro 'campo' não foi informado")
+            return this;
+        }
+
         this.waitForElementVisible(campo)
             .execute(
                 function (campo) {

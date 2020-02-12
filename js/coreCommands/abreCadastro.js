@@ -5,7 +5,7 @@ const loc = require("../commumLocators");
 module.exports = {
     /**
      * @function abreCadastro
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Abre uma nova janela de cadastro e aguarda ela estar pronta para interação.
      * @param {String} campoComFoco - Localizador **Css** ou **XPath** correspondente ao primeiro campo a receber foco após a abertura da janela.
@@ -14,7 +14,13 @@ module.exports = {
      * @author Cássio
     */
     command: function (campoComFoco) {
-        this.waitForElementPresent(loc.geral.btnNovo)
+        if (campoComFoco == "" || campoComFoco == null || campoComFoco == undefined) {
+            this.assert.fail("O parâmetro 'campoComFoco' não foi informado")
+            return this;
+        }
+
+        this.useCss()
+            .waitForElementPresent(loc.geral.btnNovo)
             .click(loc.geral.btnNovo);
 
         if (util._isXpath(campoComFoco)) {
@@ -22,7 +28,8 @@ module.exports = {
                 .aguardaFoco(campoComFoco)
                 .useCss();
         } else {
-            this.aguardaFoco(campoComFoco);
+            this.useCss()
+                .aguardaFoco(campoComFoco);
         }
 
         return this;

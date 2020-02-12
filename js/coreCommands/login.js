@@ -5,7 +5,7 @@ const loc = require("../commumLocators");
 module.exports = {
     /**
      * @function login
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Faz login no sistema utilizando o usuário e senha passados por parâmetro
      * @param {string} usuario - Usuário de acesso ao sistema 
@@ -19,6 +19,16 @@ module.exports = {
     */
     // @ts-ignore
     command: function ({ usuario, senha, esquemaBanco = null, elementoDeEspera = null }) {
+        if (usuario == "" || usuario == null || usuario == undefined) {
+            this.assert.fail("O parâmetro 'usuario' não foi informado")
+            return this;
+        }
+
+        if (senha == "" || senha == null || senha == undefined) {
+            this.assert.fail("O parâmetro 'senha' não foi informado")
+            return this;
+        }
+
         this.waitForElementVisible(loc.login.campoUsuario)
             .clearValue(loc.login.campoUsuario)
             .sendKeys(loc.login.campoUsuario, usuario)

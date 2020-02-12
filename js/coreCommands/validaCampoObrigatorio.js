@@ -4,7 +4,7 @@ const util = require("../utils/util");
 module.exports = {
     /**
      * @function validaCampoObrigatorio
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Verifica se o campo informado é obrigatório
      * @param {string} campo - Localizador **Css** ou **Xpath** do campo
@@ -13,20 +13,25 @@ module.exports = {
      * @author Cássio
     */
     command: function (campo) {
+        if (campo == "" || campo == null || campo == undefined) {
+            this.assert.fail("O parâmetro 'campo' não foi informado")
+            return this;
+        }
+
         if (util._isXpath(campo)) {
             this.useXpath()
                 .click(campo);
             this.keys(this.Keys.TAB);
             this.assert.attributeEquals(campo, "aria-invalid", "true")
                 .assert.attributeEquals(campo, "aria-required", "true")
-                .assert.attributeContains(campo, "data-errorqtip", "Este campo é obrigatório.")
+                .assert.attributeContains(campo, "data-errorqtip", "Este campo é obrigatório.", "O campo " + campo + " não está marcado como obrigatório.")
                 .useCss();
         } else {
             this.click(campo);
             this.keys(this.Keys.TAB);
             this.assert.attributeEquals(campo, "aria-invalid", "true")
                 .assert.attributeEquals(campo, "aria-required", "true")
-                .assert.attributeContains(campo, "data-errorqtip", "Este campo é obrigatório.")
+                .assert.attributeContains(campo, "data-errorqtip", "Este campo é obrigatório.", "O campo " + campo + " não está marcado como obrigatório.")
         }
 
         return this;

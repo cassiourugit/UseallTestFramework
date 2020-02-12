@@ -4,7 +4,7 @@ const loc = require("../commumLocators");
 module.exports = {
     /**
      * @function acessaCadastroF2
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Acessa um cadastro através do menu F2
      * @param {String} link - Nome do cadastro no menu
@@ -13,6 +13,11 @@ module.exports = {
      * @author Cássio
     */
     command: function (nome) {
+        if (nome == "" || nome == null || nome == undefined) {
+            this.assert.fail("O parâmetro 'nome' não foi informado")
+            return this;
+        }
+
         this.keys(this.Keys.F2)
             .waitForElementPresent(loc.geral.janelaF2)
             .waitForElementVisible(loc.geral.campoBuscaF2)
@@ -21,8 +26,7 @@ module.exports = {
             .click("div[id^='use-pesquisageral-panel'] div[title='" + nome + "']")
             .waitForElementNotPresent(loc.geral.janelaF2Fechada)
             .useXpath()
-            .waitForElementPresent('//span[contains(text(), "' + nome + '")]')
-            .assert.elementPresent('//span[contains(text(), "' + nome + '")]', "A aba do cadastro não foi aberta corretamente.")
+            .waitForElementPresent('//span[contains(text(), "' + nome + '")]', "A aba do cadastro não foi aberta corretamente.")
             .useCss()
 
         return this;

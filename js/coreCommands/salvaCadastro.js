@@ -4,7 +4,7 @@ const loc = require("../commumLocators");
 module.exports = {
     /**
      * @function salvaCadastro
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Salva a janela de cadastro aberta e aguarda o toast indicando que o registro foi salvo.
      * Caso o sistema possua a funcionalidade padrão de abrir novamente uma janela de cadastro após salvar, ela será fechada automaticamente.
@@ -14,6 +14,11 @@ module.exports = {
      * @author Cássio
     */
     command: function (nomeDaJanela) {
+        if (nomeDaJanela == "" || nomeDaJanela == null || nomeDaJanela == undefined) {
+            this.assert.fail("O parâmetro 'nomeDaJanela' não foi informado")
+            return this;
+        }
+
         this.useXpath()
             .waitForElementPresent("//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']")
             .useCss()

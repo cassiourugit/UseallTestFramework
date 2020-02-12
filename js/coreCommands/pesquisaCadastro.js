@@ -4,7 +4,7 @@ const util = require("../utils/util");
 module.exports = {
     /**
      * @function pesquisaCadastro
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Efetua a busca em um campo de pesquisa de um cadastro ou processo e aguarda até que a listagem termine a busca.
      * Observação: Essa função não valida se a informação foi encontrada corretamente, ela apenas efetua a busca e espera a listagem carregar. 
@@ -16,6 +16,21 @@ module.exports = {
      * @author Cássio
     */
     command: function (campoPesquisar, btnPesquisar, texto) {
+        if (campoPesquisar == "" || campoPesquisar == null || campoPesquisar == undefined) {
+            this.assert.fail("O parâmetro 'campoPesquisar' não foi informado")
+            return this;
+        }
+
+        if (btnPesquisar == "" || btnPesquisar == null || btnPesquisar == undefined) {
+            this.assert.fail("O parâmetro 'btnPesquisar' não foi informado")
+            return this;
+        }
+
+        if (texto == "" || texto == null || texto == undefined) {
+            this.assert.fail("O parâmetro 'texto' não foi informado")
+            return this;
+        }
+
         if (util._isXpath(campoPesquisar)) {
             this.useXpath()
                 .waitForElementVisible(campoPesquisar)

@@ -4,7 +4,7 @@ const loc = require("../commumLocators");
 module.exports = {
     /**
      * @function removeListaSearchfield
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Remove da página todos os elentos "li". Elementos li são carregados na página ao listar um campo de busca ou um combobox.
      * Em algumas situações o teste pode falhar na hora de encontrar elementos dentro de um campo de busca, pois podem haver elementos de outros campos abertos anteriormente carregados na página.
@@ -15,7 +15,7 @@ module.exports = {
      * @author Cássio
     */
     command: function () {
-        var lista = loc.geral.listaSearchfield;
+        const lista = loc.geral.listaSearchfield;
 
         this.execute(
             function (lista) {

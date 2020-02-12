@@ -3,11 +3,11 @@ const loc = require("../commumLocators");
 
 module.exports = {
     /**
-     * @function inativaRegistro
-     * @category Core Commands
+     * @function inativaRegistroPorLink
+     * @category Core commands
      * @module
      * @description - Inativa o registro que está aberto na tela
-     * @example browser.inativaRegistro()
+     * @example browser.inativaRegistroPorLink()
      * @author Cássio
     */
     command: function () {

@@ -33,6 +33,30 @@ A linha terminada em "msgCommands" habilita as funções para controle de elemen
 
 ```
 
+
+Criar na raíz do projeto de testes um arquivo chamado "usealltestframework.conf.js"  
+Esse é o arquivo de configuração do framework.  
+Ele pode ser configurado da seguinte forma:
+
+```
+module.exports = {
+    destaca_elemento: true
+};
+
+```
+
+  
+Essa configuração irá habilitar o recurso de destacar elementos caso o teste encontre divergências entre o que era espero e o que foi encontrado.  
+Para desabilitar este recurso, basta setar a configuração como "false".  
+  
+As funções do core que utilizam este recurso são:  
+```
+acessaMenu
+pesquisaDocumentos
+setaSearchfield
+validaRegistroCampoTexto
+validaRegistroCelulaGrid
+```
 ## Como utilizar as funções
 Após a instalação e configuração do framework, para utilizar as funções basta chamá-las a partir do comando "browser" ou "client", como se fossem funções do próprio Nightwatch.
 &nbsp;

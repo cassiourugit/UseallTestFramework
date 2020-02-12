@@ -2,7 +2,7 @@
 module.exports = {
     /**
      * @function validaRegistroInativo
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Verifica se a célula da grid está em uma linha inativa
      * @param {string} celula - Localizador **Css** da célula
@@ -13,11 +13,16 @@ module.exports = {
      * @author Cássio
     */
     command: function (celula) {
+        if (celula == "" || celula == null || celula == undefined) {
+            this.assert.fail("O parâmetro 'celula' não foi informado")
+            return this;
+        }
+
         this.execute(function (celula) {
             // @ts-ignore
             return document.querySelector(celula).parentNode.getAttribute("class");
         }, [celula], function (result) {
-            this.assert.equal(result.value, "use-inactive-row   x-grid-row");
+            this.assert.ok(result.value.includes("use-inactive-row"), "O registro localizado por " + celula + " não está marcado como inativo.");
         });
 
         return this;

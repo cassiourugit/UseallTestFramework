@@ -1,10 +1,11 @@
 // @ts-nocheck
 const util = require("../utils/util");
+const config = require("../../usealltestframework.conf");
 
 module.exports = {
     /**
      * @function validaRegistroCelulaGrid
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Verifica se a célula da grid possui o texto informado
      * @param {string} celula - Localizador **Css** ou **Xpath** da célula
@@ -14,16 +15,52 @@ module.exports = {
      * @author Cássio
     */
     command: function (celula, texto) {
+        if (celula == "" || celula == null || celula == undefined) {
+            this.assert.fail("O parâmetro 'celula' não foi informado")
+            return this;
+        }
+
+        if (texto == "" || texto == null || texto == undefined) {
+            this.assert.fail("O parâmetro 'texto' não foi informado")
+            return this;
+        }
+
         if (util._isXpath(celula)) {
             this.useXpath()
                 .waitForElementVisible(celula)
-                .assert.attributeEquals(celula, 'textContent', texto)
+                .getAttribute(celula, 'textContent', function (result) {
+                    if (result.value != texto) {
+                        if (config.destaca_elemento) {
+                            this.destacaElemento(celula)
+                            this.assert.attributeEquals(celula, "textContent", texto, "A célula da grid deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
+                                .useCss();
+
+                            return this;
+                        }
+                        this.assert.attributeEquals(celula, 'textContent', texto, "A célula da grid deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
+                            .useCss();
+
+                        return this;
+                    }
+                })
                 .useCss();
-        } else {
-            this.waitForElementVisible(celula)
-                .assert.attributeEquals(celula, 'textContent', texto);
         }
 
-        return this;
+        this.useCss()
+            .waitForElementVisible(celula)
+            .getAttribute(celula, 'textContent', function (result) {
+                if (result.value != texto) {
+                    if (!config.destaca_elemento) {
+                        this.assert.attributeEquals(celula, 'textContent', texto, "A célula da grid deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")");
+
+                        return this;
+                    }
+                    this.destacaElemento(celula)
+                    this.assert.attributeEquals(celula, "textContent", texto, "A célula da grid deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
+                        .useCss();
+
+                    return this;
+                }
+            })
     },
 };

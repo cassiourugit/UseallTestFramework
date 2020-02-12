@@ -4,7 +4,7 @@ const loc = require("../commumLocators");
 module.exports = {
     /**
      * @function alteraModeloRelatorio
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Altera o modelo do relatório pelo informado por parâmetro
      * @param {string} nomeModelo - Nome do modelo que deve ser setado no campo
@@ -13,6 +13,11 @@ module.exports = {
      * @author Cássio
     */
     command: function (nomeModelo) {
+        if (nomeModelo == "" || nomeModelo == null || nomeModelo == undefined) {
+            this.assert.fail("O parâmetro 'nomeModelo' não foi informado")
+            return this;
+        }
+
         this.useXpath()
             .waitForElementVisible(loc.geral.campoModeloRelatorioX)
             .click(loc.geral.campoModeloRelatorioTriggerX)

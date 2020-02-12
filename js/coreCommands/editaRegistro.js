@@ -4,7 +4,7 @@ const util = require("../utils/util");
 module.exports = {
     /**
      * @function editaRegistro
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Clica no lápis para edição de um registro na grid e aguarda até que o campo indicado por parâmetro receba o foco após a abertura da janela
      * @param {String} lapisLinhaRegistro - Localizador **Css** ou **Xpath** com o ícone do lápis da linha a ser editada
@@ -13,6 +13,16 @@ module.exports = {
      * @author Cássio
     */
     command: function (lapisLinhaRegistro, campoComFoco) {
+        if (lapisLinhaRegistro == "" || lapisLinhaRegistro == null || lapisLinhaRegistro == undefined) {
+            this.assert.fail("O parâmetro 'lapisLinhaRegistro' não foi informado")
+            return this;
+        }
+
+        if (campoComFoco == "" || campoComFoco == null || campoComFoco == undefined) {
+            this.assert.fail("O parâmetro 'campoComFoco' não foi informado")
+            return this;
+        }
+
         if (util._isXpath(lapisLinhaRegistro)) {
             this.useXpath()
                 .waitForElementPresent(lapisLinhaRegistro)

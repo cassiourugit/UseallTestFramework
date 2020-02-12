@@ -4,7 +4,7 @@ const loc = require("../commumLocators");
 module.exports = {
     /**
      * @function aguardaToast
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Aguarda até que o Toast indicando que o registro foi salvo apareca, e depois aguarda mais 400 milisegundos antes de prosseguir o teste
      * @param {string} [mensagemToast = null] - **Opcional** Texto que deve ser exibido no toast

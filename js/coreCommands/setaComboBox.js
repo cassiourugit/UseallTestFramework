@@ -4,7 +4,7 @@ const util = require("../utils/util");
 module.exports = {
     /**
      * @function setaComboBox
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Busca e seta o valor informado por parâmetro dentro da combobox
      * @param {string} campo - Localizador **Css** ou **Xpath** do campo do tipo combobox que será setado
@@ -14,6 +14,16 @@ module.exports = {
      * @author Cássio
     */
     command: function (campo, opcao) {
+        if (campo == "" || campo == null || campo == undefined) {
+            this.assert.fail("O parâmetro 'campo' não foi informado")
+            return this;
+        }
+
+        if (opcao == "" || opcao == null || opcao == undefined) {
+            this.assert.fail("O parâmetro 'opcao' não foi informado")
+            return this;
+        }
+
         if (util._isXpath(campo)) {
             this.useXpath()
                 .waitForElementVisible(campo)
