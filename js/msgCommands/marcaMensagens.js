@@ -1,5 +1,5 @@
 // @ts-nocheck
-const loc = require("../../page_objects/useallLocators");
+const loc = require("../commumLocators");
 
 module.exports = {
     /**
