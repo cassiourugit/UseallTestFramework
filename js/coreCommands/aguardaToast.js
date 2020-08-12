@@ -22,8 +22,7 @@ module.exports = {
             });
         }
 
-        this.pause(500);
-
+        this.pause(800);
         return this;
     },
 };

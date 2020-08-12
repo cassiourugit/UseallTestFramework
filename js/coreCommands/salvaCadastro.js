@@ -14,24 +14,21 @@ module.exports = {
      * @author Cássio
     */
     command: function (nomeDaJanela) {
-        if (nomeDaJanela == "" || nomeDaJanela == null || nomeDaJanela == undefined) {
+        if (!nomeDaJanela) {
             this.assert.fail("O parâmetro 'nomeDaJanela' não foi informado")
             return this;
         }
 
         this.useXpath()
             .waitForElementPresent("//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']")
-            .useCss()
-            .click(loc.geral.btnSalvar)
+            .click("//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']" + "/ancestor::div " + loc.geral.btnSalvarX)
             .aguardaToast()
             .element("xpath", "//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']", function (visible) {
                 if (visible.status != -1)
-                    this.useCss()
-                        .waitForElementPresent(loc.geral.btnCancelar)
-                        .click(loc.geral.btnCancelar);
+                    this.waitForElementPresent("xpath", "//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']" + "/ancestor::div " + loc.geral.btnCancelarX)
+                        .click("xpath", "//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']" + "/ancestor::div " + loc.geral.btnCancelarX);
             })
-            .useXpath()
-            .assert.elementNotPresent("//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']")
+            .assert.not.elementPresent("xpath", "//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']")
             .useCss();
 
         return this;

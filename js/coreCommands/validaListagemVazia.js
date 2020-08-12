@@ -6,7 +6,7 @@ module.exports = {
      * @function validaListagemVazia
      * @category Core commands
      * @module
-     * @description - Verifica se a listagem está vazia, caso esteja, um erro será disparado.
+     * @description - Verifica se a listagem está vazia, caso esteja, um erro será disparado.np
      * @param {string} listagem - Localizador **Css** ou **Xpath** da listagem
      * @example 
      * browser.validaListagemVazia()

@@ -6,7 +6,10 @@ module.exports = {
         btnPesquisar: 'span[data-test-id="btn_pesquisar"]',
         btnNovo: "span[data-test-id='btn_novo']",
         btnSalvar: "span[data-test-id='btn_salvar']",
+        btnSalvarX: "//span[@data-test-id='btn_salvar']",
         btnCancelar: "span[data-test-id='btn_cancelar']",
+        btnCancelarX: "//span[@data-test-id='btn_cancelar']",
+        btnMaisOpcoesX: "//span[contains(text(),'Mais opções')]",
         btnFechar: "span[id^='use-closebutton'][id$='btnInnerEl']",
         btnVisualizar: "span[id^='use-splitbutton'][id$='btnInnerEl']",
         btnVisualizarArrow: "span[id^='use-splitbutton'][id$='arrowEl']",
@@ -18,7 +21,7 @@ module.exports = {
         menuAtivoX: "//div[@class='item-menu active ']",
         toast: ".x-toast",
         loadmask: "[aria-describedby^='loadmask']",
-        loadmaskRelXNovo: "//div[text()= 'Emitindo relatório']",
+        loadmaskRelX: "//div[text()= 'Emitindo relatório']",
         messageBox: "div[id^='use-messagebox'][id$='msg']",
         btnSimMessageBoxX: "//div[starts-with(@id, 'use-messagebox')] //span[contains(text(),'Sim')]",
         btnNaoMessageBoxX: "//div[starts-with(@id, 'use-messagebox')] //span[contains(text(),'Não')]",
@@ -29,21 +32,14 @@ module.exports = {
         campoBuscaF2: "div[id^='use-pesquisageral-panel'] input",
         expandirFiltroRelatorio: "div[class^='x-tool'][id^='fieldset'][id$='legendToggle']",
         iframeRel: "iframe[id='pdf']",
-        campoModeloRel: "input[id^='report-combo-model'][id$='inputEl']",
-        btnEmitir: "span[id^='use-splitbutton'][id$='btnInnerEl']",
-        btnEmitirArrow: "span[id^='use-splitbutton'][id$='arrowEl']",
-        btnEmitirArrowEmitirX: "//span[text()='Emitir relatório']",
-        btnEmitirArrowExportarX: "//span[text()='Exportar XLS']",
-        btnEmitirArrowEnviarX: "//span[text()='Enviar por e-mail']",
-        toastRel: "div[id^= 'toast'][id$='innerCt']",
-        loadmaskRelX: "//div[text()= 'Emitindo relatório...']",
     },
 
     documentos: {
+        listagem: "div[id^= 'lista-documentos']",
         btnPesquisar: "span[id^='use-searchbutton-'][id$='-btnIconEl']",
         campoPesquisar: "input[data-test-id='DocsFilter.PesquisaGeral']",
         colunaIcon: "div[id^='lista-documentos'] .x-grid-item:nth-child(1) .x-grid-cell:nth-child(1)",
-        colunaNome: "div[id^='lista-documentos'] .x-grid-item:nth-child(1) .x-grid-cell:nth-child(2)",
+        colunaNome: "div[id^='lista-documentos'] .x-grid-item:nth-child(1) .x-grid-cell:nth-child(3)",
     },
 
     login: {
@@ -51,6 +47,5 @@ module.exports = {
         campoSenha: "input[id='senha']",
         campoBanco: "select[id='banco']",
         btnLogar: "input[id='submitFormLogin']",
-
     }
 }

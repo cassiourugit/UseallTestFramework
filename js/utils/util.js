@@ -8,8 +8,8 @@ module.exports = {
      * @function aplicaRegexString
      * @category Utils
      * @module
-     * @description - Extrai parte de uma string através de uma expressão regex
-     * @param {String} string - Nome do menu
+     * @description - Aplica regex em uma string
+     * @param {String} string - String
      * @param {Regex} expressao - Expressão regex
      * @example browser.aplicaRegexString("Frase de exemplo", Expressão Regex)
      * @author Cássio
@@ -42,20 +42,20 @@ module.exports = {
         * @author Cássio
        */
     geraCnpj: function (comMascara) {
-        var n = 9;
-        var n1 = this._gera_random(n);
-        var n2 = this._gera_random(n);
-        var n3 = this._gera_random(n);
-        var n4 = this._gera_random(n);
-        var n5 = this._gera_random(n);
-        var n6 = this._gera_random(n);
-        var n7 = this._gera_random(n);
-        var n8 = this._gera_random(n);
-        var n9 = 0;//_gera_random(n);
-        var n10 = 0;//_gera_random(n);
-        var n11 = 0;//_gera_random(n);	
-        var n12 = 1;//_gera_random(n);		
-        var d1 = n12 * 2 + n11 * 3 + n10 * 4 + n9 * 5 + n8 * 6 + n7 * 7 + n6 * 8 + n5 * 9 + n4 * 2 + n3 * 3 + n2 * 4 + n1 * 5;
+        let n = 9;
+        let n1 = this._gera_random(n);
+        let n2 = this._gera_random(n);
+        let n3 = this._gera_random(n);
+        let n4 = this._gera_random(n);
+        let n5 = this._gera_random(n);
+        let n6 = this._gera_random(n);
+        let n7 = this._gera_random(n);
+        let n8 = this._gera_random(n);
+        let n9 = 0;//_gera_random(n);
+        let n10 = 0;//_gera_random(n);
+        let n11 = 0;//_gera_random(n);	
+        let n12 = 1;//_gera_random(n);		
+        let d1 = n12 * 2 + n11 * 3 + n10 * 4 + n9 * 5 + n8 * 6 + n7 * 7 + n6 * 8 + n5 * 9 + n4 * 2 + n3 * 3 + n2 * 4 + n1 * 5;
         d1 = 11 - (this._mod(d1, 11));
         if (d1 >= 10) d1 = 0;
         var d2 = d1 * 2 + n12 * 3 + n11 * 4 + n10 * 5 + n9 * 6 + n8 * 7 + n7 * 8 + n6 * 9 + n5 * 2 + n4 * 3 + n3 * 4 + n2 * 5 + n1 * 6;
@@ -79,20 +79,20 @@ module.exports = {
      * @author Cássio
     */
     geraCpf: function (comMascara = false) {
-        var n = 9;
-        var n1 = this._gera_random(n);
-        var n2 = this._gera_random(n);
-        var n3 = this._gera_random(n);
-        var n4 = this._gera_random(n);
-        var n5 = this._gera_random(n);
-        var n6 = this._gera_random(n);
-        var n7 = this._gera_random(n);
-        var n8 = this._gera_random(n);
-        var n9 = this._gera_random(n);
-        var d1 = n9 * 2 + n8 * 3 + n7 * 4 + n6 * 5 + n5 * 6 + n4 * 7 + n3 * 8 + n2 * 9 + n1 * 10;
+        let n = 9;
+        let n1 = this._gera_random(n);
+        let n2 = this._gera_random(n);
+        let n3 = this._gera_random(n);
+        let n4 = this._gera_random(n);
+        let n5 = this._gera_random(n);
+        let n6 = this._gera_random(n);
+        let n7 = this._gera_random(n);
+        let n8 = this._gera_random(n);
+        let n9 = this._gera_random(n);
+        let d1 = n9 * 2 + n8 * 3 + n7 * 4 + n6 * 5 + n5 * 6 + n4 * 7 + n3 * 8 + n2 * 9 + n1 * 10;
         d1 = 11 - (this._mod(d1, 11));
         if (d1 >= 10) d1 = 0;
-        var d2 = d1 * 2 + n9 * 3 + n8 * 4 + n7 * 5 + n6 * 6 + n5 * 7 + n4 * 8 + n3 * 9 + n2 * 10 + n1 * 11;
+        let d2 = d1 * 2 + n9 * 3 + n8 * 4 + n7 * 5 + n6 * 6 + n5 * 7 + n4 * 8 + n3 * 9 + n2 * 10 + n1 * 11;
         d2 = 11 - (this._mod(d2, 11));
         if (d2 >= 10) d2 = 0;
 
@@ -112,8 +112,8 @@ module.exports = {
          * @author Cássio
         */
     getData: function () {
-        var today = new Date();
-        var data = today.getDate().toString().padStart(2, '0')
+        let today = new Date();
+        let data = today.getDate().toString().padStart(2, '0')
             + '/' + (today.getMonth() + 1).toString().padStart(2, '0')
             + '/' + today.getFullYear();
         return data;
@@ -129,8 +129,8 @@ module.exports = {
     * @author Cássio
    */
     getDataHora: function () {
-        var today = new Date();
-        var data = today.getDate().toString().padStart(2, '0')
+        let today = new Date();
+        let data = today.getDate().toString().padStart(2, '0')
             + '/' + (today.getMonth() + 1).toString().padStart(2, '0')
             + '/' + today.getFullYear()
             + '-' + today.getHours()
@@ -147,15 +147,22 @@ module.exports = {
      * @module
      * @description - Gera uma string com o tamanho informado
      * @param {number} tamanho - Tamanho que a string gerada deve ter
+     * @param {Boolean} [numberField = false] - **Opcional** Se setado como "true" a string será gerada usando apenas números.
      * @example 
      * var stringDe100Caracteres = util.geraString(100);
      * @author Cássio
     */
-    geraString: function (tamanho) {
-        var texto = "";
-        var caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    geraString: function (tamanho, numberField = false) {
+        let texto = "";
+        let caracteres = null;
 
-        for (var i = 0; i < tamanho; i++)
+        if (numberField) {
+            caracteres = "123456789";
+        } else {
+            caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        }
+
+        for (let i = 0; i < tamanho; i++)
             texto += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
 
         return texto;
@@ -201,7 +208,7 @@ module.exports = {
      * @author Cássio
     */
     somaDias: function (data, dias, retornaString = true) {
-        var dataPronta = data.setDate(data.getDate() + dias);
+        let dataPronta = data.setDate(data.getDate() + dias);
         if (retornaString) {
             dataPronta = data.getDate().toString().padStart(2, '0')
                 + '/' + (data.getMonth() + 1).toString().padStart(2, '0')
@@ -224,7 +231,7 @@ module.exports = {
      * @author Cássio
     */
     somaMeses: function (data, meses, retornaString = true) {
-        var dataPronta = data.setMonth(data.getMonth() + meses);
+        let dataPronta = data.setMonth(data.getMonth() + meses);
         if (retornaString) {
             dataPronta = data.getDate().toString().padStart(2, '0')
                 + '/' + (data.getMonth() + 1).toString().padStart(2, '0')
@@ -247,7 +254,7 @@ module.exports = {
      * @author Cássio
     */
     somaAnos: function (data, anos, retornaString = true) {
-        var dataPronta = data.setFullYear(data.getFullYear() + anos);
+        let dataPronta = data.setFullYear(data.getFullYear() + anos);
         if (retornaString) {
             dataPronta = data.getDate().toString().padStart(2, '0')
                 + '/' + (data.getMonth() + 1).toString().padStart(2, '0')
@@ -255,6 +262,25 @@ module.exports = {
         }
 
         return dataPronta;
+    },
+
+    /**
+     * @function limpaString
+     * @category Utils
+     * @module
+     * @description - Retorna uma string sem caracteres especiais e espaços
+     * @param {string} string - String
+     * @example 
+     * var stringLimpa = util.limpaString("Espelho de ação corretiva");
+     * @author Cássio
+    */
+    limpaString: function (string) {
+        let stringFinal = null;
+
+        stringFinal = string.normalize('NFD').replace(/[\u0300-\u036f]/g, '');;
+        stringFinal = stringFinal.replace(/\s+/g, '');
+
+        return stringFinal;
     },
 
     /**
@@ -297,7 +323,7 @@ module.exports = {
      * @author Cássio
     */
     _isXpath: function (localizador) {
-        if (localizador.startsWith("//")) {
+        if (localizador.startsWith("/")) {
             return true;
         } else {
             return false;
