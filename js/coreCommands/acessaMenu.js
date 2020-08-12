@@ -1,5 +1,4 @@
 // @ts-nocheck
-const config = require("../utils/configDefinitions");
 
 module.exports = {
     /**
