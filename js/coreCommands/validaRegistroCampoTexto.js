@@ -1,6 +1,6 @@
 // @ts-nocheck
 const util = require("../utils/util");
-const config = require("../../usealltestframework.conf");
+const config = require("../utils/configDefinitions");
 
 module.exports = {
     /**
@@ -30,7 +30,7 @@ module.exports = {
                 .waitForElementPresent(campo)
             this.getAttribute(campo, 'value', function (result) {
                 if (result.value != texto) {
-                    if (config.destaca_elemento) {
+                    if (config.deveDestacarElemento) {
                         this.destacaElemento(campo)
                         this.assert.attributeEquals(campo, "value", texto, "O campo deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
 
@@ -46,7 +46,7 @@ module.exports = {
             this.waitForElementPresent(campo)
                 .getAttribute(campo, 'value', function (result) {
                     if (result.value != texto) {
-                        if (config.destaca_elemento) {
+                        if (config.deveDestacarElemento) {
                             this.destacaElemento(campo)
                             this.assert.attributeEquals(campo, "value", texto, "O campo deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
 

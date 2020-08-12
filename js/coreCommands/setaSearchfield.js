@@ -1,7 +1,7 @@
 // @ts-nocheck
 const util = require("../utils/util");
 const loc = require("../commumLocators");
-const config = require("../../usealltestframework.conf");
+const config = require("../utils/configDefinitions");
 
 module.exports = {
     /**
@@ -37,7 +37,7 @@ module.exports = {
 
             this.getAttribute(loc.geral.listaSearchfield, 'textContent', function (result) {
                 if (result.value != texto) {
-                    if (config.destaca_elemento) {
+                    if (config.deveDestacarElemento) {
                         this.destacaElemento(loc.geral.listaSearchfield)
                         this.assert.attributeContains(loc.geral.listaSearchfield, "textContent", texto, "A listagem deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
 
@@ -62,7 +62,7 @@ module.exports = {
 
             this.getAttribute(loc.geral.listaSearchfield, 'textContent', function (result) {
                 if (result.value != texto) {
-                    if (config.destaca_elemento) {
+                    if (config.deveDestacarElemento) {
                         this.destacaElemento(loc.geral.listaSearchfield)
                         this.assert.attributeContains(loc.geral.listaSearchfield, "textContent", texto, "A listagem deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
 

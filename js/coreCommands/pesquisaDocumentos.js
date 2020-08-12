@@ -1,6 +1,6 @@
 // @ts-nocheck
 const loc = require("../commumLocators");
-const config = require("../../usealltestframework.conf");
+const config = require("../utils/configDefinitions")
 /**
  * @function pesquisaDocumentos
  * @category Core commands
@@ -27,7 +27,7 @@ module.exports = {
             .validaListagemVazia(loc.documentos.listagem)
             .getAttribute(loc.documentos.colunaNome, "textContent", function (result) {
                 if (!result.value.includes(texto)) {
-                    if (config.destaca_elemento) {
+                    if (config.deveDestacarElemento) {
                         this.destacaElemento(loc.documentos.colunaNome);
                         this.assert.attributeContains(loc.documentos.colunaNome, "textContent", texto, "O documento esperado como primeiro resultado da busca era: " + texto + ", porém a busca retornou o registro: " + result.value);
 

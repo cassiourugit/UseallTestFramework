@@ -1,6 +1,6 @@
 // @ts-nocheck
 const util = require("../utils/util");
-const config = require("../../usealltestframework.conf");
+const config = require("../utils/configDefinitions");
 
 module.exports = {
     /**
@@ -30,7 +30,7 @@ module.exports = {
                 .waitForElementVisible(celula)
                 .getAttribute(celula, 'textContent', function (result) {
                     if (result.value != texto) {
-                        if (config.destaca_elemento) {
+                        if (config.deveDestacarElemento) {
                             this.destacaElemento(celula)
                             this.assert.attributeEquals(celula, "textContent", texto, "A célula da grid deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
                                 .useCss();
@@ -50,7 +50,7 @@ module.exports = {
             .waitForElementVisible(celula)
             .getAttribute(celula, 'textContent', function (result) {
                 if (result.value != texto) {
-                    if (!config.destaca_elemento) {
+                    if (!config.deveDestacarElemento) {
                         this.assert.attributeEquals(celula, 'textContent', texto, "A célula da grid deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")");
 
                         return this;
