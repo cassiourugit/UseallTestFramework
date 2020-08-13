@@ -4,7 +4,7 @@ const destacaElemento = false;
 const delaySlowText = 50;
 
 try {
-    config = require("../../usealltestframework.conf")
+    config = require('../../../../usealltestframework.conf')
 }
 catch (e) {
     console.log('Não foi encontrado o arquivo de configuração "usealltestfraework.conf.js na raiz do projeto."')
