@@ -23,12 +23,13 @@ module.exports = {
             .waitForElementPresent("//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']")
             .click("//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']" + "/ancestor::div " + loc.geral.btnSalvarX)
             .aguardaToast()
+            .useXpath()
             .element("xpath", "//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']", function (visible) {
                 if (visible.status != -1)
-                    this.waitForElementPresent("xpath", "//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']" + "/ancestor::div " + loc.geral.btnCancelarX)
-                        .click("xpath", "//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']" + "/ancestor::div " + loc.geral.btnCancelarX);
+                    this.waitForElementPresent("//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']" + "/ancestor::div " + loc.geral.btnCancelarX)
+                        .click("//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']" + "/ancestor::div " + loc.geral.btnCancelarX);
             })
-            .assert.not.elementPresent("xpath", "//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']")
+            .assert.not.elementPresent("//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']")
             .useCss();
 
         return this;
