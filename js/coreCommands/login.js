@@ -29,7 +29,7 @@ module.exports = {
             return this;
         }
 
-        this.waitForElementVisible(loc.login.campoUsuario)
+        this.waitForElementVisible(loc.login.campoUsuario, 30000)
             .clearValue(loc.login.campoUsuario)
             .sendKeys(loc.login.campoUsuario, usuario)
             .waitForElementVisible(loc.login.campoSenha)

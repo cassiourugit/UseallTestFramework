@@ -18,8 +18,8 @@ module.exports = {
         }
 
         this
-            .waitForElementPresent(loader, 5, "Loader do botão não apareceu após 5 segundos")
-            .waitForElementNotPresent(loader, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
+            .waitForElementPresent(loader, 5000, "Loader do botão não apareceu após 5 segundos")
+            .waitForElementNotPresent(loader, 30000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
 
         return this;
     },

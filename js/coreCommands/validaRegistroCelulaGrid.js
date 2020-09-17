@@ -44,6 +44,8 @@ module.exports = {
                     }
                 })
                 .useCss();
+
+            return this;
         }
 
         this.useCss()
@@ -62,5 +64,7 @@ module.exports = {
                     return this;
                 }
             })
+
+        return this;
     },
 };

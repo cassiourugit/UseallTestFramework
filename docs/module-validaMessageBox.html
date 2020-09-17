@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: setaStatusField</title>
+    <title>JSDoc: validaMessageBox</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -73,7 +73,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Module</p>
-                        <h1>setaStatusField</h1>
+                        <h1>validaMessageBox</h1>
                     </header>
 
                     
@@ -96,7 +96,7 @@
     
         
             <div class="description"><ul>
-<li>Marca/Desmarca o status no campo</li>
+<li>Responde a messagebox com a opção desejada</li>
 </ul></div>
         
 
@@ -125,11 +125,7 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -142,7 +138,7 @@
         
 <tr class="deep-level-0">
   
-      <td class="name"><code>campo</code></td>
+      <td class="name"><code>mensagem</code></td>
   
 
   <td class="type">
@@ -155,22 +151,10 @@
   </td>
 
   
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
 
   
-      <td class="default">
-      
-      </td>
-  
 
-  <td class="description last"><p>Localizador <strong>Css</strong> ou <strong>Xpath</strong> do campo do tipo searchfield</p></td>
+  <td class="description last"><p>Texto com a mensagem que deve ser exibida pela messagebox</p></td>
 </tr>
 
 
@@ -179,7 +163,7 @@
         
 <tr class="deep-level-0">
   
-      <td class="name"><code>status</code></td>
+      <td class="name"><code>botao</code></td>
   
 
   <td class="type">
@@ -192,63 +176,10 @@
   </td>
 
   
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
 
   
-      <td class="default">
-      
-      </td>
-  
 
-  <td class="description last"><p>Status a ser setado</p></td>
-</tr>
-
-
-    
-
-        
-<tr class="deep-level-0">
-  
-      <td class="name"><code>marcar</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
-
-  
-      <td class="default">
-      
-          true
-      
-      </td>
-  
-
-  <td class="description last"><p><em><strong>Opcional</strong></em> Defini se o status será marcado ou desmarcado, por padrão é <em><strong>true</strong></em>. Caso deseja que o status seja desmarcado, mande <em><strong>false</strong></em></p></td>
+  <td class="description last"><p>Nome do botão que deve ser clicado</p></td>
 </tr>
 
 
@@ -300,9 +231,9 @@
 
     
         <p class="tag-source">
-            <a href="coreCommands_setaStatusField.js.html" class="button">View Source</a>
+            <a href="coreCommands_validaMessageBox.js.html" class="button">View Source</a>
             <span>
-                <a href="coreCommands_setaStatusField.js.html">coreCommands/setaStatusField.js</a>, <a href="coreCommands_setaStatusField.js.html#line5">line 5</a>
+                <a href="coreCommands_validaMessageBox.js.html">coreCommands/validaMessageBox.js</a>, <a href="coreCommands_validaMessageBox.js.html#line5">line 5</a>
             </span>
         </p>
     
@@ -331,7 +262,7 @@
     <h5>Example</h5>
     
     
-        <pre class="prettyprint"><code>browser.setaStatusField("input[data-test-id='statusField']", "Aberto")</code></pre>
+        <pre class="prettyprint"><code>browser.validaMessageBox("Tem certeza que deseja remover o registro?", "Sim")</code></pre>
     
 
 

@@ -1,9 +1,11 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: setaStatusField</title>
+    <title>JSDoc: coreCommands/validaMessageBox.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -72,296 +74,55 @@
             <div class="column is-9-desktop">
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
-                        <p>Module</p>
-                        <h1>setaStatusField</h1>
+                        <p>Source</p>
+                        <h1>coreCommands/validaMessageBox.js</h1>
                     </header>
 
                     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><ul>
-<li>Marca/Desmarca o status no campo</li>
-</ul></div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        
-<tr class="deep-level-0">
-  
-      <td class="name"><code>campo</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
-
-  
-      <td class="default">
-      
-      </td>
-  
-
-  <td class="description last"><p>Localizador <strong>Css</strong> ou <strong>Xpath</strong> do campo do tipo searchfield</p></td>
-</tr>
-
-
-    
-
-        
-<tr class="deep-level-0">
-  
-      <td class="name"><code>status</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
-
-  
-      <td class="default">
-      
-      </td>
-  
-
-  <td class="description last"><p>Status a ser setado</p></td>
-</tr>
-
-
-    
-
-        
-<tr class="deep-level-0">
-  
-      <td class="name"><code>marcar</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
-
-  
-      <td class="default">
-      
-          true
-      
-      </td>
-  
-
-  <td class="description last"><p><em><strong>Opcional</strong></em> Defini se o status será marcado ou desmarcado, por padrão é <em><strong>true</strong></em>. Caso deseja que o status seja desmarcado, mande <em><strong>false</strong></em></p></td>
-</tr>
-
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Cássio</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="coreCommands_setaStatusField.js.html" class="button">View Source</a>
-            <span>
-                <a href="coreCommands_setaStatusField.js.html">coreCommands/setaStatusField.js</a>, <a href="coreCommands_setaStatusField.js.html#line5">line 5</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    
-        <pre class="prettyprint"><code>browser.setaStatusField("input[data-test-id='statusField']", "Aberto")</code></pre>
-    
-
-
-
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @ts-nocheck
+const util = require("../utils/util");
+
+module.exports = {
+    /**
+     * @function validaMessageBox
+     * @category Core commands
+     * @module
+     * @description - Responde a messagebox com a opção desejada
+     * @param {string} mensagem - Texto com a mensagem que deve ser exibida pela messagebox
+     * @param {string} botao - Nome do botão que deve ser clicado
+     * @example 
+     * browser.validaMessageBox("Tem certeza que deseja remover o registro?", "Sim")
+     * @author Cássio
+    */
+    command: function (mensagem, botao) {
+        if (!mensagem) {
+            this.assert.fail("O parâmetro 'mensagem' não foi informado")
+            return this;
+        }
+
+        if (!botao) {
+            this.assert.fail("O parâmetro 'botao' não foi informado")
+            return this;
+        }
+
+        this.useXpath()
+            .waitForElementPresent("//div[starts-with(@id, 'use-messagebox')] | //div[starts-with(@id, 'messagebox')]", "Não existe nenhuma messagebox aberta na tela")
+            .assert.visible("//div[text()= \"" + mensagem + "\"]", "A mensagem esperada não foi encontrada na messagebox")
+            .assert.visible("//div[text()= \"" + mensagem + "\"] //ancestor::div[starts-with(@id, \"use-messagebox\")] //child::span[text()= \"" + botao + "\"] | //div[text()= \"" + mensagem + "\"] //ancestor::div[starts-with(@id, \"messagebox\")] //child::span[text()= \"" + botao + "\"]", "O botão informado não foi encontrado na tela")
+            .click("//div[text()= \"" + mensagem + "\"] //ancestor::div[starts-with(@id, \"use-messagebox\")] //child::span[text()= \"" + botao + "\"] | //div[text()= \"" + mensagem + "\"] //ancestor::div[starts-with(@id, \"messagebox\")] //child::span[text()= \"" + botao + "\"]")
+            .useCss();
+
+        return this;
+    },
+};</code></pre>
+        </article>
+    </section>
 
 
 
@@ -374,7 +135,7 @@
 
 <footer class="footer">
     <div class="content has-text-centered">
-        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Thu Sep 17 2020 09:07:37 GMT-0300 (GMT-03:00)</p>
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Thu Sep 17 2020 09:07:36 GMT-0300 (GMT-03:00)</p>
         <p class="sidebar-created-by">
             <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
             <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
