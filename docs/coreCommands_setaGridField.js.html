@@ -1,9 +1,11 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: validaRegistroCampoTexto</title>
+    <title>JSDoc: coreCommands/setaGridField.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -72,227 +74,76 @@
             <div class="column is-9-desktop">
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
-                        <p>Module</p>
-                        <h1>validaRegistroCampoTexto</h1>
+                        <p>Source</p>
+                        <h1>coreCommands/setaGridField.js</h1>
                     </header>
 
                     
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><ul>
-<li>Verifica se o campo possui o texto informado</li>
-</ul></div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        
-<tr class="deep-level-0">
-  
-      <td class="name"><code>campo</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>Localizador <strong>Css</strong> ou <strong>Xpath</strong> do campo</p></td>
-</tr>
-
-
-    
-
-        
-<tr class="deep-level-0">
-  
-      <td class="name"><code>texto</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>Texto que deve estar sendo exibido no campo</p></td>
-</tr>
-
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Cássio</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="coreCommands_validaRegistroCampoTexto.js.html" class="button">View Source</a>
-            <span>
-                <a href="coreCommands_validaRegistroCampoTexto.js.html">coreCommands/validaRegistroCampoTexto.js</a>, <a href="coreCommands_validaRegistroCampoTexto.js.html#line6">line 6</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    
-        <pre class="prettyprint"><code>browser.validaRegistroCampoTexto("input[data-test-id='campo']", "texto")</code></pre>
-    
-
-
-
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @ts-nocheck
+const util = require("../utils/util");
+
+module.exports = {
+    /**
+     * @function setaGridField
+     * @category Core commands
+     * @module
+     * @description - Digita o valor passapor parâmetro no campo de texto
+     * @param {string} colGrid - Localizador **Css** ou **Xpath** da coluna da grid que tem o campo
+     * @param {string} campoGrid - Localizador **Css** ou **Xpath** do campo dentro da coluna da grid
+     * @param {string} valor - Valor a ser setado no campo
+     * @example 
+     * browser.setaGridField(".x-grid-item:nth-child(1) .x-grid-cell:nth-child(6)", "input[id^='campo']", "5")
+     * @author Cássio
+    */
+    command: function (colGrid, campoGrid, valor) {
+        if (colGrid == "" || colGrid == null || colGrid == undefined) {
+            this.assert.fail("O parâmetro 'colGrid' não foi informado")
+            return this;
+        }
+
+        if (campoGrid == "" || campoGrid == null || campoGrid == undefined) {
+            this.assert.fail("O parâmetro 'campoGrid' não foi informado")
+            return this;
+        }
+
+        if (valor == "" || valor == null || valor == undefined) {
+            this.assert.fail("O parâmetro 'valor' não foi informado")
+            return this;
+        }
+
+        if (util._isXpath(colGrid)) {
+            this.useXpath()
+                .waitForElementPresent(colGrid)
+                .click(colGrid)
+                .useCss()
+        } else {
+            this.waitForElementPresent(colGrid)
+                .click(colGrid)
+        }
+
+        if (util._isXpath(campoGrid)) {
+            this.useXpath()
+                .waitForElementPresent(campoGrid)
+                .setValue(campoGrid, valor)
+                .useCss()
+        } else {
+            this.waitForElementPresent(campoGrid)
+                .setValue(campoGrid, valor)
+        }
+
+        this.keys(this.Keys.TAB)
+
+        return this;
+    },
+};</code></pre>
+        </article>
+    </section>
 
 
 

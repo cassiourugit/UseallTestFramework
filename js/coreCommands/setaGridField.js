@@ -9,7 +9,7 @@ module.exports = {
      * @description - Digita o valor passapor parâmetro no campo de texto
      * @param {string} colGrid - Localizador **Css** ou **Xpath** da coluna da grid que tem o campo
      * @param {string} campoGrid - Localizador **Css** ou **Xpath** do campo dentro da coluna da grid
-     * @param {number} valor - **Inteiro** com o valor a ser setado no campo
+     * @param {string} valor - Valor a ser setado no campo
      * @example 
      * browser.setaGridField(".x-grid-item:nth-child(1) .x-grid-cell:nth-child(6)", "input[id^='campo']", "5")
      * @author Cássio
@@ -50,7 +50,7 @@ module.exports = {
                 .setValue(campoGrid, valor)
         }
 
-        browser.keys(browser.Keys.TAB)
+        this.keys(this.Keys.TAB)
 
         return this;
     },
