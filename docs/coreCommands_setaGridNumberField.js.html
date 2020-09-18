@@ -5,7 +5,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: coreCommands/aguardaListagemPer.js</title>
+    <title>JSDoc: coreCommands/setaGridNumberField.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -75,7 +75,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Source</p>
-                        <h1>coreCommands/aguardaListagemPer.js</h1>
+                        <h1>coreCommands/setaGridNumberField.js</h1>
                     </header>
 
                     
@@ -90,25 +90,54 @@ const util = require("../utils/util");
 
 module.exports = {
     /**
-     * @function aguardaListagemPer
+     * @function setaGridField
      * @category Core commands
      * @module
-     * @description - Aguarda o elemento que indica o carregamento de algum processo aparecer e sumir antes de prosseguir com o teste
-     * @param {string} elemento - Localizador **Css** ou **Xpath** do elemento que indica o carregamento
-     * @param {number} timeout - Tempo máximo em milissegundos que o teste irá esperar pela listagem carregar
-     * @example browser.aguardaListagemPer("//div[text()= 'Carregando...']", "5000")
+     * @description - Digita o valor passapor parâmetro no campo de texto
+     * @param {string} colGrid - Localizador **Css** ou **Xpath** da coluna da grid que tem o campo
+     * @param {string} campoGrid - Localizador **Css** ou **Xpath** do campo dentro da coluna da grid
+     * @param {number} valor - **Inteiro** com o valor a ser setado no campo
+     * @example 
+     * browser.setaGridField(".x-grid-item:nth-child(1) .x-grid-cell:nth-child(6)", "input[id^='campo']", "5")
      * @author Cássio
     */
-    command: function (elemento, timeout) {
-        this.pause(200);
-        if (util._isXpath(elemento)) {
-            this.useXpath()
-                .waitForElementNotPresent(elemento, timeout)
-                .useCss();
-        } else {
-            this.useCss()
-                .waitForElementNotPresent(elemento, timeout);
+    command: function (colGrid, campoGrid, valor) {
+        if (colGrid == "" || colGrid == null || colGrid == undefined) {
+            this.assert.fail("O parâmetro 'colGrid' não foi informado")
+            return this;
         }
+
+        if (campoGrid == "" || campoGrid == null || campoGrid == undefined) {
+            this.assert.fail("O parâmetro 'campoGrid' não foi informado")
+            return this;
+        }
+
+        if (valor == "" || valor == null || valor == undefined) {
+            this.assert.fail("O parâmetro 'valor' não foi informado")
+            return this;
+        }
+
+        if (util._isXpath(colGrid)) {
+            this.useXpath()
+                .waitForElementPresent(colGrid)
+                .click(colGrid)
+                .useCss()
+        } else {
+            this.waitForElementPresent(colGrid)
+                .click(colGrid)
+        }
+
+        if (util._isXpath(campoGrid)) {
+            this.useXpath()
+                .waitForElementPresent(campoGrid)
+                .setValue(campoGrid, valor)
+                .useCss()
+        } else {
+            this.waitForElementPresent(campoGrid)
+                .setValue(campoGrid, valor)
+        }
+
+        browser.keys(browser.Keys.TAB)
 
         return this;
     },

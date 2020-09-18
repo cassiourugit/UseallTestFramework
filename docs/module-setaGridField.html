@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: coreCommands/aguardaListagemPer.js</title>
+    <title>JSDoc: setaGridField</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -74,47 +72,252 @@
             <div class="column is-9-desktop">
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
-                        <p>Source</p>
-                        <h1>coreCommands/aguardaListagemPer.js</h1>
+                        <p>Module</p>
+                        <h1>setaGridField</h1>
                     </header>
 
                     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>// @ts-nocheck
-const util = require("../utils/util");
+        
+            
+        
+    
+</header>
 
-module.exports = {
-    /**
-     * @function aguardaListagemPer
-     * @category Core commands
-     * @module
-     * @description - Aguarda o elemento que indica o carregamento de algum processo aparecer e sumir antes de prosseguir com o teste
-     * @param {string} elemento - Localizador **Css** ou **Xpath** do elemento que indica o carregamento
-     * @param {number} timeout - Tempo máximo em milissegundos que o teste irá esperar pela listagem carregar
-     * @example browser.aguardaListagemPer("//div[text()= 'Carregando...']", "5000")
-     * @author Cássio
-    */
-    command: function (elemento, timeout) {
-        this.pause(200);
-        if (util._isXpath(elemento)) {
-            this.useXpath()
-                .waitForElementNotPresent(elemento, timeout)
-                .useCss();
-        } else {
-            this.useCss()
-                .waitForElementNotPresent(elemento, timeout);
-        }
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><ul>
+<li>Digita o valor passapor parâmetro no campo de texto</li>
+</ul></div>
+        
 
-        return this;
-    },
-};</code></pre>
-        </article>
-    </section>
+        
+            
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>colGrid</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Localizador <strong>Css</strong> ou <strong>Xpath</strong> da coluna da grid que tem o campo</p></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>campoGrid</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Localizador <strong>Css</strong> ou <strong>Xpath</strong> do campo dentro da coluna da grid</p></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>valor</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">number</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p><strong>Inteiro</strong> com o valor a ser setado no campo</p></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Cássio</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="coreCommands_setaGridNumberField.js.html" class="button">View Source</a>
+            <span>
+                <a href="coreCommands_setaGridNumberField.js.html">coreCommands/setaGridNumberField.js</a>, <a href="coreCommands_setaGridNumberField.js.html#line5">line 5</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>browser.setaGridField(".x-grid-item:nth-child(1) .x-grid-cell:nth-child(6)", "input[id^='campo']", "5")</code></pre>
+    
+
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
