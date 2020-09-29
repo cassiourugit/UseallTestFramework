@@ -36,14 +36,14 @@ module.exports = {
                 .expect.elements(loc.geral.listaSearchfield).count.to.equal(1);
 
             this.getAttribute(loc.geral.listaSearchfield, 'textContent', function (result) {
-                if (result.value != texto) {
+                if (result.value.includes(texto) == false) {
                     if (config.deveDestacarElemento) {
                         this.destacaElemento(loc.geral.listaSearchfield)
                         this.assert.attributeContains(loc.geral.listaSearchfield, "textContent", texto, "A listagem deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
 
                         return this;
                     }
-                    this.assert.attributeEquals(loc.geral.listaSearchfield, 'textContent', texto, "A listagem deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
+                    this.assert.attributeContains(loc.geral.listaSearchfield, 'textContent', texto, "A listagem deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
 
                     return this;
                 }
@@ -61,14 +61,14 @@ module.exports = {
                 .expect.elements(loc.geral.listaSearchfield).count.to.equal(1);
 
             this.getAttribute(loc.geral.listaSearchfield, 'textContent', function (result) {
-                if (result.value != texto) {
+                if (result.value.includes(texto) == false) {
                     if (config.deveDestacarElemento) {
                         this.destacaElemento(loc.geral.listaSearchfield)
                         this.assert.attributeContains(loc.geral.listaSearchfield, "textContent", texto, "A listagem deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
 
                         return this;
                     }
-                    this.assert.attributeEquals(loc.geral.listaSearchfield, 'textContent', texto, "A listagem deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
+                    this.assert.attributeContains(loc.geral.listaSearchfield, 'textContent', texto, "A listagem deveria mostrar (" + texto + "), porém mostrou (" + result.value + ")")
 
                     return this;
                 }
