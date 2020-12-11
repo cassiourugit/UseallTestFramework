@@ -8,8 +8,7 @@ module.exports = {
      * @module
      * @description - Destaca o elemento recebido por parâmetro
      * @param {String} element - Localizador **Css** ou **Xpath** do elemento
-     * @example 
-     * util.destacaElemento("div[id='elemento']");
+     * @example util.destacaElemento("div[id='elemento']");
      * @author Cássio
     */
     command: function (element) {
