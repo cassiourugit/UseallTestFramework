@@ -9,11 +9,12 @@ module.exports = {
      * @description - Busca e seta o valor informado por parâmetro dentro da combobox
      * @param {string} campo - Localizador **Css** ou **Xpath** do campo do tipo combobox que será setado
      * @param {string} opcao - Nome da opção a ser setada no campo
+     * @param {boolean} [remove = true] - **Opcional** Default true, remove a listagem carregada pelo campo de busca, para não intertefir nos testes
      * @example 
      * browser.setaComboBox("input[data-test-id='Combo']", "Opção")
      * @author Cássio
     */
-    command: function (campo, opcao) {
+    command: function (campo, opcao, remove = true) {
         if (campo == "" || campo == null || campo == undefined) {
             this.assert.fail("O parâmetro 'campo' não foi informado")
             return this;
@@ -54,8 +55,11 @@ module.exports = {
                 });
         }
 
-        this.removeListaSearchfield();
-
+        
+        if(remove){
+            this.removeListaSearchfield();
+        }
+        
         return this;
     },
 };

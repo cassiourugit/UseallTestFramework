@@ -11,11 +11,12 @@ module.exports = {
      * @description - Busca e seta o valor informado por parâmetro no searchfield
      * @param {string} campo - Localizador **Css** ou **Xpath** do campo do tipo searchfield
      * @param {string} texto - Texto a ser buscado
+     * @param {boolean} [remove = true] - **Opcional** Default true, remove a listagem carregada pelo campo de busca, para não intertefir nos testes
      * @example 
      * browser.setaSearchfield("input[data-test-id='Searchfield']", "Texto")
      * @author Cássio
     */
-    command: function (campo, texto) {
+    command: function (campo, texto, remove = true) {
         if (campo == "" || campo == null || campo == undefined) {
             this.assert.fail("O parâmetro 'campo' não foi informado")
             return this;
@@ -77,7 +78,9 @@ module.exports = {
             })
         }
 
-        this.removeListaSearchfield();
+        if(remove){
+            this.removeListaSearchfield();
+        }
 
         return this;
     },

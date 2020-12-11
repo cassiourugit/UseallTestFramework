@@ -5,7 +5,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: coreCommands/uploadArquivo.js</title>
+    <title>JSDoc: coreCommands/validaSearchfieldVazio.js</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -75,7 +75,7 @@
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
                         <p>Source</p>
-                        <h1>coreCommands/uploadArquivo.js</h1>
+                        <h1>coreCommands/validaSearchfieldVazio.js</h1>
                     </header>
 
                     
@@ -87,41 +87,78 @@
         <article>
             <pre class="prettyprint source linenums"><code>// @ts-nocheck
 const util = require("../utils/util");
+const loc = require("../commumLocators");
+const config = require("../utils/configDefinitions");
 
 module.exports = {
     /**
-     * @function uploadArquivo
+     * @function validaSearchfieldVazio
      * @category Core commands
      * @module
-     * @description - Digita o valor passapor parâmetro no campo de texto
-     * @param {string} campoDoTipoFile - Localizador **Css** ou **Xpath** do campo de input que seja do tipo "file"
-     * Observação, é necessário que o campo seja um input com tipo file, do contrário o arquivo não será setado no campo
-     * @param {string} localDoARquivo - Local até o arquivo que deve ser enviado, incluindo a extesão do arquivo
+     * @description - Faz uma busca no searchfild e passa o teste apenas se o searchfield não retornar nenhum resultado
+     * @param {string} campo - Localizador **Css** ou **Xpath** do campo do tipo searchfield
+     * @param {string} texto - Texto a ser buscado
      * @example 
-     * browser.uploadArquivo("input[type='file']", "C:\\temp\\arquivo.txt")
+     * browser.validaSearchfieldVazio("input[data-test-id='Searchfield']", "Texto")
      * @author Cássio
     */
-    command: function (campoDoTipoFile, localDoARquivo) {
-        if (campoDoTipoFile == "" || campoDoTipoFile == null || campoDoTipoFile == undefined) {
-            this.assert.fail("O parâmetro 'campoDoTipoFile' não foi informado")
+    command: function (campo, texto) {
+        if (campo == "" || campo == null || campo == undefined) {
+            this.assert.fail("O parâmetro 'campo' não foi informado")
             return this;
         }
 
-        if (localDoARquivo == "" || localDoARquivo == null || localDoARquivo == undefined) {
-            this.assert.fail("O parâmetro 'localDoARquivo' não foi informado")
+        if (texto == "" || texto == null || texto == undefined) {
+            this.assert.fail("O parâmetro 'texto' não foi informado")
             return this;
         }
 
-        if (util._isXpath(campoDoTipoFile)) {
+        if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementPresent(campoDoTipoFile)
-                .setValue(campoDoTipoFile, localDoARquivo)
-                .useCss();
+                .waitForElementVisible(campo)
+                .clearValue(campo)
+                .sendKeys(campo, texto)
+                .useCss()
+                .aguardaListagem()
+                .expect.elements(loc.geral.listaSearchfieldVazia).count.to.equal(1);
+
+            this.getAttribute(loc.geral.listaSearchfieldVazia, 'textContent', function (result) {
+                if (result.value.includes("Nenhum registro encontrado") == false) {
+                    if (config.deveDestacarElemento) {
+                        this.destacaElemento(loc.geral.listaSearchfieldVazia)
+                        this.assert.attributeContains(loc.geral.listaSearchfieldVazia, "textContent", "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+
+                        return this;
+                    }
+                    this.assert.attributeContains(loc.geral.listaSearchfieldVazia, 'textContent', "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+
+                    return this;
+                }
+            })
         } else {
             this.useCss()
-                .waitForElementPresent(campoDoTipoFile)
-                .setValue(campoDoTipoFile, localDoARquivo);
+                .waitForElementVisible(campo)
+                .clearValue(campo)
+                .sendKeys(campo, texto)
+                .aguardaListagem()
+                .expect.elements(loc.geral.listaSearchfieldVazia).count.to.equal(1);
+
+            this.getAttribute(loc.geral.listaSearchfieldVazia, 'textContent', function (result) {
+                if (result.value.includes("Nenhum registro encontrado") == false) {
+                    if (config.deveDestacarElemento) {
+                        this.destacaElemento(loc.geral.listaSearchfieldVazia)
+                        this.assert.attributeContains(loc.geral.listaSearchfieldVazia, "textContent", "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+
+                        return this;
+                    }
+                    this.assert.attributeContains(loc.geral.listaSearchfieldVazia, 'textContent', "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+
+                    return this;
+                }
+            })
         }
+
+        this.removeListaSearchfield();
 
         return this;
     },

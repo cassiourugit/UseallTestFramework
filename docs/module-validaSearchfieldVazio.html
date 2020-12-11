@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: coreCommands/uploadArquivo.js</title>
+    <title>JSDoc: validaSearchfieldVazio</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -74,60 +72,227 @@
             <div class="column is-9-desktop">
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
-                        <p>Source</p>
-                        <h1>coreCommands/uploadArquivo.js</h1>
+                        <p>Module</p>
+                        <h1>validaSearchfieldVazio</h1>
                     </header>
 
                     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>// @ts-nocheck
-const util = require("../utils/util");
+        
+            
+        
+    
+</header>
 
-module.exports = {
-    /**
-     * @function uploadArquivo
-     * @category Core commands
-     * @module
-     * @description - Digita o valor passapor parâmetro no campo de texto
-     * @param {string} campoDoTipoFile - Localizador **Css** ou **Xpath** do campo de input que seja do tipo "file"
-     * Observação, é necessário que o campo seja um input com tipo file, do contrário o arquivo não será setado no campo
-     * @param {string} localDoARquivo - Local até o arquivo que deve ser enviado, incluindo a extesão do arquivo
-     * @example 
-     * browser.uploadArquivo("input[type='file']", "C:\\temp\\arquivo.txt")
-     * @author Cássio
-    */
-    command: function (campoDoTipoFile, localDoARquivo) {
-        if (campoDoTipoFile == "" || campoDoTipoFile == null || campoDoTipoFile == undefined) {
-            this.assert.fail("O parâmetro 'campoDoTipoFile' não foi informado")
-            return this;
-        }
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><ul>
+<li>Faz uma busca no searchfild e passa o teste apenas se o searchfield não retornar nenhum resultado</li>
+</ul></div>
+        
 
-        if (localDoARquivo == "" || localDoARquivo == null || localDoARquivo == undefined) {
-            this.assert.fail("O parâmetro 'localDoARquivo' não foi informado")
-            return this;
-        }
+        
+            
 
-        if (util._isXpath(campoDoTipoFile)) {
-            this.useXpath()
-                .waitForElementPresent(campoDoTipoFile)
-                .setValue(campoDoTipoFile, localDoARquivo)
-                .useCss();
-        } else {
-            this.useCss()
-                .waitForElementPresent(campoDoTipoFile)
-                .setValue(campoDoTipoFile, localDoARquivo);
-        }
 
-        return this;
-    },
-};</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>campo</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Localizador <strong>Css</strong> ou <strong>Xpath</strong> do campo do tipo searchfield</p></td>
+</tr>
+
+
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>texto</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Texto a ser buscado</p></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Cássio</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="coreCommands_validaSearchfieldVazio.js.html" class="button">View Source</a>
+            <span>
+                <a href="coreCommands_validaSearchfieldVazio.js.html">coreCommands/validaSearchfieldVazio.js</a>, <a href="coreCommands_validaSearchfieldVazio.js.html#line7">line 7</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>browser.validaSearchfieldVazio("input[data-test-id='Searchfield']", "Texto")</code></pre>
+    
+
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
