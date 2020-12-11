@@ -18,6 +18,7 @@ module.exports = {
         cabecalhoColunaCodigoX: "//div[starts-with(@id, 'gridcolumn')]//span[text()= 'Código']",
         menuRncArrowX: "//div[starts-with(@id, 'mainWest-innerCt')] //div[@data-qtip='Não conformidades']/preceding-sibling::div[@class='x-mi mi-arrow-drop-down']",
         listaSearchfield: "[id$='-picker-listWrap'] ul li",
+        listaSearchfieldVazia: "[id$='-picker-listWrap'] ul",
         menuAtivoX: "//div[@class='item-menu active ']",
         toast: ".x-toast",
         loadmask: "[aria-describedby^='loadmask']",
