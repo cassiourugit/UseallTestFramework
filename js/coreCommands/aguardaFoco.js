@@ -19,10 +19,10 @@ module.exports = {
 
         if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementPresent(campo + "[contains(@class, 'x-field-default-form-focus')]")
+                .waitForElementPresent('xpath', campo + "[contains(@class, 'x-field-default-form-focus')]")
                 .useCss();
         } else {
-            this.waitForElementPresent(campo + ".x-field-default-form-focus");
+            this.waitForElementPresent('css selector', campo + ".x-field-default-form-focus");
         }
 
         return this;

@@ -27,7 +27,7 @@ module.exports = {
 
         if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementPresent(campo)
+                .waitForElementPresent('xpath', campo)
             this.getAttribute(campo, 'value', function (result) {
                 if (result.value != texto) {
                     if (config.deveDestacarElemento) {

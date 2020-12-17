@@ -27,7 +27,7 @@ module.exports = {
 
         if (util._isXpath(celula)) {
             this.useXpath()
-                .waitForElementVisible(celula)
+                .waitForElementVisible('xpath', celula)
                 .getAttribute(celula, 'textContent', function (result) {
                     if (result.value != texto) {
                         if (config.deveDestacarElemento) {

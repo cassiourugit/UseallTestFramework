@@ -19,7 +19,7 @@ module.exports = {
 
         if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementVisible(campo)
+                .waitForElementVisible('xpath', campo)
                 .execute(function (campo) {
                     xElement = document.evaluate(campo, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
                     for (let i = 0; i < xElement.snapshotLength; i++) {

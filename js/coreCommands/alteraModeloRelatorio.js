@@ -21,8 +21,8 @@ module.exports = {
         this.useXpath()
             .waitForElementVisible(loc.geral.campoModeloRelatorioX)
             .click(loc.geral.campoModeloRelatorioTriggerX)
-            .waitForElementVisible("//li[contains(text(),'" + nomeModelo + "')] | //li/div[contains(text(), '" + nomeModelo + "')]")
-            .click("//li[contains(text(),'" + nomeModelo + "')] | //li/div[contains(text(), '" + nomeModelo + "')]")
+            .waitForElementVisible('xpath', "//li[contains(text(),'" + nomeModelo + "')] | //li/div[contains(text(), '" + nomeModelo + "')]")
+            .click('xpath', "//li[contains(text(),'" + nomeModelo + "')] | //li/div[contains(text(), '" + nomeModelo + "')]")
             .element("xpath", loc.geral.campoModeloRelatorioX, function (result) {
                 this.elementIdAttribute(result.value.ELEMENT, "aria-expanded", function (attribute) {
                     if (attribute.value == "true") {

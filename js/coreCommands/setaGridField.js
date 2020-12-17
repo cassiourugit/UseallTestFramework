@@ -32,7 +32,7 @@ module.exports = {
 
         if (util._isXpath(colGrid)) {
             this.useXpath()
-                .waitForElementPresent(colGrid)
+                .waitForElementPresent('xpath', colGrid)
                 .click(colGrid)
                 .useCss()
         } else {
@@ -42,7 +42,7 @@ module.exports = {
 
         if (util._isXpath(campoGrid)) {
             this.useXpath()
-                .waitForElementPresent(campoGrid)
+                .waitForElementPresent('xpath', campoGrid)
                 .setValue(campoGrid, valor)
                 .useCss()
         } else {

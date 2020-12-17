@@ -29,8 +29,8 @@ module.exports = {
             this.useXpath()
                 .waitForElementVisible(campo)
                 .click(campo)
-                .waitForElementVisible("//li[contains(text(),'" + opcao + "')] | //li/div[contains(text(), '" + opcao + "')]")
-                .click("//li[contains(text(),'" + opcao + "')] | //li/div[contains(text(), '" + opcao + "')]")
+                .waitForElementVisible('xpath', "//li[contains(text(),'" + opcao + "')] | //li/div[contains(text(), '" + opcao + "')]")
+                .click('xpath', "//li[contains(text(),'" + opcao + "')] | //li/div[contains(text(), '" + opcao + "')]")
                 .element("xpath", campo, function (result) {
                     this.elementIdAttribute(result.value.ELEMENT, "aria-expanded", function (attribute) {
                         if (attribute.value == "true") {
@@ -55,11 +55,11 @@ module.exports = {
                 });
         }
 
-        
-        if(remove){
+
+        if (remove) {
             this.removeListaSearchfield();
         }
-        
+
         return this;
     },
 };

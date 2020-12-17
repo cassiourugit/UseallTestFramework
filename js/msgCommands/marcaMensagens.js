@@ -17,7 +17,7 @@ module.exports = {
             .moveToElement(loc.mensageria.arrowCheckMarcarTodosX, 10, 10)
             .mouseButtonDown()
             .mouseButtonUp()
-            .waitForElementVisible("//div[starts-with(@id, 'menu')]//span[text()= '" + nomeDaOpcao + "']")
+            .waitForElementVisible("'xpath', //div[starts-with(@id, 'menu')]//span[text()= '" + nomeDaOpcao + "']")
             .click("//div[starts-with(@id, 'menu')]//span[text()= '" + nomeDaOpcao + "']")
         return this;
     },

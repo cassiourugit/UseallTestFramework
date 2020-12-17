@@ -15,11 +15,9 @@ module.exports = {
             return this;
         }
 
-        this.useXpath()
-            .waitForElementPresent("//span[text()= '" + nomeDaAba + "']/following::span[text()= ' Fechar']")
-            .click("//span[text()= '" + nomeDaAba + "']/following::span[text()= ' Fechar']")
-            .waitForElementNotPresent("//span[text()= '" + nomeDaAba + "']/following::span[text()= ' Fechar']", "A aba não foi fechada.")
-            .useCss();
+        this.waitForElementPresent('xpath', "//span[text()= '" + nomeDaAba + "']/following::span[text()= ' Fechar']")
+            .click('xpath', "//span[text()= '" + nomeDaAba + "']/following::span[text()= ' Fechar']")
+            .waitForElementNotPresent('xpath', "//span[text()= '" + nomeDaAba + "']/following::span[text()= ' Fechar']", "A aba não foi fechada.")
 
         return this;
     },

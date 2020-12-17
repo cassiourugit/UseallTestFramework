@@ -19,7 +19,7 @@ module.exports = {
 
         if (util._isXpath(labelColuna)) {
             this.useXpath()
-                .waitForElementPresent(labelColuna)
+                .waitForElementPresent('xpath', labelColuna)
                 .click(labelColuna)
                 .useCss()
         } else {

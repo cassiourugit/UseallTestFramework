@@ -35,7 +35,7 @@ module.exports = {
 
         if (util._isXpath(campoPesquisar)) {
             this.useXpath()
-                .waitForElementVisible(campoPesquisar)
+                .waitForElementVisible('xpath', campoPesquisar)
                 .click(campoPesquisar)
                 .clearValue(campoPesquisar)
             if (slowText) {

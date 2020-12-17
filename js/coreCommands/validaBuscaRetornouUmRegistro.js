@@ -20,7 +20,7 @@ module.exports = {
 
         if (util._isXpath(celula)) {
             this.useXpath()
-                .waitForElementVisible(celula)
+                .waitForElementVisible('xpath', celula)
                 .expect.elements(celula + "//tr").count.to.equal(1)
                 .useCss();
         }

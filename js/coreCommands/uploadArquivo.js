@@ -27,7 +27,7 @@ module.exports = {
 
         if (util._isXpath(campoDoTipoFile)) {
             this.useXpath()
-                .waitForElementPresent(campoDoTipoFile)
+                .waitForElementPresent('xpath', campoDoTipoFile)
                 .setValue(campoDoTipoFile, localDoARquivo)
                 .useCss();
         } else {

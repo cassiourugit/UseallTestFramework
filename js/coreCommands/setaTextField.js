@@ -26,7 +26,7 @@ module.exports = {
 
         if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementPresent(campo)
+                .waitForElementPresent('xpath', campo)
                 .clearValue(campo)
                 .sendKeys(campo, texto)
                 .useCss();

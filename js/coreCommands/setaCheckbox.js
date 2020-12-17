@@ -27,7 +27,7 @@ module.exports = {
         if (util._isXpath(localizador)) {
             if (check) {
                 this.useXpath()
-                    .waitForElementPresent(localizador)
+                    .waitForElementPresent('xpath', localizador)
                     .getAttribute(localizador, "checked", function (result) {
                         if (result.value == false) {
                             this.click(localizador);

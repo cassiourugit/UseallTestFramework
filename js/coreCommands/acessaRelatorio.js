@@ -19,7 +19,7 @@ module.exports = {
             .moveToElement('link text', link, 10, 10)
             .click('link text', link)
             .useXpath()
-            .waitForElementPresent('//span[contains(text(), "' + link + '")]', "A aba do cadastro não foi aberta corretamente.")
+            .waitForElementPresent('xpath', '//span[contains(text(), "' + link + '")]', "A aba do cadastro não foi aberta corretamente.")
             .useCss()
 
         return this;

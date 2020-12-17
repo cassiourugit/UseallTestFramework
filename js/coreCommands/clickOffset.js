@@ -32,7 +32,7 @@ module.exports = {
 
         if (util._isXpath(elemento)) {
             this.useXpath()
-                .waitForElementPresent(elemento)
+                .waitForElementPresent('xpath', elemento)
                 .moveToElement(elemento, xoffset, yoffset)
                 .mouseButtonClick(0)
                 .useCss();

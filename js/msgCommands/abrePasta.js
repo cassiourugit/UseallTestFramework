@@ -14,7 +14,7 @@ module.exports = {
     */
     command: function (nomeDaPasta) {
         this.useXpath()
-            .waitForElementVisible("//div[starts-with(@id, 'menu-lateral-mensagens')]//span[text()= '" + nomeDaPasta + "']")
+            .waitForElementVisible("'xpath', //div[starts-with(@id, 'menu-lateral-mensagens')]//span[text()= '" + nomeDaPasta + "']")
             .click("//div[starts-with(@id, 'menu-lateral-mensagens')]//span[text()= '" + nomeDaPasta + "']")
             .assert.attributeContains("//div[starts-with(@id, 'menu-lateral-mensagens')]//span[text()= '" + nomeDaPasta + "']" + "/ancestor::table", "class", "selected")
             .useCss();

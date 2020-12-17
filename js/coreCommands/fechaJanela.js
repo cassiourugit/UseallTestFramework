@@ -21,14 +21,17 @@ module.exports = {
         }
 
         this.keys(this.Keys.ESCAPE);
-        this.element("css selector", loc.geral.messageBox, function (visible) {
-            if (visible.status != -1)
-                this.useXpath()
-                    .waitForElementPresent("//span[text()='Sim']")
-                    .click("//span[text()='Sim']")
-        })
+        this.element("css selector", loc.geral.messageBox, function (present) {
+            if (present.status != -1)
+                this.isVisible('xpath', '//span[text()="Sim"]', function(visible) {
+                if (visible.value) {
+                        this.click('xpath', "//span[text()='Sim']")
+                    }
+              });              
+        });
+
         this.useXpath()
-            .assert.elementNotPresent("//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']", "A janela não foi fechada.")
+            .assert.not.elementPresent("//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']", "A janela não foi fechada.")
             .useCss();
 
         return this;

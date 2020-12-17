@@ -29,7 +29,7 @@ module.exports = {
 
         if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementVisible(campo)
+                .waitForElementVisible('xpath', campo)
                 .clearValue(campo)
                 .sendKeys(campo, texto)
                 .useCss()
@@ -78,7 +78,7 @@ module.exports = {
             })
         }
 
-        if(remove){
+        if (remove) {
             this.removeListaSearchfield();
         }
 

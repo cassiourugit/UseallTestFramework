@@ -19,14 +19,14 @@ module.exports = {
         }
 
         this.keys(this.Keys.F2)
-            .waitForElementPresent(loc.geral.janelaF2)
-            .waitForElementVisible(loc.geral.campoBuscaF2)
+            .waitForElementPresent('css selector', loc.geral.janelaF2)
+            .waitForElementVisible('css selector', loc.geral.campoBuscaF2)
             .sendKeys(loc.geral.campoBuscaF2, nome)
-            .waitForElementVisible("div[id^='use-pesquisageral-panel'] div[title='" + nome + "']")
-            .click("div[id^='use-pesquisageral-panel'] div[title='" + nome + "']")
-            .waitForElementNotPresent(loc.geral.janelaF2Fechada)
+            .waitForElementVisible('css selector', "div[id^='use-pesquisageral-panel'] div[title='" + nome + "']")
+            .click('css selector', "div[id^='use-pesquisageral-panel'] div[title='" + nome + "']")
+            .waitForElementNotPresent('css selector', loc.geral.janelaF2Fechada)
             .useXpath()
-            .waitForElementPresent('//span[contains(text(), "' + nome + '")]', "A aba do cadastro não foi aberta corretamente.")
+            .waitForElementPresent('xpath', '//span[contains(text(), "' + nome + '")]', "A aba do cadastro não foi aberta corretamente.")
             .useCss()
 
         return this;

@@ -26,7 +26,7 @@ module.exports = {
 
         if (util._isXpath(localizador)) {
             this.useXpath()
-                .waitForElementPresent(localizador)
+                .waitForElementPresent('xpath', localizador)
                 .assert.attributeEquals(localizador, "checked", check, "A checkbox deveria estar (" + check + "), porém está (" + !check + ")")
                 .useCss();
         } else {

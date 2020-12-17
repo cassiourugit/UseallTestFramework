@@ -20,7 +20,7 @@ module.exports = {
 
         if (util._isXpath(aba)) {
             this.useXpath()
-                .waitForElementVisible(aba)
+                .waitForElementVisible('xpath', aba)
                 .click(aba)
                 .useCss();
         } else {

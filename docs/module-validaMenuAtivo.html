@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
     <meta charset="utf-8">
-    <title>JSDoc: coreCommands/validaLimiteDeCaracteres.js</title>
+    <title>JSDoc: validaMenuAtivo</title>
 
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -74,84 +72,202 @@
             <div class="column is-9-desktop">
                 <div class="content" id="main-content-wrapper">
                     <header class="page-title">
-                        <p>Source</p>
-                        <h1>coreCommands/validaLimiteDeCaracteres.js</h1>
+                        <p>Module</p>
+                        <h1>validaMenuAtivo</h1>
                     </header>
 
                     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>// @ts-nocheck
-const util = require("../utils/util");
-let stringMaisUm;
-let string;
+        
+            
+        
+    
+</header>
 
-module.exports = {
-    /**
-     * @function validaLimiteDeCaracteres
-     * @category Core commands
-     * @module
-     * @description - Verifica se o campo possui o limite de caracteres informado
-     * @param {string} campo - Localizador **Css** do campo
-     * Observação: Essa função requer que o localizador do campo seja um Css,
-     * pois ela utiliza métodos próprio de javascript que só funcionam com Css.
-     * @param {number} limiteDeCaracteres - Número máximo de caracteres que o campo deveria aceitar
-     * @param {Boolean} [numberField = false] - **Opcional** Se setado como "true" a string será gerada usando apenas números.
-     * @example 
-     * browser.validaLimiteDeCaracteres("input[data-test-id='campo']", 100)
-     * @author Cássio
-    */
-    command: function (campo, limiteDeCaracteres, numberField = false) {
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><ul>
+<li>Verifica se o ícone do menu está setado como ativo e com a cor correta após ter sido aberto</li>
+</ul></div>
+        
 
-        if (campo == "" || campo == null || campo == undefined) {
-            this.assert.fail("O parâmetro 'campo' não foi informado")
-            return this;
-        }
+        
+            
 
-        if (limiteDeCaracteres == "" || limiteDeCaracteres == null || limiteDeCaracteres == undefined) {
-            this.assert.fail("O parâmetro 'limiteDeCaracteres' não foi informado")
-            return this;
-        }
 
-        if (numberField) {
-            stringMaisUm = util.geraString(limiteDeCaracteres + 1, true);
-            string = util.geraString(limiteDeCaracteres, true);
-        } else {
-            stringMaisUm = util.geraString(limiteDeCaracteres + 1);
-            string = util.geraString(limiteDeCaracteres);
-        }
 
-        //Preenche com o limite do campo e mais um
-        this.execute(
-            function (campo, stringMaisUm) {
-                const field = document.querySelector(campo);
-                field.value = stringMaisUm;
-            }, [campo, stringMaisUm]);
-        this.click(campo)
-        this.keys(this.Keys.TAB);
-        this.assert.attributeContains(campo, "aria-invalid", "true")
-            .assert.attributeContains(campo, "data-errorqtip", "O tamanho máximo para este campo é " + limiteDeCaracteres, "O campo " + campo + " não possui o limite de caracteres previsto.")
-            .clearValue(campo);
 
-        //Preenche com o limite exato do campo
-        this.execute(
-            function (campo, string) {
-                const field = document.querySelector(campo);
-                field.value = string;
-            }, [campo, string]);
-        this.click(campo)
-        this.keys(this.Keys.TAB);
-        this.assert.attributeContains(campo, "aria-invalid", "false");
 
-        return this;
-    },
-};</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        
+<tr class="deep-level-0">
+  
+      <td class="name"><code>nomeDoMenu</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Nome do menu</p></td>
+</tr>
+
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Cássio</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="coreCommands_validaMenuAtivo.js.html" class="button">View Source</a>
+            <span>
+                <a href="coreCommands_validaMenuAtivo.js.html">coreCommands/validaMenuAtivo.js</a>, <a href="coreCommands_validaMenuAtivo.js.html#line3">line 3</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>browser.validaMenuAtivo("Plano de ação")</code></pre>
+    
+
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

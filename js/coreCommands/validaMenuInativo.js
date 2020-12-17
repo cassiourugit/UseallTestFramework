@@ -1,13 +1,13 @@
 // @ts-nocheck
 module.exports = {
     /**
-     * @function validaCorMenuInativo
+     * @function validaMenuInativo
      * @category Core commands
      * @module
      * @description - Verifica se o ícone do menu está setado como inativo e com a cor correta após ter sido fechado
      * @param {string} nomeDoMenu - Nome do menu
      * @example 
-     * browser.validaCorMenuInativo("Plano de ação")
+     * browser.validaMenuInativo("Plano de ação")
      * @author Cássio
     */
     command: function (nomeDoMenu) {
@@ -17,7 +17,7 @@ module.exports = {
         }
 
         this.useXpath()
-            .verify.cssProperty("//div[starts-with(@id, 'mainWest-innerCt')] //div[@data-qtip='" + nomeDoMenu + "']", "color", "rgba(164, 164, 164, 1)", "O ícone do menu não está com a cor esperada para menus inativos.")
+            .verify.cssProperty("//div[starts-with(@id, 'mainWest-innerCt')] //div[@data-qtip='" + nomeDoMenu + "']", "color", "rgba(164, 164, 164, 1)", "O ícone do menu não está desativado.")
             .useCss();
 
         return this;
