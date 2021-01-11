@@ -8,11 +8,10 @@ module.exports = {
      * @module
      * @description - Aguarda até que o Toast indicando que o registro foi salvo apareca, e depois aguarda mais 400 milisegundos antes de prosseguir o teste
      * @param {string} [mensagemToast = null] - **Opcional** Texto que deve ser exibido no toast
-     * @param {boolean} [esperaSumir = false] - **Opcional** Espera o toast sumir antes de prosseguir
      * @example browser.aguardaToast("Registro salvo com sucesso!")
      * @author Cássio
     */
-    command: function (mensagemToast = null, esperaSumir = false) {
+    command: function (mensagemToast = null) {
         this.useCss()
             .waitForElementPresent(loc.geral.toast);
 
@@ -25,9 +24,12 @@ module.exports = {
 
         this.pause(800);
 
-        if(esperaSumir) {
-            this.waitForElementNotPresent(loc.geral.toast);
-        }
+        this.execute(
+            function () {
+                Use.Notify._$currentToast.close()
+            },
+            []
+        );
 
         return this;
     },
