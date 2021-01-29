@@ -9,12 +9,11 @@ module.exports = {
      * @description - Busca e seta o valor informado por parâmetro dentro da combobox
      * @param {string} campo - Localizador **Css** ou **Xpath** do campo do tipo combobox que será setado
      * @param {string} opcao - Nome da opção a ser setada no campo
-     * @param {boolean} [remove = true] - **Opcional** Default true, remove a listagem carregada pelo campo de busca, para não intertefir nos testes
      * @example 
      * browser.setaComboBox("input[data-test-id='Combo']", "Opção")
      * @author Cássio
     */
-    command: function (campo, opcao, remove = true) {
+    command: function (campo, opcao) {
         if (campo == "" || campo == null || campo == undefined) {
             this.assert.fail("O parâmetro 'campo' não foi informado")
             return this;
@@ -28,36 +27,41 @@ module.exports = {
         if (util._isXpath(campo)) {
             this.useXpath()
                 .waitForElementVisible(campo)
-                .click(campo)
-                .waitForElementVisible('xpath', "//li[contains(text(),'" + opcao + "')] | //li/div[contains(text(), '" + opcao + "')]")
-                .click('xpath', "//li[contains(text(),'" + opcao + "')] | //li/div[contains(text(), '" + opcao + "')]")
-                .element("xpath", campo, function (result) {
-                    this.elementIdAttribute(result.value.ELEMENT, "aria-expanded", function (attribute) {
-                        if (attribute.value == "true") {
-                            this.click(campo)
-                        }
-                    });
-                })
-                .useCss();
+                .getAttribute('xpath', campo, 'id', function (result) {
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let lista = "//ul[@id='" + str + "-picker-listEl']";
+
+                    this.click(campo)
+                        .waitForElementVisible('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
+                        .click('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
+                        .element("xpath", campo, function (result) {
+                            this.elementIdAttribute(result.value.ELEMENT, "aria-expanded", function (attribute) {
+                                if (attribute.value == "true") {
+                                    this.click(campo)
+                                }
+                            });
+                        })
+                        .useCss();
+                });
         } else {
             this.waitForElementVisible(campo)
-                .click(campo)
-                .useXpath()
-                .waitForElementVisible("//li[contains(text(),'" + opcao + "')] | //li/div[contains(text(), '" + opcao + "')]")
-                .click("//li[contains(text(),'" + opcao + "')] | //li/div[contains(text(), '" + opcao + "')]")
-                .useCss()
-                .element("css selector", campo, function (result) {
-                    this.elementIdAttribute(result.value.ELEMENT, "aria-expanded", function (attribute) {
-                        if (attribute.value == "true") {
-                            this.click(campo)
-                        }
-                    });
+                .getAttribute(campo, 'id', function (result) {
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let lista = "//ul[@id='" + str + "-picker-listEl']";
+
+                    this.click(campo)
+                        .useXpath()
+                        .waitForElementVisible('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
+                        .click('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
+                        .useCss()
+                        .element("css selector", campo, function (result) {
+                            this.elementIdAttribute(result.value.ELEMENT, "aria-expanded", function (attribute) {
+                                if (attribute.value == "true") {
+                                    this.click(campo)
+                                }
+                            });
+                        });
                 });
-        }
-
-
-        if (remove) {
-            this.removeListaSearchfield();
         }
 
         return this;
