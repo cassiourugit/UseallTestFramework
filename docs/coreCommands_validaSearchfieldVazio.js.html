@@ -87,7 +87,6 @@
         <article>
             <pre class="prettyprint source linenums"><code>// @ts-nocheck
 const util = require("../utils/util");
-const loc = require("../commumLocators");
 const config = require("../utils/configDefinitions");
 
 module.exports = {
@@ -116,50 +115,57 @@ module.exports = {
         if (util._isXpath(campo)) {
             this.useXpath()
                 .waitForElementVisible('xpath', campo)
-                .clearValue(campo)
-                .sendKeys(campo, texto)
-                .useCss()
-                .aguardaListagem()
-                .expect.elements(loc.geral.listaSearchfieldVazia).count.to.equal(1);
+                .getAttribute('xpath', campo, 'id', function (result) {
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let lista = "ul[id='" + str + "-picker-listEl']";
 
-            this.getAttribute(loc.geral.listaSearchfieldVazia, 'textContent', function (result) {
-                if (result.value.includes("Nenhum registro encontrado") == false) {
-                    if (config.deveDestacarElemento) {
-                        this.destacaElemento(loc.geral.listaSearchfieldVazia)
-                        this.assert.attributeContains(loc.geral.listaSearchfieldVazia, "textContent", "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+                    this.clearValue(campo)
+                        .sendKeys(campo, texto)
+                        .useCss()
+                        .aguardaListagem()
+                        .expect.elements(lista + " li").count.to.equal(0);
 
-                        return this;
-                    }
-                    this.assert.attributeContains(loc.geral.listaSearchfieldVazia, 'textContent', "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+                    this.getAttribute(lista, 'textContent', function (result) {
+                        if (result.value.includes("Nenhum registro encontrado") == false) {
+                            if (config.deveDestacarElemento) {
+                                this.destacaElemento(lista)
+                                this.assert.attributeContains(lista, "textContent", "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
 
-                    return this;
-                }
-            })
+                                return this;
+                            }
+                            this.assert.attributeContains(lista, 'textContent', "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+
+                            return this;
+                        }
+                    })
+                });
         } else {
             this.useCss()
                 .waitForElementVisible(campo)
-                .clearValue(campo)
-                .sendKeys(campo, texto)
-                .aguardaListagem()
-                .expect.elements(loc.geral.listaSearchfieldVazia).count.to.equal(1);
+                .getAttribute(campo, 'id', function (result) {
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let lista = "ul[id='" + str + "-picker-listEl']";
 
-            this.getAttribute(loc.geral.listaSearchfieldVazia, 'textContent', function (result) {
-                if (result.value.includes("Nenhum registro encontrado") == false) {
-                    if (config.deveDestacarElemento) {
-                        this.destacaElemento(loc.geral.listaSearchfieldVazia)
-                        this.assert.attributeContains(loc.geral.listaSearchfieldVazia, "textContent", "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+                    this.clearValue(campo)
+                        .sendKeys(campo, texto)
+                        .aguardaListagem()
+                        .expect.elements(lista + " li").count.to.equal(0);
 
-                        return this;
-                    }
-                    this.assert.attributeContains(loc.geral.listaSearchfieldVazia, 'textContent', "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+                    this.getAttribute(lista, 'textContent', function (result) {
+                        if (result.value.includes("Nenhum registro encontrado") == false) {
+                            if (config.deveDestacarElemento) {
+                                this.destacaElemento(lista)
+                                this.assert.attributeContains(lista, "textContent", "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
 
-                    return this;
-                }
-            })
+                                return this;
+                            }
+                            this.assert.attributeContains(lista, 'textContent', "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+
+                            return this;
+                        }
+                    })
+                });
         }
-
-        this.removeListaSearchfield();
-
         return this;
     },
 };</code></pre>
@@ -177,7 +183,7 @@ module.exports = {
 
 <footer class="footer">
     <div class="content has-text-centered">
-        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Fri Jan 29 2021 15:18:08 GMT-0300 (Horário Padrão de Brasília)</p>
+        <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Fri Jan 29 2021 17:01:19 GMT-0300 (Horário Padrão de Brasília)</p>
         <p class="sidebar-created-by">
             <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
             <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
