@@ -1,6 +1,5 @@
 // @ts-nocheck
 const util = require("../utils/util");
-const loc = require("../commumLocators");
 const config = require("../utils/configDefinitions");
 
 module.exports = {
@@ -29,50 +28,57 @@ module.exports = {
         if (util._isXpath(campo)) {
             this.useXpath()
                 .waitForElementVisible('xpath', campo)
-                .clearValue(campo)
-                .sendKeys(campo, texto)
-                .useCss()
-                .aguardaListagem()
-                .expect.elements(loc.geral.listaSearchfieldVazia).count.to.equal(1);
+                .getAttribute('xpath', campo, 'id', function (result) {
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let lista = "ul[id='" + str + "-picker-listEl']";
 
-            this.getAttribute(loc.geral.listaSearchfieldVazia, 'textContent', function (result) {
-                if (result.value.includes("Nenhum registro encontrado") == false) {
-                    if (config.deveDestacarElemento) {
-                        this.destacaElemento(loc.geral.listaSearchfieldVazia)
-                        this.assert.attributeContains(loc.geral.listaSearchfieldVazia, "textContent", "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+                    this.clearValue(campo)
+                        .sendKeys(campo, texto)
+                        .useCss()
+                        .aguardaListagem()
+                        .expect.elements(lista + " li").count.to.equal(0);
 
-                        return this;
-                    }
-                    this.assert.attributeContains(loc.geral.listaSearchfieldVazia, 'textContent', "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+                    this.getAttribute(lista, 'textContent', function (result) {
+                        if (result.value.includes("Nenhum registro encontrado") == false) {
+                            if (config.deveDestacarElemento) {
+                                this.destacaElemento(lista)
+                                this.assert.attributeContains(lista, "textContent", "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
 
-                    return this;
-                }
-            })
+                                return this;
+                            }
+                            this.assert.attributeContains(lista, 'textContent', "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+
+                            return this;
+                        }
+                    })
+                });
         } else {
             this.useCss()
                 .waitForElementVisible(campo)
-                .clearValue(campo)
-                .sendKeys(campo, texto)
-                .aguardaListagem()
-                .expect.elements(loc.geral.listaSearchfieldVazia).count.to.equal(1);
+                .getAttribute(campo, 'id', function (result) {
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let lista = "ul[id='" + str + "-picker-listEl']";
 
-            this.getAttribute(loc.geral.listaSearchfieldVazia, 'textContent', function (result) {
-                if (result.value.includes("Nenhum registro encontrado") == false) {
-                    if (config.deveDestacarElemento) {
-                        this.destacaElemento(loc.geral.listaSearchfieldVazia)
-                        this.assert.attributeContains(loc.geral.listaSearchfieldVazia, "textContent", "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+                    this.clearValue(campo)
+                        .sendKeys(campo, texto)
+                        .aguardaListagem()
+                        .expect.elements(lista + " li").count.to.equal(0);
 
-                        return this;
-                    }
-                    this.assert.attributeContains(loc.geral.listaSearchfieldVazia, 'textContent', "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+                    this.getAttribute(lista, 'textContent', function (result) {
+                        if (result.value.includes("Nenhum registro encontrado") == false) {
+                            if (config.deveDestacarElemento) {
+                                this.destacaElemento(lista)
+                                this.assert.attributeContains(lista, "textContent", "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
 
-                    return this;
-                }
-            })
+                                return this;
+                            }
+                            this.assert.attributeContains(lista, 'textContent', "Nenhum registro encontrado", "A listagem deveria mostrar (Nenhum registro encontrado), porém mostrou (" + result.value + ")")
+
+                            return this;
+                        }
+                    })
+                });
         }
-
-        this.removeListaSearchfield();
-
         return this;
     },
 };

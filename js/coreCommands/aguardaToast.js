@@ -19,6 +19,15 @@ module.exports = {
             this.waitForElementVisible(loc.geral.toast);
             this.getAttribute(loc.geral.toast, "textContent", function (result) {
                 this.assert.containsText(loc.geral.toast, mensagemToast, "O toast não exibiu a mensagem correta, a mensagem exibida foi: " + result.value)
+
+                this.pause(800);
+
+                this.execute(
+                    function () {
+                        Use.Notify._$currentToast.close()
+                    },
+                    []
+                );
             });
         }
 
