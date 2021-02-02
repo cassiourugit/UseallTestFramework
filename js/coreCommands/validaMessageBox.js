@@ -26,9 +26,9 @@ module.exports = {
 
         this.useXpath()
             .waitForElementPresent('xpath', "//div[starts-with(@id, 'use-messagebox')] | //div[starts-with(@id, 'messagebox')]", "Não existe nenhuma messagebox aberta na tela")
-            .assert.visible("//div[text()= \"" + mensagem + "\"]", "A mensagem esperada não foi encontrada na messagebox")
-            .assert.visible("//div[text()= \"" + mensagem + "\"] //ancestor::div[starts-with(@id, \"use-messagebox\")] //child::span[text()= \"" + botao + "\"] | //div[text()= \"" + mensagem + "\"] //ancestor::div[starts-with(@id, \"messagebox\")] //child::span[text()= \"" + botao + "\"]", "O botão informado não foi encontrado na tela")
-            .click("//div[text()= \"" + mensagem + "\"] //ancestor::div[starts-with(@id, \"use-messagebox\")] //child::span[text()= \"" + botao + "\"] | //div[text()= \"" + mensagem + "\"] //ancestor::div[starts-with(@id, \"messagebox\")] //child::span[text()= \"" + botao + "\"]")
+            .assert.visible("//div[contains(text(), \"" + mensagem + "\")]", "A mensagem esperada não foi encontrada na messagebox")
+            .assert.visible("//div[contains(text(), \"" + mensagem + "\")] //ancestor::div[starts-with(@id, \"use-messagebox\")] //child::span[text()= \"" + botao + "\"] | //div[contains(text(), \"" + mensagem + "\")] //ancestor::div[starts-with(@id, \"messagebox\")] //child::span[text()= \"" + botao + "\"]", "O botão informado não foi encontrado na tela")
+            .click('xpath', "//div[contains(text(), \"" + mensagem + "\")] //ancestor::div[starts-with(@id, \"use-messagebox\")] //child::span[text()= \"" + botao + "\"] | //div[contains(text(), \"" + mensagem + "\")] //ancestor::div[starts-with(@id, \"messagebox\")] //child::span[text()= \"" + botao + "\"]")
             .useCss();
 
         return this;
