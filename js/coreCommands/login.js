@@ -31,10 +31,10 @@ module.exports = {
 
         this.waitForElementVisible(loc.login.campoUsuario, 30000)
             .clearValue(loc.login.campoUsuario)
-            .sendKeys(loc.login.campoUsuario, usuario)
+            .setValue(loc.login.campoUsuario, usuario)
             .waitForElementVisible(loc.login.campoSenha)
             .clearValue(loc.login.campoSenha)
-            .sendKeys(loc.login.campoSenha, senha);
+            .setValue(loc.login.campoSenha, senha);
 
         if (esquemaBanco != null) {
             this.waitForElementVisible(loc.login.campoBanco)

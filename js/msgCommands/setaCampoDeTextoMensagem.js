@@ -17,7 +17,7 @@ module.exports = {
             this.getAttribute(loc.mensageria.iframeMensagem, 'id', (result) => {
                 this.frame(result.value)
                     .waitForElementVisible(loc.mensageria.iframeTinymce)
-                    .sendKeys(loc.mensageria.iframeTinymce, texto);
+                    .setValue(loc.mensageria.iframeTinymce, texto);
             });
         });
         this.frame();

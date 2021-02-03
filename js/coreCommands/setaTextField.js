@@ -28,12 +28,12 @@ module.exports = {
             this.useXpath()
                 .waitForElementPresent('xpath', campo)
                 .clearValue(campo)
-                .sendKeys(campo, texto)
+                .setValue(campo, texto)
                 .useCss();
         } else {
             this.waitForElementPresent(campo)
                 .clearValue(campo)
-                .sendKeys(campo, texto)
+                .setValue(campo, texto)
         }
 
         return this;

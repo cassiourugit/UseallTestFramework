@@ -15,7 +15,7 @@ module.exports = {
     command: function (nomeDestinatario) {
         this.waitForElementVisible(loc.mensageria.campoPara)
             .aguardaFoco(loc.mensageria.campoPara)
-            .sendKeys(loc.mensageria.campoPara, nomeDestinatario)
+            .setValue(loc.mensageria.campoPara, nomeDestinatario)
             .aguardaListagem()
             .expect.elements(loc.geral.listaSearchfield).count.to.equal(1);
 

@@ -33,7 +33,7 @@ module.exports = {
                     let lista = "ul[id='" + str + "-picker-listEl']";
 
                     this.clearValue(campo)
-                        .sendKeys(campo, texto)
+                        .setValue(campo, texto)
                         .useCss()
                         .aguardaListagem()
                         .expect.elements(lista + " li").count.to.equal(0);
@@ -60,7 +60,7 @@ module.exports = {
                     let lista = "ul[id='" + str + "-picker-listEl']";
 
                     this.clearValue(campo)
-                        .sendKeys(campo, texto)
+                        .setValue(campo, texto)
                         .aguardaListagem()
                         .expect.elements(lista + " li").count.to.equal(0);
 

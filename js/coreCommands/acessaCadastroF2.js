@@ -21,7 +21,7 @@ module.exports = {
         this.keys(this.Keys.F2)
             .waitForElementPresent('css selector', loc.geral.janelaF2)
             .waitForElementVisible('css selector', loc.geral.campoBuscaF2)
-            .sendKeys(loc.geral.campoBuscaF2, nome)
+            .setValue(loc.geral.campoBuscaF2, nome)
             .waitForElementVisible('css selector', "div[id*='pesquisageral-panel'] div[title='" + nome + "']")
             .click('css selector', "div[id*='pesquisageral-panel'] div[title='" + nome + "']")
             .waitForElementNotPresent('css selector', loc.geral.janelaF2Fechada);

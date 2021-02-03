@@ -41,7 +41,7 @@ module.exports = {
             if (slowText) {
                 this.slowText(campoPesquisar, texto)
             } else {
-                this.sendKeys(campoPesquisar, texto)
+                this.setValue(campoPesquisar, texto)
             }
             this.useCss();
         } else {
@@ -52,7 +52,7 @@ module.exports = {
             if (slowText) {
                 this.slowText(campoPesquisar, texto)
             } else {
-                this.sendKeys(campoPesquisar, texto)
+                this.setValue(campoPesquisar, texto)
             }
         }
 
