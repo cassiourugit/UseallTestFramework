@@ -22,10 +22,11 @@ module.exports = {
             .waitForElementPresent('css selector', loc.geral.janelaF2)
             .waitForElementVisible('css selector', loc.geral.campoBuscaF2)
             .sendKeys(loc.geral.campoBuscaF2, nome)
-            .waitForElementVisible('css selector', "div[id^='use-pesquisageral-panel'] div[title='" + nome + "']")
-            .click('css selector', "div[id^='use-pesquisageral-panel'] div[title='" + nome + "']")
-            .waitForElementNotPresent('css selector', loc.geral.janelaF2Fechada)
-            .useXpath()
+            .waitForElementVisible('css selector', "div[id*='pesquisageral-panel'] div[title='" + nome + "']")
+            .click('css selector', "div[id*='pesquisageral-panel'] div[title='" + nome + "']")
+            .waitForElementNotPresent('css selector', loc.geral.janelaF2Fechada);
+        this.expect.element("div[id*='pesquisageral-panel']").to.not.be.visible.before(5000)
+        this.useXpath()
             .waitForElementPresent('xpath', '//span[contains(text(), "' + nome + '")]', "A aba do cadastro não foi aberta corretamente.")
             .useCss()
 
