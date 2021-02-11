@@ -1,0 +1,45 @@
+pre code .tag {
+    background-color: #c66;
+    border-radius: 0;
+    color: #c66;
+    display: inline;
+    font-size: inherit;
+    height: inherit;
+    line-height: inherit;
+    padding-left: 0;
+    padding-right: 0;
+    white-space: nowrap;
+  }
+
+.image {
+    height: 60px;
+    width: 60px;
+    position: absolute;
+  }
+
+.top-nav {
+    background-color: #25262e;
+  }
+
+.navbar-item {
+    color: aliceblue;
+    padding-left: 80px;
+    padding-top: 28px;
+}
+
+.top-nav .menu .navigation .link {
+  color: aliceblue;
+  padding-top: 14px;
+}
+
+.sidebar a:hover, .sidebar a.active{
+  color: black;
+}
+
+.tag-source span a {
+  color: #4268F6;
+}
+
+#main>.sidebar {
+  width: 350px;
+}
