@@ -8,8 +8,8 @@
         ]
     },
     "plugins": [
-        "better-docs/component",
-        "better-docs/category",
+        "node_modules/better-docs/component",
+        "node_modules/better-docs/category",
         "plugins/markdown"
     ],
     "opts": {
@@ -18,14 +18,16 @@
         "readme": "readme.md",
         "recurse": true,
         "verbose": true,
-        "template": "node_modules/better-docs",
-        "title": "My title"
+        "template": "node_modules/better-docs"
     },
     "templates": {
+        "search": true,
         "better-docs": {
             "name": "Documentação UseallTestFramework",
+            "title": "UseallTestFramework",
             "logo": "images/logo-useall.png",
-            "navigation": [
+            "css": "styles/custom.css",
+            "navLinks": [
                 {
                     "label": "Github",
                     "href": "https://github.com/cassiourugit/UseallTestFramework"

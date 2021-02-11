@@ -1,4 +1,5 @@
 // @ts-nocheck
+const util = require("usealltestframework/js/utils/util");
 const loc = require("../commumLocators");
 
 module.exports = {
@@ -7,20 +8,43 @@ module.exports = {
      * @category Core commands
      * @module
      * @description - Aguarda até que o Loader do botão desapareça antes de prosseguir o teste
-     * @param {string} loader - Localizador **Css** ou **Xpath** do loader do botão
-     * @example browser.aguardaLoaderBotao("span[class*='icone-loader-buttons-16x16']")
+     * @param {string} botao - Localizador **Css** ou **Xpath** do botão que apresenta o loader
+     * @example browser.aguardaLoaderBotao("//span[text()='Salvar")
      * @author Cássio
     */
-    command: function (loader) {
-        if (loader == "" || loader == null || loader == undefined) {
-            this.assert.fail("O parâmetro 'loader' não foi informado")
+    command: function (botao) {
+        if (botao == "" || botao == null || botao == undefined) {
+            this.assert.fail("O parâmetro 'botao' não foi informado")
             return this;
         }
 
-        this
-            .waitForElementPresent(loader, 5000, "Loader do botão não apareceu após 5 segundos")
-            .waitForElementNotPresent(loader, 30000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
+        let str;
+        let botaoId;
 
-        return this;
-    },
-};
+        if (util._isXpath(botao)) {
+            this.waitForElementVisible('xpath', botao)
+                .getAttribute('xpath', botao, 'id', function (result) {
+                    str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    botaoId = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
+
+                    this.waitForElementVisible('xpath', botaoId, 5000, "Loader do botão não apareceu após 5 segundos")
+                        .waitForElementNotVisible('xpath', botaoId, 30000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
+                        .useCss();
+
+                    return this;
+                });
+        } else {
+            this.waitForElementVisible('css selector', botao)
+                .getAttribute('css selector', botao, 'id', function (result) {
+                    str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    botaoId = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
+
+                    this.waitForElementVisible('xpath', botaoId, 5000, "Loader do botão não apareceu após 5 segundos")
+                        .waitForElementNotVisible('xpath', botaoId, 30000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
+                        .useCss();
+
+                    return this;
+                });
+        }
+    }
+}

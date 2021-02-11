@@ -4,7 +4,7 @@ const util = require("../utils/util");
 module.exports = {
     /**
      * @function destacaElemento
-     * @category Core Commands
+     * @category Core commands
      * @module
      * @description - Destaca o elemento recebido por parâmetro
      * @param {String} element - Localizador **Css** ou **Xpath** do elemento

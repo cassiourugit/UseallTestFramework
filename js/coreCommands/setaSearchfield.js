@@ -35,8 +35,8 @@ module.exports = {
                     this.clearValue(campo)
                         .setValue(campo, texto)
                         .useCss()
-                        .aguardaListagem()
-                        .expect.elements(lista).count.to.equal(1);
+                        .aguardaListagem();
+                    this.expect.elements(lista, 'css selector').count.to.equal(1);
 
                     this.getAttribute(lista, 'textContent', function (result) {
                         if (result.value.includes(texto) == false) {
@@ -66,9 +66,9 @@ module.exports = {
                     this.clearValue(campo)
                         .setValue(campo, texto)
                         .aguardaListagem()
-                        .expect.elements(lista).count.to.equal(1);
+                        .expect.elements(lista, 'css selector').count.to.equal(1);
 
-                    this.getAttribute(lista, 'textContent', function (result) {
+                    this.getAttribute('css selector', lista, 'textContent', function (result) {
                         if (result.value.includes(texto) == false) {
                             if (config.deveDestacarElemento) {
                                 this.destacaElemento(lista)

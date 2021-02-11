@@ -36,7 +36,7 @@ module.exports = {
                         .setValue(campo, texto)
                         .useCss()
                         .aguardaListagem()
-                        .expect.elements(lista + " li").count.to.equal(0);
+                        .expect.elements(lista + " li", "css selector").count.to.equal(0);
 
                     this.getAttribute(lista, 'textContent', function (result) {
                         if (result.value.includes("Nenhum registro encontrado") == false) {
@@ -62,7 +62,7 @@ module.exports = {
                     this.clearValue(campo)
                         .setValue(campo, texto)
                         .aguardaListagem()
-                        .expect.elements(lista + " li").count.to.equal(0);
+                        .expect.elements(lista + " li", "css selector").count.to.equal(0);
 
                     this.getAttribute(lista, 'textContent', function (result) {
                         if (result.value.includes("Nenhum registro encontrado") == false) {

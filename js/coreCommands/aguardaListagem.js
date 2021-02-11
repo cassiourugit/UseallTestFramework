@@ -12,7 +12,7 @@ module.exports = {
     */
     command: function () {
         this.pause(200)
-            .waitForElementNotPresent(loc.geral.loadmask);
+            .waitForElementNotPresent(loc.geral.loadmask)
 
         return this;
     },
