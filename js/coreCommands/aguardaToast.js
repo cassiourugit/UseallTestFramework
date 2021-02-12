@@ -33,7 +33,6 @@ module.exports = {
                     }
                 })
             });
-
             return this;
         }
 
@@ -49,7 +48,6 @@ module.exports = {
                 );
             }
         })
-
         return this;
     },
 };
