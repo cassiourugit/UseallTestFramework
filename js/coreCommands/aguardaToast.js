@@ -22,23 +22,33 @@ module.exports = {
 
                 this.pause(800);
 
+                this.element("css selector", loc.geral.toast, function (present) {
+                    if (present.status != -1) {
+                        this.execute(
+                            function () {
+                                Use.Notify._$currentToast.close()
+                            },
+                            []
+                        );
+                    }
+                })
+            });
+
+            return this;
+        }
+
+        this.pause(800);
+
+        this.element("css selector", loc.geral.toast, function (present) {
+            if (present.status != -1) {
                 this.execute(
                     function () {
                         Use.Notify._$currentToast.close()
                     },
                     []
                 );
-            });
-        }
-
-        this.pause(800);
-
-        this.execute(
-            function () {
-                Use.Notify._$currentToast.close()
-            },
-            []
-        );
+            }
+        })
 
         return this;
     },
