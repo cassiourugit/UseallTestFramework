@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UseallTestFramework coreCommands/validaBuscaRetornouUmRegistro.js</title>
+  <title>UseallTestFramework comparaImagens</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -103,50 +101,252 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Source</p>
-                    <h1>coreCommands/validaBuscaRetornouUmRegistro.js</h1>
+                    <p>Module</p>
+                    <h1>comparaImagens</h1>
                 </header>
                 
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>// @ts-nocheck
-const util = require("../utils/util");
+        
+            
+        
+    
+</header>
 
-module.exports = {
-    /**
-     * @function validaBuscaRetornouUmRegistro
-     * @category Core commands
-     * @module
-     * @description - Verifica se a busca listou apenas um registro na grid
-     * @param {string} listagem - Localizador **Css** ou **Xpath** da listagem
-     * @example 
-     * browser.validaBuscaRetornouUmRegistro("div[id^='lista-atendimentocliente-despesa']")
-     * @author Cássio
-    */
-    command: function (celula) {
-        if (!celula) {
-            this.assert.fail("O parâmetro 'celula' não foi informado")
-            return this;
-        }
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><ul>
+<li>Compara a imagem extraída do PDF com o modelo armazenado e armazena uma imagem destacando as diferenças caso elas existam</li>
+</ul></div>
+        
 
-        if (util._isXpath(celula)) {
-            this.useXpath()
-                .waitForElementVisible('xpath', celula)
-                .expect.elements(celula + "//tr").count.to.equal(1)
-                .useCss();
-        }
+        
+            
 
-        this.useCss()
-            .waitForElementVisible(celula)
-            .expect.elements(celula + " tr").count.to.equal(1)
-    },
-};</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>pathOriginal</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">String</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Diretório da imagem modelo para comparação</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>pathCompare</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">String</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Diretório da imagem extraída do PDF para comparação</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>pathDiff</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">String</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Diretório onde a imagem contendo as diferenças será salva</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Cássio</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utils_pdfCompare.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_pdfCompare.js.html">utils/pdfCompare.js</a>, <a href="utils_pdfCompare.js.html#line142">line 142</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>pdfCompare.comparaImagens("C:/temp/original", "C:/temp/compare", "C:/temp/diff", "espelhoPlanoDeAcao", "testeEspelhoPlanoDeAcao", "XXXNNN");</code></pre>
+    
+
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

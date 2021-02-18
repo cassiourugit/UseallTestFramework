@@ -28,7 +28,7 @@ module.exports = {
                     botaoId = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
 
                     this.waitForElementVisible('xpath', botaoId, 5000, "Loader do botão não apareceu após 5 segundos")
-                        .waitForElementNotVisible('xpath', botaoId, 30000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
+                        .waitForElementNotPresent('xpath', botaoId, 30000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
                         .useCss();
 
                     return this;
@@ -40,7 +40,7 @@ module.exports = {
                     botaoId = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
 
                     this.waitForElementVisible('xpath', botaoId, 5000, "Loader do botão não apareceu após 5 segundos")
-                        .waitForElementNotVisible('xpath', botaoId, 30000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
+                        .waitForElementNotPresent('xpath', botaoId, 30000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
                         .useCss();
 
                     return this;
