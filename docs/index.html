@@ -188,14 +188,24 @@ var stringCom4000Caracteres = util.geraString(4000);
 </code></pre>
 <p> </p>
 <p>Você pode conferir todas as funções disponíveis no menu &quot;Utils&quot;.</p>
-<h2>Novidades a caminho</h2>
-<p>Está em desenvolvimento um conjunto de funções que irá permitir a validação de espelhos e relatórios.
-Elas serão capazes de baixar o PDF gerado no sistema e comparar com um modelo previamente salvo, apontando as diferenças encontradas.</p>
+<h2>Comparador de PDF</h2>
+<p>Este pacote permite baixar arquivos PDF gerados pelo sistema, que serão comparados com modelos préviamente salvos.<br>
+Os pdf´s serão convertidos em imagens e um processo de comparação irá destacar as diferenças encontradas.</p>
+<p>Essa funcionalidade precisa dos seguintes pacotes e arquivos para funcionar:<br>
+Pacotes NPM:</p>
+<pre class="prettyprint source"><code>&quot;blink-diff&quot;: &quot;^1.0.13&quot;  
+&quot;pdf2img&quot;: &quot;^0.5.0&quot;  
+</code></pre>
+<p>E das seguintes aplicações instaladas no sistema operacional onde o teste vai rodar:</p>
+<pre class="prettyprint source"><code>GraphicsMagick na versão 13.34 Q16 64-bit  
+GPL Ghostscript 64-bit  
+XpdfReader 64-bit
+</code></pre>
 <h2>Construído com:</h2>
 <ul>
 <li><a href="https://nightwatchjs.org/">Nighwatch</a> - Framework de automação de testes</li>
 <li><a href="https://www.npmjs.com/">Npm</a> - Gerênciador de pacotes javascript</li>
-<li><a href="https://github.com/sindresorhus/np#readme">Np</a> - Ferramenta para controlar o versionamento e a publicação de pacotes npm</li>
+<li><a href="https://github.cyeisom/sindresorhus/np#readme">Np</a> - Ferramenta para controlar o versionamento e a publicação de pacotes npm</li>
 <li><a href="https://jsdoc.app/">JSDocs</a> - Ferramenta de documentação</li>
 <li><a href="https://github.com/SoftwareBrothers/better-docs">Better-Docs</a> - Plugin para personalizar documentações do JSDocs</li>
 </ul>
