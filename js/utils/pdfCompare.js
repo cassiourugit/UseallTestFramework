@@ -8,7 +8,8 @@ let info = {
     nomeDecoded: null,
     pageCount: null,
     id: new Date().valueOf().toString(36) + Math.random().toString(36).substr(2),
-    paginas: [],
+    paginas: new Array(),
+    imageDiffPath: new Array(),
 };
 
 // @ts-nocheck
@@ -184,9 +185,11 @@ module.exports = {
                 return;
             }
 
-            for (let i = 1; i <= info.pageCount; i++) {
-                console.log("Iniciando comparação da página: " + i)
+            for (let i = 0; i < info.pageCount; i++) {
                 await initiateCompare(pathOriginal, pathCompare, pathDiff, i);
+                if (info.paginas[i].code != 5) {
+                    info.imageDiffPath[i] = "./reports\\Diff" + "\\" + info.nomeDecoded + "_pg" + (i + 1) + "-" + info.id + ".png";
+                }
             }
             resolve(info);
         });
@@ -219,8 +222,8 @@ function initiateCompare(pathOriginal, pathCompare, pathDiff, pagina) {
     return new Promise(function (resolve, reject) {
         // @ts-ignore
         const diff = new BlinkDiff({
-            imageAPath: pathOriginal + "\\" + info.nomeDecoded + "_" + pagina + ".png",
-            imageBPath: pathCompare + "\\" + info.nomeDecoded + "_" + pagina + ".png",
+            imageAPath: pathOriginal + "\\" + info.nomeDecoded + "_" + (pagina + 1) + ".png",
+            imageBPath: pathCompare + "\\" + info.nomeDecoded + "_" + (pagina + 1) + ".png",
 
             thresholdType: BlinkDiff.THRESHOLD_PIXEL,
             threshold: 0.01,
@@ -230,14 +233,14 @@ function initiateCompare(pathOriginal, pathCompare, pathDiff, pagina) {
                 { x: 1574, y: 2583, width: 250, height: 34 },
             ],
             imageOutputLimit: BlinkDiff.OUTPUT_DIFFERENT,
-            imageOutputPath: pathDiff + "\\" + info.nomeDecoded + "_pg" + pagina + "-" + info.id + ".png"
+            imageOutputPath: pathDiff + "\\" + info.nomeDecoded + "_pg" + (pagina + 1) + "-" + info.id + ".png"
         });
 
         diff.run(function (error, result) {
             if (error) {
-                reject("Ocorreu um erro durante a comparação da página: " + pagina + " Mais detalhes: " + error)
+                reject("Ocorreu um erro durante a comparação da página: " + (pagina + 1) + " Mais detalhes: " + error)
             }
-            console.log("Concluindo comparação da página: " + pagina)
+            console.log("Concluindo comparação da página: " + (pagina + 1))
             info.paginas[pagina] = result;
             resolve();
         });

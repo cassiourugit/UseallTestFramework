@@ -88,16 +88,30 @@ var stringCom4000Caracteres = util.geraString(4000);
 Você pode conferir todas as funções disponíveis no menu "Utils".
 
 
-## Novidades a caminho
+## Comparador de PDF
 
-Está em desenvolvimento um conjunto de funções que irá permitir a validação de espelhos e relatórios.
-Elas serão capazes de baixar o PDF gerado no sistema e comparar com um modelo previamente salvo, apontando as diferenças encontradas.
+Este pacote permite baixar arquivos PDF gerados pelo sistema, que serão comparados com modelos préviamente salvos.  
+Os pdf´s serão convertidos em imagens e um processo de comparação irá destacar as diferenças encontradas.  
+
+Essa funcionalidade precisa dos seguintes pacotes e arquivos para funcionar:  
+Pacotes NPM:  
+```
+"blink-diff": "^1.0.13"  
+"pdf2img": "^0.5.0"  
+```
+
+E das seguintes aplicações instaladas no sistema operacional onde o teste vai rodar:  
+```
+GraphicsMagick na versão 13.34 Q16 64-bit  
+GPL Ghostscript 64-bit  
+XpdfReader 64-bit
+```
 
 
 ## Construído com:
 * [Nighwatch](https://nightwatchjs.org/) - Framework de automação de testes
 * [Npm](https://www.npmjs.com/) - Gerênciador de pacotes javascript
-* [Np](https://github.com/sindresorhus/np#readme) - Ferramenta para controlar o versionamento e a publicação de pacotes npm
+* [Np](https://github.cyeisom/sindresorhus/np#readme) - Ferramenta para controlar o versionamento e a publicação de pacotes npm
 * [JSDocs](https://jsdoc.app/) - Ferramenta de documentação
 * [Better-Docs](https://github.com/SoftwareBrothers/better-docs) - Plugin para personalizar documentações do JSDocs
 
