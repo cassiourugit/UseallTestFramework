@@ -151,8 +151,8 @@ module.exports = {
                     .useCss();
             } else {
                 this.useXpath()
-                    .waitForElementPresent('css selector', localizador)
-                    .getElementProperty('css selector', localizador, "checked", function (result) {
+                    .waitForElementPresent('xpath', localizador)
+                    .getElementProperty('xpath', localizador, "checked", function (result) {
                         if (result.value == true) {
                             this.click(localizador);
                         }
@@ -163,16 +163,16 @@ module.exports = {
         } else {
             if (check) {
                 this.useCss()
-                    .waitForElementPresent(localizador)
-                    .getAttribute(localizador, "checked", function (result) {
+                    .waitForElementPresent('css selector', localizador)
+                    .getElementProperty('css selector', localizador, "checked", function (result) {
                         if (result.value == false) {
                             this.click(localizador);
                         }
                     })
             } else {
                 this.useCss()
-                    .waitForElementPresent(localizador)
-                    .getAttribute(localizador, "checked", function (result) {
+                    .waitForElementPresent('css selector', localizador)
+                    .getElementProperty('css selector', localizador, "checked", function (result) {
                         if (result.value == true) {
                             this.click(localizador);
                         }
