@@ -56,6 +56,7 @@ module.exports = {
                             .useCss();
                     })
                 });
+            return this;
         } else {
             this.useCss()
                 .waitForElementVisible(campo)
@@ -84,8 +85,7 @@ module.exports = {
                             .assert.attributeContains(campo, "value", texto)
                     })
                 })
+            return this;
         }
-
-        return this;
     },
 };

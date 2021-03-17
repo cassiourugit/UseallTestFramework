@@ -28,7 +28,7 @@ module.exports = {
             if (check) {
                 this.useXpath()
                     .waitForElementPresent('xpath', localizador)
-                    .getAttribute(localizador, "checked", function (result) {
+                    .getElementProperty('xpath', localizador, "checked", function (result) {
                         if (result.value == false) {
                             this.click(localizador);
                         }
@@ -36,8 +36,8 @@ module.exports = {
                     .useCss();
             } else {
                 this.useXpath()
-                    .waitForElementPresent(localizador)
-                    .getAttribute(localizador, "checked", function (result) {
+                    .waitForElementPresent('css selector', localizador)
+                    .getElementProperty('css selector', localizador, "checked", function (result) {
                         if (result.value == true) {
                             this.click(localizador);
                         }

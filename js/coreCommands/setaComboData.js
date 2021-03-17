@@ -30,8 +30,7 @@ module.exports = {
                 .getAttribute('xpath', campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
                     let picker = "//div[@id='" + str + "-dateRangeCombo-trigger-picker']"
-                    let lista = "//ul[@id='" + str + "-dateRangeCombo-picker-listEl']";
-
+                    let lista = "//ul[starts-with(@id, '" + str + "')]";
                     this.click('xpath', picker)
                         .waitForElementVisible('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
                         .click('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
@@ -49,7 +48,7 @@ module.exports = {
                 .getAttribute(campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
                     let picker = "//div[@id='" + str + "-dateRangeCombo-trigger-picker']"
-                    let lista = "//ul[@id='" + str + "-dateRangeCombo-picker-listEl']";
+                    let lista = "//ul[starts-with(@id, '" + str + "')]";
 
                     this.click('xpath', picker)
                         .useXpath()

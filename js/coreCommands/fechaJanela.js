@@ -20,14 +20,15 @@ module.exports = {
             return this;
         }
 
+        this.waitForElementVisible('xpath', "//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']")
         this.keys(this.Keys.ESCAPE);
         this.element("css selector", loc.geral.messageBox, function (present) {
             if (present.status != -1)
-                this.isVisible('xpath', '//span[text()="Sim"]', function(visible) {
-                if (visible.value) {
+                this.isVisible('xpath', '//span[text()="Sim"]', function (visible) {
+                    if (visible.value) {
                         this.click('xpath', "//span[text()='Sim']")
                     }
-              });              
+                });
         });
 
         this.useXpath()

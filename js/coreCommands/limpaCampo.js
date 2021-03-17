@@ -20,26 +20,21 @@ module.exports = {
         if (util._isXpath(campo)) {
             this.useXpath()
                 .waitForElementVisible('xpath', campo)
-                .execute(function (campo) {
-                    xElement = document.evaluate(campo, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-                    for (let i = 0; i < xElement.snapshotLength; i++) {
-                        xElement.snapshotItem(i).value = null;
-                    }
-                }, [campo]);
-
-            this.useCss();
+                .click('xpath', campo)
+                .keys([this.Keys.CONTROL, "a"])
+                .keys(this.Keys.NULL)
+                .keys(this.Keys.BACK_SPACE)
+                .useCss();
 
             return this;
         }
 
         this.waitForElementVisible(campo)
-            .execute(
-                function (campo) {
-                    const field = document.querySelector(campo);
-                    field.value = null;
-                },
-                [campo]
-            );
+            .click('css selector', campo)
+            .keys([this.Keys.CONTROL, "a"])
+            .keys(this.Keys.NULL)
+            .keys(this.Keys.BACK_SPACE)
+            .useCss();
 
         return this;
     },

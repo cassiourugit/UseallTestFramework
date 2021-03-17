@@ -28,15 +28,15 @@ module.exports = {
             this.useXpath()
                 .waitForElementVisible(botao)
                 .click(botao)
-                .waitForElementVisible('xpath', "//span[contains(text(),'" + opcao + "')]")
-                .click('xpath', "//span[contains(text(),'" + opcao + "')]")
+                .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
+                .click('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
                 .useCss();
         } else {
             this.waitForElementVisible(botao)
                 .click(botao)
                 .useXpath()
-                .waitForElementVisible('xpath', "//span[contains(text(),'" + opcao + "')]")
-                .click('xpath', "//span[contains(text(),'" + opcao + "')]")
+                .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
+                .click('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
                 .useCss()
         }
 

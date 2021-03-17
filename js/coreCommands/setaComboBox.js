@@ -29,7 +29,7 @@ module.exports = {
                 .waitForElementVisible(campo)
                 .getAttribute('xpath', campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
-                    let lista = "//ul[@id='" + str + "-picker-listEl']";
+                    let lista = "//ul[starts-with(@id, '" + str + "')]";
 
                     this.click(campo)
                         .waitForElementVisible('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
@@ -47,7 +47,7 @@ module.exports = {
             this.waitForElementVisible(campo)
                 .getAttribute(campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
-                    let lista = "//ul[@id='" + str + "-picker-listEl']";
+                    let lista = "//ul[starts-with(@id, '" + str + "')]";
 
                     this.click(campo)
                         .useXpath()

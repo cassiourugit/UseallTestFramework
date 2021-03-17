@@ -29,14 +29,17 @@ module.exports = {
                     this.getAttribute('xpath', xpathId, "type", function (result) {
                         if (result.value == "checkbox") {
                             this.waitForElementPresent('xpath', xpathId + "/parent::span[contains(@class, 'x-field-default-form-checkbox-focus')]")
+                                .useCss()
+                                .pause(500)
                             return this;
                         } else {
                             this.waitForElementPresent('xpath', xpathId + "[contains(@class, 'x-field-default-form-focus')]")
+                                .useCss()
+                                .pause(500)
                             return this;
                         }
                     })
                 })
-                .useCss();
         } else {
             this.useCss()
                 .getAttribute(campo, 'id', function (result) {
@@ -46,9 +49,11 @@ module.exports = {
                     this.getAttribute('xpath', xpathId, "type", function (result) {
                         if (result.value == "checkbox") {
                             this.waitForElementPresent('xpath', xpathId + "/parent::span[contains(@class, 'x-field-default-form-checkbox-focus')]")
+                                .pause(500)
                             return this;
                         } else {
                             this.waitForElementPresent('xpath', xpathId + "[contains(@class, 'x-field-default-form-focus')]")
+                                .pause(500)
                             return this;
                         }
                     })

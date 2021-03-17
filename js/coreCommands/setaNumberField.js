@@ -29,14 +29,15 @@ module.exports = {
             this.useXpath()
                 .waitForElementPresent('xpath', campo)
                 .click('xpath', campo)
-                .limpaCampo(campo)
+                .limpaCampoHard(campo)
                 .setValue(campo, numero)
                 .clickOffset(campo, -1, -1)
                 .useCss();
         } else {
-            this.waitForElementPresent(campo)
+            this.useCss()
+                .waitForElementPresent(campo)
                 .click(campo)
-                .limpaCampo(campo)
+                .limpaCampoHard(campo)
                 .setValue(campo, numero)
                 .clickOffset(campo, -1, -1)
         }

@@ -148,12 +148,15 @@ module.exports = {
      * @param {String} pathOriginal - Diretório da imagem modelo para comparação
      * @param {String} pathCompare - Diretório da imagem extraída do PDF para comparação
      * @param {String} pathDiff - Diretório onde a imagem contendo as diferenças será salva
+     * @param {Object} [block = null] - *** Opcional *** - Objeto contendo números das cordenadas x, y, width, height
      * @example 
      * pdfCompare.comparaImagens("C:/temp/original", "C:/temp/compare", "C:/temp/diff", "espelhoPlanoDeAcao", "testeEspelhoPlanoDeAcao", "XXXNNN");
      * @author Cássio
     */
-    comparaImagens: function (pathOriginal, pathCompare, pathDiff) {
+    comparaImagens: function (pathOriginal, pathCompare, pathDiff, block = null) {
         return new Promise(async function (resolve, reject) {
+
+            let blockOut = block;
 
             if (!pathOriginal) {
                 reject(new Error('A variável path não está definida.'));
@@ -185,8 +188,88 @@ module.exports = {
                 return;
             }
 
+            if (block == null) {
+                blockOut = [
+                    {
+                        x: 1,
+                        y: 1,
+                        width: 1,
+                        height: 1
+                    },
+                ]
+            }
+
             for (let i = 0; i < info.pageCount; i++) {
-                await initiateCompare(pathOriginal, pathCompare, pathDiff, i);
+                await initiateCompare(pathOriginal, pathCompare, pathDiff, i, blockOut);
+                if (info.paginas[i].code != 5) {
+                    info.imageDiffPath[i] = "./reports\\Diff" + "\\" + info.nomeDecoded + "_pg" + (i + 1) + "-" + info.id + ".png";
+                }
+            }
+            resolve(info);
+        });
+    },
+
+    /**
+     * @function comparaImagensBoleto
+     * @category Pdf Compare
+     * @module
+     * @description - Compara a imagem extraída do PDF com o modelo armazenado e armazena uma imagem destacando as diferenças caso elas existam
+     * @param {String} pathOriginal - Diretório da imagem modelo para comparação
+     * @param {String} pathCompare - Diretório da imagem extraída do PDF para comparação
+     * @param {String} pathDiff - Diretório onde a imagem contendo as diferenças será salva
+     * @param {Object} [block = null] - *** Opcional *** - Objeto contendo números das cordenadas x, y, width, height
+     * @example 
+     * pdfCompare.comparaImagensBoleto("C:/temp/original", "C:/temp/compare", "C:/temp/diff", "espelhoPlanoDeAcao", "testeEspelhoPlanoDeAcao", "XXXNNN");
+     * @author Cássio
+    */
+    comparaImagensBoleto: function (pathOriginal, pathCompare, pathDiff, block = null) {
+        return new Promise(async function (resolve, reject) {
+
+            let blockOut = block;
+
+            if (!pathOriginal) {
+                reject(new Error('A variável path não está definida.'));
+                return;
+            }
+
+            if (!pathCompare) {
+                reject(new Error('A variável fileName não está definida.'));
+                return;
+            }
+
+            if (!pathDiff) {
+                reject(new Error('A variável pathDiff não está definida.'));
+                return;
+            }
+
+            if (!info.nomeDecoded) {
+                reject(new Error('A variável nomeDecoded não está definida.'));
+                return;
+            }
+
+            if (!info.id) {
+                reject(new Error('A variável id não está definida.'));
+                return;
+            }
+
+            if (!info.pageCount) {
+                reject(new Error('A variável pageCount não está definida.'));
+                return;
+            }
+
+            if (block == null) {
+                blockOut = [
+                    {
+                        x: 1,
+                        y: 1,
+                        width: 1,
+                        height: 1
+                    },
+                ]
+            }
+
+            for (let i = 0; i < info.pageCount; i++) {
+                await initiateCompareBoleto(pathOriginal, pathCompare, pathDiff, i, blockOut);
                 if (info.paginas[i].code != 5) {
                     info.imageDiffPath[i] = "./reports\\Diff" + "\\" + info.nomeDecoded + "_pg" + (i + 1) + "-" + info.id + ".png";
                 }
@@ -202,7 +285,7 @@ module.exports = {
      * @description - Recupera o nome do arquivo PDF através da URL
      * @param {String} url - URL
      * @example 
-     * pdfCompare.recuperaNomePDF("http://realtorios/espelho de ação corretiva.pdf");
+     * pdfCompare.recuperaNomePDF("http://relatorios/espelho de ação corretiva.pdf");
      * @author Cássio
     */
     recuperaNomePDF: function (url) {
@@ -216,9 +299,29 @@ module.exports = {
 
         info.nomeDecoded = util.limpaString(info.nomePDF);
     },
+
+    /**
+     * @function recuperaNomePDFBoleto
+     * @category Pdf Compare
+     * @module
+     * @description - Recupera o nome do arquivo PDF gerado para boletos através da URL
+     * @param {String} url - URL
+     * @example 
+     * pdfCompare.recuperaNomePDFBoleto("https://liberadauseall.useall.com.br/apiedi/api//v1/boletoimpressao/I19yHJWIwOu8");
+     * @author Cássio
+    */
+    recuperaNomePDFBoleto: function (url) {
+        //Recupera o nome do arquivo baixado sem a extensão
+        const str = util.aplicaRegexString(url, /.([^\/]+$)/g)
+
+        //Codifica os caracteres especiais
+        info.nomePDF = decodeURI(str)
+
+        info.nomeDecoded = util.limpaString(info.nomePDF);
+    },
 }
 
-function initiateCompare(pathOriginal, pathCompare, pathDiff, pagina) {
+function initiateCompare(pathOriginal, pathCompare, pathDiff, pagina, block) {
     return new Promise(function (resolve, reject) {
         // @ts-ignore
         const diff = new BlinkDiff({
@@ -229,9 +332,34 @@ function initiateCompare(pathOriginal, pathCompare, pathDiff, pagina) {
             threshold: 0.01,
             outputBackgroundOpacity: 0.4,
             composition: false,
-            blockOut: [
-                { x: 1574, y: 2583, width: 250, height: 34 },
-            ],
+            blockOut: block,
+            imageOutputLimit: BlinkDiff.OUTPUT_DIFFERENT,
+            imageOutputPath: pathDiff + "\\" + info.nomeDecoded + "_pg" + (pagina + 1) + "-" + info.id + ".png"
+        });
+
+        diff.run(function (error, result) {
+            if (error) {
+                reject("Ocorreu um erro durante a comparação da página: " + (pagina + 1) + " Mais detalhes: " + error)
+            }
+            console.log("Concluindo comparação da página: " + (pagina + 1))
+            info.paginas[pagina] = result;
+            resolve();
+        });
+    });
+}
+
+function initiateCompareBoleto(pathOriginal, pathCompare, pathDiff, pagina, block) {
+    return new Promise(function (resolve, reject) {
+        // @ts-ignore
+        const diff = new BlinkDiff({
+            imageAPath: pathOriginal,
+            imageBPath: pathCompare + "\\" + info.nomeDecoded + "_" + (pagina + 1) + ".png",
+
+            thresholdType: BlinkDiff.THRESHOLD_PIXEL,
+            threshold: 0.01,
+            outputBackgroundOpacity: 0.4,
+            composition: false,
+            blockOut: block,
             imageOutputLimit: BlinkDiff.OUTPUT_DIFFERENT,
             imageOutputPath: pathDiff + "\\" + info.nomeDecoded + "_pg" + (pagina + 1) + "-" + info.id + ".png"
         });

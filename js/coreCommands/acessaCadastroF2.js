@@ -23,9 +23,9 @@ module.exports = {
             .waitForElementVisible('css selector', loc.geral.campoBuscaF2)
             .setValue(loc.geral.campoBuscaF2, nome)
             .waitForElementVisible('css selector', "div[id*='pesquisageral-panel'] div[title='" + nome + "']")
+            .pause(500)
             .click('css selector', "div[id*='pesquisageral-panel'] div[title='" + nome + "']")
-            .waitForElementNotPresent('css selector', loc.geral.janelaF2Fechada);
-        this.expect.element("div[id*='pesquisageral-panel']").to.not.be.visible.before(5000)
+            .waitForElementPresent('css selector', loc.geral.janelaF2Fechada);
         this.useXpath()
             .waitForElementPresent('xpath', '//span[contains(text(), "' + nome + '")]', "A aba do cadastro não foi aberta corretamente.")
             .useCss()

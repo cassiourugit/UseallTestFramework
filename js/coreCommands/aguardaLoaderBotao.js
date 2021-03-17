@@ -7,7 +7,7 @@ module.exports = {
      * @function aguardaLoaderBotao
      * @category Core commands
      * @module
-     * @description - Aguarda até que o Loader do botão desapareça antes de prosseguir o teste
+     * @description - Aguarda até que o Loader do botão fique invisível antes de prosseguir o teste
      * @param {string} botao - Localizador **Css** ou **Xpath** do botão que apresenta o loader
      * @example browser.aguardaLoaderBotao("//span[text()='Salvar")
      * @author Cássio
@@ -28,7 +28,7 @@ module.exports = {
                     botaoId = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
 
                     this.waitForElementVisible('xpath', botaoId, 5000, "Loader do botão não apareceu após 5 segundos")
-                        .waitForElementNotPresent('xpath', botaoId, 30000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
+                        .waitForElementNotVisible('xpath', botaoId, 30000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
                         .useCss();
 
                     return this;
@@ -40,7 +40,7 @@ module.exports = {
                     botaoId = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
 
                     this.waitForElementVisible('xpath', botaoId, 5000, "Loader do botão não apareceu após 5 segundos")
-                        .waitForElementNotPresent('xpath', botaoId, 30000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
+                        .waitForElementNotVisible('xpath', botaoId, 30000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
                         .useCss();
 
                     return this;

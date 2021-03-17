@@ -20,11 +20,11 @@ module.exports = {
 
         if (util._isXpath(listagem)) {
             this.useXpath();
-            this.expect.elements(listagem + "//tr").count.to.not.equal(0);
+            this.expect.elements(listagem + "//tr").count.to.equal(0);
             this.useCss();
         } else {
             this.useCss();
-            this.expect.elements(listagem + " tr").count.to.not.equal(0);
+            this.expect.elements(listagem + " tr").count.to.equal(0);
         }
     },
 };
