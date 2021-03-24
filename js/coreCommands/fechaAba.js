@@ -15,7 +15,7 @@ module.exports = {
             return this;
         }
 
-        this.waitForElementPresent('xpath', "//span[text()= '" + nomeDaAba + "']/following::span[text()= ' Fechar']")
+        this.waitForElementPresent('xpath', "//span[text()= '" + nomeDaAba + "']/following::span[text()= ' Fechar']", "O botão para fechar a aba não foi encontrado no tempo máximo previsto")
             .click('xpath', "//span[text()= '" + nomeDaAba + "']/following::span[text()= ' Fechar']")
             .waitForElementNotPresent('xpath', "//span[text()= '" + nomeDaAba + "']/following::span[text()= ' Fechar']", "A aba não foi fechada.")
 

@@ -46,7 +46,7 @@ module.exports = {
             }, [campo, stringMaisUm]);
         this.click(campo)
         this.keys(this.Keys.TAB);
-        this.assert.attributeContains(campo, "aria-invalid", "true")
+        this.assert.attributeContains(campo, "aria-invalid", "true", "O campo passou do limite de caracteres e não foi destacado")
             .assert.attributeContains(campo, "data-errorqtip", "O tamanho máximo para este campo é " + limiteDeCaracteres, "O campo " + campo + " não possui o limite de caracteres previsto.")
             .clearValue(campo);
 
@@ -58,7 +58,7 @@ module.exports = {
             }, [campo, string]);
         this.click(campo)
         this.keys(this.Keys.TAB);
-        this.assert.attributeContains(campo, "aria-invalid", "false");
+        this.assert.attributeContains(campo, "aria-invalid", "false", "O campo está com o número correto de caracteres inserido, porém está destacado como inválido");
 
         return this;
     },

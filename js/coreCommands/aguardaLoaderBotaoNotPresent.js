@@ -22,7 +22,7 @@ module.exports = {
         let botaoId;
 
         if (util._isXpath(botao)) {
-            this.waitForElementPresent('xpath', botao)
+            this.waitForElementPresent('xpath', botao, "O botão informado não está visível na tela")
                 .getAttribute('xpath', botao, 'id', function (result) {
                     str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
                     botaoId = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
@@ -34,7 +34,7 @@ module.exports = {
                     return this;
                 });
         } else {
-            this.waitForElementPresent('css selector', botao)
+            this.waitForElementPresent('css selector', botao, "O botão informado não está visível na tela")
                 .getAttribute('css selector', botao, 'id', function (result) {
                     str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
                     botaoId = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";

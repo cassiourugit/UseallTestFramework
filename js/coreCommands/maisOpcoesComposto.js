@@ -33,22 +33,22 @@ module.exports = {
 
         if (util._isXpath(botao)) {
             this.useXpath()
-                .waitForElementVisible(botao)
+                .waitForElementVisible('xpath', botao, "O botão mais opções não foi encontrado no tempo máximo previsto")
                 .click(botao)
-                .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
+                .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]", "A primeira opção não foi encontrada")
                 .click('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
-                .waitForElementVisible('xpath', "//div[starts-with(@id, 'menuitem')] //span[text()= '" + opcao2 + "']")
+                .waitForElementVisible('xpath', "//div[starts-with(@id, 'menuitem')] //span[text()= '" + opcao2 + "']", "A segunda opção não foi encontrada")
                 .moveToElement('xpath', "//div[starts-with(@id, 'menuitem')] //span[text()= '" + opcao2 + "']", 0, 0)
                 .click('xpath', "//div[starts-with(@id, 'menuitem')] //span[text()= '" + opcao2 + "']")
                 .useCss();
         } else {
             this.useCss()
-                .waitForElementVisible(botao)
+                .waitForElementVisible('css selector', botao, "O botão mais opções não foi encontrado no tempo máximo previsto")
                 .click(botao)
                 .useXpath()
-                .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
+                .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]", "A primeira opção não foi encontrada")
                 .click('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
-                .waitForElementVisible('xpath', "//div[starts-with(@id, 'menuitem')] //span[text()= '" + opcao2 + "']")
+                .waitForElementVisible('xpath', "//div[starts-with(@id, 'menuitem')] //span[text()= '" + opcao2 + "']", "A segunda opção não foi encontrada")
                 .moveToElement('xpath', "//div[starts-with(@id, 'menuitem')] //span[text()= '" + opcao2 + "']", 0, 0)
                 .click('xpath', "//div[starts-with(@id, 'menuitem')] //span[text()= '" + opcao2 + "']")
                 .useCss()

@@ -13,10 +13,10 @@ module.exports = {
     */
     command: function (mensagemToast = null) {
         this.useCss()
-            .waitForElementPresent(loc.geral.toast);
+            .waitForElementPresent("css selector", loc.geral.toast, "Não foi encontrado nenhum toast na tela");
 
         if (mensagemToast != null) {
-            this.waitForElementVisible(loc.geral.toast);
+            this.waitForElementVisible("css selector", loc.geral.toast, "Não foi encontrado nenhum toast na tela");
             this.getAttribute(loc.geral.toast, "textContent", function (result) {
                 this.assert.containsText(loc.geral.toast, mensagemToast, "O toast não exibiu a mensagem correta, a mensagem exibida foi: " + result.value)
 

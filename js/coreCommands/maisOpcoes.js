@@ -26,16 +26,16 @@ module.exports = {
 
         if (util._isXpath(botao)) {
             this.useXpath()
-                .waitForElementVisible(botao)
+                .waitForElementVisible('xpath', botao, "O botão mais opções não foi encontrado no tempo máximo previsto")
                 .click(botao)
-                .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
+                .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada")
                 .click('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
                 .useCss();
         } else {
-            this.waitForElementVisible(botao)
+            this.waitForElementVisible('css selector', botao, "O botão mais opções não foi encontrado no tempo máximo previsto")
                 .click(botao)
                 .useXpath()
-                .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
+                .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada")
                 .click('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
                 .useCss()
         }

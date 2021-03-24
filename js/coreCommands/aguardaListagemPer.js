@@ -16,11 +16,11 @@ module.exports = {
         this.pause(200);
         if (util._isXpath(elemento)) {
             this.useXpath()
-                .waitForElementNotPresent(elemento, timeout)
+                .waitForElementNotPresent('xpath', elemento, timeout, "O loader da listagem não desapareceu após o tempo máximo previsto")
                 .useCss();
         } else {
             this.useCss()
-                .waitForElementNotPresent(elemento, timeout);
+                .waitForElementNotPresent('css selector', elemento, timeout, "O loader da listagem não desapareceu após o tempo máximo previsto");
         }
 
         return this;

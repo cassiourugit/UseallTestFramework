@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UseallTestFramework coreCommands/setaTextField.js</title>
+  <title>UseallTestFramework getDiffData</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -103,59 +101,227 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Source</p>
-                    <h1>coreCommands/setaTextField.js</h1>
+                    <p>Module</p>
+                    <h1>getDiffData</h1>
                 </header>
                 
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>// @ts-nocheck
-const util = require("../utils/util");
+        
+            
+        
+    
+</header>
 
-module.exports = {
-    /**
-     * @function setaTextField
-     * @category Core commands
-     * @module
-     * @description - Digita o valor passado por parâmetro no campo de texto
-     * @param {string} campo - Localizador **Css** ou **Xpath** do campo de texto
-     * @param {string} texto - Texto a ser digitado no campo
-     * @example 
-     * browser.setaTextField("input[data-test-id='Searchfield']", "Texto")
-     * @author Cássio
-    */
-    command: function (campo, texto) {
-        if (campo == "" || campo == null || campo == undefined) {
-            this.assert.fail("O parâmetro 'campo' não foi informado")
-            return this;
-        }
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><ul>
+<li>Retorna uma string com a diferença entre dias</li>
+</ul></div>
+        
 
-        if (texto == "" || texto == null || texto == undefined) {
-            this.assert.fail("O parâmetro 'texto' não foi informado")
-            return this;
-        }
+        
+            
 
-        if (util._isXpath(campo)) {
-            this.useXpath()
-                .waitForElementPresent('xpath', campo, "O campo não foi encontrado no tempo máximo previsto")
-                .clearValue(campo)
-                .setValue(campo, texto)
-                .useCss();
-        } else {
-            this.waitForElementPresent('css selector', campo, "O campo não foi encontrado no tempo máximo previsto")
-                .clearValue(campo)
-                .setValue(campo, texto)
-        }
 
-        return this;
-    },
-};</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>data1</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Primeira data no formato dd/mm/aaaa</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>data2</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Segunda data no formato dd/mm/aaaa</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Cássio</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="utils_util.js.html" class="button">View Source</a>
+            <span>
+                <a href="utils_util.js.html">utils/util.js</a>, <a href="utils_util.js.html#line171">line 171</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>let diff = util.getDiffData("20/03/2021", "24/03/2021");</code></pre>
+    
+
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

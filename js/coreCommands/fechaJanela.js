@@ -20,7 +20,7 @@ module.exports = {
             return this;
         }
 
-        this.waitForElementVisible('xpath', "//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']")
+        this.waitForElementVisible('xpath', "//div[starts-with(@class, 'x-window-header')]//div[text()= '" + nomeDaJanela + "']", "A aba não foi encontrada no tempo máximo previsto")
         this.keys(this.Keys.ESCAPE);
         this.element("css selector", loc.geral.messageBox, function (present) {
             if (present.status != -1)

@@ -26,12 +26,12 @@ module.exports = {
 
         if (util._isXpath(localizador)) {
             this.useXpath()
-                .waitForElementPresent('xpath', localizador)
+                .waitForElementPresent('xpath', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
                 .assert.attributeEquals(localizador, "checked", check, "A checkbox deveria estar (" + check + "), porém está (" + !check + ")")
                 .useCss();
         } else {
             this.useCss()
-                .waitForElementPresent(localizador)
+                .waitForElementPresent('css selector', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
                 .assert.attributeEquals(localizador, "checked", check, "A checkbox deveria estar (" + check + "), porém está (" + !check + ")");
         }
 

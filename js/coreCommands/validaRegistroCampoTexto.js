@@ -27,7 +27,7 @@ module.exports = {
 
         if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementPresent('xpath', campo)
+                .waitForElementPresent('xpath', campo, "O campo não foi encontrado no tempo máximo previsto")
             this.getAttribute(campo, 'value', function (result) {
                 if (result.value != texto) {
                     if (config.deveDestacarElemento) {
@@ -43,7 +43,7 @@ module.exports = {
             })
                 .useCss();
         } else {
-            this.waitForElementPresent(campo)
+            this.waitForElementPresent('css selector', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .getAttribute(campo, 'value', function (result) {
                     if (result.value != texto) {
                         if (config.deveDestacarElemento) {

@@ -13,7 +13,7 @@ module.exports = {
     command: function () {
         this.pause(200)
             .useXpath()
-            .waitForElementNotPresent(loc.geral.loadmaskRelX, 30000)
+            .waitForElementNotPresent('xpath', loc.geral.loadmaskRelX, 30000, "O loader do relatório não desapareceu após o tempo máximo previsto de 30 segundos")
             .useCss()
             .element("css selector", loc.geral.messageBox, function (visivel) {
                 if (visivel.status != -1) {

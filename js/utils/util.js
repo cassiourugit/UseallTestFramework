@@ -169,6 +169,29 @@ module.exports = {
     },
 
     /**
+     * @function getDiffData
+     * @category Utils
+     * @module
+     * @description - Retorna uma string com a diferença entre dias
+     * @param {string} data1 - Primeira data no formato dd/mm/aaaa
+     * @param {string} data2 - Segunda data no formato dd/mm/aaaa
+     * @example 
+     * let diff = util.getDiffData("20/03/2021", "24/03/2021");
+     * @author Cássio
+    */
+    getDiffData: function (data1, data2) {
+        const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+        let dataA = data1.split('/', 3)
+        let dataB = data2.split('/', 3)
+
+        const utc1 = Date.UTC(parseInt(dataA[2]), parseInt(dataA[1]), parseInt(dataA[0]));
+        const utc2 = Date.UTC(parseInt(dataB[2]), parseInt(dataB[1]), parseInt(dataB[0]));
+
+        return Math.floor((utc2 - utc1) / _MS_PER_DAY).toString();
+    },
+
+    /**
          * @function limpaDiretorio
          * @category Utils
          * @module

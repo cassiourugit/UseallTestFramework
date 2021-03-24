@@ -27,7 +27,7 @@ module.exports = {
 
         if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementPresent('xpath', campo)
+                .waitForElementPresent('xpath', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .click('xpath', campo)
                 .limpaCampoHard(campo)
                 .setValue(campo, numero)
@@ -35,7 +35,7 @@ module.exports = {
                 .useCss();
         } else {
             this.useCss()
-                .waitForElementPresent(campo)
+                .waitForElementPresent('css selector', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .click(campo)
                 .limpaCampoHard(campo)
                 .setValue(campo, numero)

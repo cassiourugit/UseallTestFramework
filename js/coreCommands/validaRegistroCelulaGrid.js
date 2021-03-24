@@ -27,7 +27,7 @@ module.exports = {
 
         if (util._isXpath(celula)) {
             this.useXpath()
-                .waitForElementVisible('xpath', celula)
+                .waitForElementVisible('xpath', celula, "A célula da grid não foi encontrada no tempo máximo previsto")
                 .getAttribute(celula, 'textContent', function (result) {
                     if (result.value != texto) {
                         if (config.deveDestacarElemento) {
@@ -49,7 +49,7 @@ module.exports = {
         }
 
         this.useCss()
-            .waitForElementVisible(celula)
+            .waitForElementVisible('css selector', celula, "A célula da grid não foi encontrada no tempo máximo previsto")
             .getAttribute(celula, 'textContent', function (result) {
                 if (result.value != texto) {
                     if (!config.deveDestacarElemento) {

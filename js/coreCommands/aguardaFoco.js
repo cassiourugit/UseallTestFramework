@@ -28,12 +28,12 @@ module.exports = {
                     //Valida se o campo do localizador xpathId é um checkbox ou um campo normal, e verifica se o mesmo tem foco.
                     this.getAttribute('xpath', xpathId, "type", function (result) {
                         if (result.value == "checkbox") {
-                            this.waitForElementPresent('xpath', xpathId + "/parent::span[contains(@class, 'x-field-default-form-checkbox-focus')]")
+                            this.waitForElementPresent('xpath', xpathId + "/parent::span[contains(@class, 'x-field-default-form-checkbox-focus')]", "O campo informado não recebeu o foco após o tempo máximo previsto")
                                 .useCss()
                                 .pause(500)
                             return this;
                         } else {
-                            this.waitForElementPresent('xpath', xpathId + "[contains(@class, 'x-field-default-form-focus')]")
+                            this.waitForElementPresent('xpath', xpathId + "[contains(@class, 'x-field-default-form-focus')]", "O campo informado não recebeu o foco após o tempo máximo previsto")
                                 .useCss()
                                 .pause(500)
                             return this;
@@ -48,11 +48,11 @@ module.exports = {
                     //Valida se o campo do localizador xpathId é um checkbox ou um campo normal, e verifica se o mesmo tem foco.
                     this.getAttribute('xpath', xpathId, "type", function (result) {
                         if (result.value == "checkbox") {
-                            this.waitForElementPresent('xpath', xpathId + "/parent::span[contains(@class, 'x-field-default-form-checkbox-focus')]")
+                            this.waitForElementPresent('xpath', xpathId + "/parent::span[contains(@class, 'x-field-default-form-checkbox-focus')]", "O campo informado não recebeu o foco após o tempo máximo previsto")
                                 .pause(500)
                             return this;
                         } else {
-                            this.waitForElementPresent('xpath', xpathId + "[contains(@class, 'x-field-default-form-focus')]")
+                            this.waitForElementPresent('xpath', xpathId + "[contains(@class, 'x-field-default-form-focus')]", "O campo informado não recebeu o foco após o tempo máximo previsto")
                                 .pause(500)
                             return this;
                         }

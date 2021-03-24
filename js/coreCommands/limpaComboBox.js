@@ -18,7 +18,7 @@ module.exports = {
             return this;
         }
 
-        this.waitForElementVisible(campo)
+        this.waitForElementVisible('css selector', campo, "O campo para ser limpo não foi encontrado no tempo máximo previsto")
             .execute(
                 function (campo) {
                     const field = document.querySelector(campo);

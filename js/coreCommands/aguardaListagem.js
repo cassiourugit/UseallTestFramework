@@ -12,7 +12,7 @@ module.exports = {
     */
     command: function () {
         this.pause(200)
-            .waitForElementNotPresent(loc.geral.loadmask)
+            .waitForElementNotPresent('css selector', loc.geral.loadmask, "O loader da listagem não desapareceu após o tempo máximo previsto")
             .pause(500)
 
         return this;

@@ -27,7 +27,7 @@ module.exports = {
         if (util._isXpath(localizador)) {
             if (check) {
                 this.useXpath()
-                    .waitForElementPresent('xpath', localizador)
+                    .waitForElementPresent('xpath', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
                     .getElementProperty('xpath', localizador, "checked", function (result) {
                         if (result.value == false) {
                             this.click(localizador);
@@ -36,7 +36,7 @@ module.exports = {
                     .useCss();
             } else {
                 this.useXpath()
-                    .waitForElementPresent('xpath', localizador)
+                    .waitForElementPresent('xpath', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
                     .getElementProperty('xpath', localizador, "checked", function (result) {
                         if (result.value == true) {
                             this.click(localizador);
@@ -48,16 +48,16 @@ module.exports = {
         } else {
             if (check) {
                 this.useCss()
-                    .waitForElementPresent('css selector', localizador)
-                    .getElementProperty('css selector', localizador, "checked", function (result) {
+                    .waitForElementPresent('css selector', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
+                    .getAttribute('css selector', localizador, "checked", function (result) {
                         if (result.value == false) {
                             this.click(localizador);
                         }
                     })
             } else {
                 this.useCss()
-                    .waitForElementPresent('css selector', localizador)
-                    .getElementProperty('css selector', localizador, "checked", function (result) {
+                    .waitForElementPresent('css selector', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
+                    .getAttribute('css selector', localizador, "checked", function (result) {
                         if (result.value == true) {
                             this.click(localizador);
                         }

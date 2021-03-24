@@ -29,33 +29,33 @@ module.exports = {
             return this;
         }
 
-        this.waitForElementVisible(loc.login.campoUsuario, 30000)
+        this.waitForElementVisible('css selector', loc.login.campoUsuario, 30000, "O campo usuário não foi encontrado no tempo máximo previsto")
             .clearValue(loc.login.campoUsuario)
             .setValue(loc.login.campoUsuario, usuario)
-            .waitForElementVisible(loc.login.campoSenha)
+            .waitForElementVisible('css selector', loc.login.campoSenha, "O campo senha não foi encontrado no tempo máximo previsto")
             .clearValue(loc.login.campoSenha)
             .setValue(loc.login.campoSenha, senha);
 
         if (esquemaBanco != null) {
-            this.waitForElementVisible(loc.login.campoBanco)
+            this.waitForElementVisible('css selector', loc.login.campoBanco, "O campo para escolher a base não foi encontrado no tempo máximo previsto")
                 .click(loc.login.campoBanco)
-                .waitForElementVisible("option[value= '" + esquemaBanco + "']")
+                .waitForElementVisible('css selector', "option[value= '" + esquemaBanco + "']", "A opção desejada não foi encontrada")
                 .click("option[value= '" + esquemaBanco + "']");
         }
 
-        this.waitForElementVisible(loc.login.btnLogar)
+        this.waitForElementVisible('css selector', loc.login.btnLogar, "O botão logar não foi encontrado no tempo máximo previsto")
             .click(loc.login.btnLogar);
 
         if (elementoDeEspera != null) {
             if (util._isXpath(elementoDeEspera)) {
                 this.useXpath()
-                    .waitForElementVisible(elementoDeEspera, 30000)
+                    .waitForElementVisible('xpath', elementoDeEspera, 30000, "O elemento de espera não apareceu após o tempo máximo previsto")
                     .useCss();
             } else {
-                this.waitForElementVisible(elementoDeEspera, 30000)
+                this.waitForElementVisible('css selector', elementoDeEspera, 30000, "O elemento de espera não apareceu após o tempo máximo previsto")
             }
         } else {
-            this.waitForElementVisible(loc.geral.fotoUsuario, 30000);
+            this.waitForElementVisible('css selector', loc.geral.fotoUsuario, 30000, "O elemento de espera (foto do usuário), não apareceu no tempo máximo previsto");
         }
 
         return this;

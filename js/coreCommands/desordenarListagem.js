@@ -19,11 +19,11 @@ module.exports = {
 
         if (util._isXpath(labelColuna)) {
             this.useXpath()
-                .waitForElementPresent('xpath', labelColuna)
+                .waitForElementPresent('xpath', labelColuna, 'A label da coluna não foi encontrada no tempo máximo previsto')
                 .click(labelColuna)
                 .useCss()
         } else {
-            this.waitForElementPresent(labelColuna)
+            this.waitForElementPresent('css selector', labelColuna, 'A label da coluna não foi encontrada no tempo máximo previsto')
                 .click(labelColuna)
         }
 

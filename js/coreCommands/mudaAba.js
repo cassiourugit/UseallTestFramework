@@ -20,11 +20,11 @@ module.exports = {
 
         if (util._isXpath(aba)) {
             this.useXpath()
-                .waitForElementVisible('xpath', aba)
+                .waitForElementVisible('xpath', aba, "A aba não foi encontrada no tempo máximo previsto")
                 .click(aba)
                 .useCss();
         } else {
-            this.waitForElementVisible(aba)
+            this.waitForElementVisible('css selector', aba, "A aba não foi encontrada no tempo máximo previsto")
                 .click(aba)
         }
 

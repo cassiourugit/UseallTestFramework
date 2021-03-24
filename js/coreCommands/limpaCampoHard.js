@@ -19,7 +19,7 @@ module.exports = {
 
         if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementVisible('xpath', campo)
+                .waitForElementVisible('xpath', campo, "O campo para ser limpo não foi encontrado no tempo máximo previsto")
                 .execute(function (campo) {
                     xElement = document.evaluate(campo, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
                     for (let i = 0; i < xElement.snapshotLength; i++) {

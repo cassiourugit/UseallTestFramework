@@ -32,12 +32,12 @@ module.exports = {
 
         if (util._isXpath(elemento)) {
             this.useXpath()
-                .waitForElementPresent('xpath', elemento)
+                .waitForElementPresent('xpath', elemento, "O botão não está presente após o tempo máximo previsto")
                 .moveToElement(elemento, xoffset, yoffset)
                 .mouseButtonClick(0)
                 .useCss();
         } else {
-            this.waitForElementPresent(elemento)
+            this.waitForElementPresent('css selector', elemento, "O botão não está presente após o tempo máximo previsto")
                 .moveToElement(elemento, xoffset, yoffset)
                 .mouseButtonClick(0)
         }

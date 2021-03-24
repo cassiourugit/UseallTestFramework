@@ -19,7 +19,7 @@ module.exports = {
 
         if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementVisible('xpath', campo)
+                .waitForElementVisible('xpath', campo, "O campo para ser limpo não foi encontrado no tempo máximo previsto")
                 .click('xpath', campo)
                 .keys([this.Keys.CONTROL, "a"])
                 .keys(this.Keys.NULL)
@@ -29,7 +29,7 @@ module.exports = {
             return this;
         }
 
-        this.waitForElementVisible(campo)
+        this.waitForElementVisible('css selector', campo, "O campo para ser limpo não foi encontrado no tempo máximo previsto")
             .click('css selector', campo)
             .keys([this.Keys.CONTROL, "a"])
             .keys(this.Keys.NULL)

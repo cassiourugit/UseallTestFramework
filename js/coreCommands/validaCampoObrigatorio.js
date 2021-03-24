@@ -22,15 +22,15 @@ module.exports = {
             this.useXpath()
                 .click(campo);
             this.keys(this.Keys.TAB);
-            this.assert.attributeEquals(campo, "aria-invalid", "true")
-                .assert.attributeEquals(campo, "aria-required", "true")
+            this.assert.attributeEquals(campo, "aria-invalid", "true", "O campo " + campo + " não está marcado como obrigatório.")
+                .assert.attributeEquals(campo, "aria-required", "true", "O campo " + campo + " não está marcado como obrigatório.")
                 .assert.attributeContains(campo, "data-errorqtip", "Este campo é obrigatório.", "O campo " + campo + " não está marcado como obrigatório.")
                 .useCss();
         } else {
             this.click(campo);
             this.keys(this.Keys.TAB);
-            this.assert.attributeEquals(campo, "aria-invalid", "true")
-                .assert.attributeEquals(campo, "aria-required", "true")
+            this.assert.attributeEquals(campo, "aria-invalid", "true", "O campo " + campo + " não está marcado como obrigatório.")
+                .assert.attributeEquals(campo, "aria-required", "true", "O campo " + campo + " não está marcado como obrigatório.")
                 .assert.attributeContains(campo, "data-errorqtip", "Este campo é obrigatório.", "O campo " + campo + " não está marcado como obrigatório.")
         }
 

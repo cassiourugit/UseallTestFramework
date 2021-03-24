@@ -27,7 +27,7 @@ module.exports = {
 
         if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementVisible('xpath', campo)
+                .waitForElementVisible('xpath', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .getAttribute('xpath', campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
                     let lista = "ul[id='" + str + "-picker-listEl']";
@@ -54,7 +54,7 @@ module.exports = {
                 });
         } else {
             this.useCss()
-                .waitForElementVisible(campo)
+                .waitForElementVisible('css selector', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .getAttribute(campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
                     let lista = "ul[id='" + str + "-picker-listEl']";

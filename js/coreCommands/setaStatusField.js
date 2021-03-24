@@ -29,6 +29,7 @@ module.exports = {
         if (util._isXpath(campo)) {
             this
                 .useXpath()
+                .waitForElementPresent('xpath', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .click(campo)
                 .getAttribute("//li[text()= '" + status + "']", "aria-selected", function (result) {
                     if (marcar != result.value) {
@@ -41,6 +42,7 @@ module.exports = {
         } else {
             this
                 .useCss()
+                .waitForElementPresent('css selector', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .click(campo)
                 .getAttribute("xpath", "//li[text()= '" + status + "']", "aria-selected", function (result) {
                     if (marcar != result.value) {

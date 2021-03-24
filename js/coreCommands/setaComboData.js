@@ -26,13 +26,13 @@ module.exports = {
 
         if (util._isXpath(campo)) {
             this.useXpath()
-                .waitForElementVisible(campo)
+                .waitForElementVisible('xpath', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .getAttribute('xpath', campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
                     let picker = "//div[@id='" + str + "-dateRangeCombo-trigger-picker']"
                     let lista = "//ul[starts-with(@id, '" + str + "')]";
                     this.click('xpath', picker)
-                        .waitForElementVisible('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
+                        .waitForElementVisible('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada na listagem do campo")
                         .click('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
                         .element("xpath", campo, function (result) {
                             this.elementIdAttribute(result.value.ELEMENT, "aria-expanded", function (attribute) {
@@ -44,7 +44,7 @@ module.exports = {
                         .useCss();
                 });
         } else {
-            this.waitForElementVisible(campo)
+            this.waitForElementVisible('css selector', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .getAttribute(campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
                     let picker = "//div[@id='" + str + "-dateRangeCombo-trigger-picker']"
@@ -52,7 +52,7 @@ module.exports = {
 
                     this.click('xpath', picker)
                         .useXpath()
-                        .waitForElementVisible('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
+                        .waitForElementVisible('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada na listagem do campo")
                         .click('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
                         .useCss()
                         .element("css selector", campo, function (result) {
