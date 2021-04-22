@@ -27,7 +27,7 @@ module.exports = {
 
                     //Valida se o campo do localizador xpathId é um checkbox ou um campo normal, e verifica se o mesmo tem foco.
                     this.getAttribute('xpath', xpathId, "type", function (result) {
-                        if (result.value == "checkbox") {
+                        if (result.value == "checkbox" || result.value == "radio") {
                             this.waitForElementPresent('xpath', xpathId + "/parent::span[contains(@class, 'x-field-default-form-checkbox-focus')]", "O campo informado não recebeu o foco após o tempo máximo previsto")
                                 .useCss()
                                 .pause(500)
@@ -47,7 +47,7 @@ module.exports = {
 
                     //Valida se o campo do localizador xpathId é um checkbox ou um campo normal, e verifica se o mesmo tem foco.
                     this.getAttribute('xpath', xpathId, "type", function (result) {
-                        if (result.value == "checkbox") {
+                        if (result.value == "checkbox" || result.value == "radio") {
                             this.waitForElementPresent('xpath', xpathId + "/parent::span[contains(@class, 'x-field-default-form-checkbox-focus')]", "O campo informado não recebeu o foco após o tempo máximo previsto")
                                 .pause(500)
                             return this;

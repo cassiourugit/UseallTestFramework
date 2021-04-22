@@ -32,7 +32,7 @@ module.exports = {
                 .useCss();
         } else {
             this.useCss()
-                .waitForElementPresent(campoDoTipoFile)
+                .waitForElementPresent('css selector', campoDoTipoFile)
                 .setValue(campoDoTipoFile, localDoARquivo);
         }
 

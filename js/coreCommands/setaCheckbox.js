@@ -19,11 +19,6 @@ module.exports = {
             return this;
         }
 
-        if (check == "" || check == null || check == undefined) {
-            this.assert.fail("O parâmetro 'check' não foi informado")
-            return this;
-        }
-
         if (util._isXpath(localizador)) {
             if (check) {
                 this.useXpath()

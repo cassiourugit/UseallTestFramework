@@ -1,5 +1,6 @@
 // @ts-nocheck
 const util = require("../utils/util");
+const config = require("../utils/configDefinitions");
 
 module.exports = {
     /**
@@ -19,20 +20,56 @@ module.exports = {
             return this;
         }
 
-        if (check == "" || check == null || check == undefined) {
-            this.assert.fail("O parâmetro 'check' não foi informado")
-            return this;
-        }
-
         if (util._isXpath(localizador)) {
             this.useXpath()
                 .waitForElementPresent('xpath', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
-                .assert.attributeEquals(localizador, "checked", check, "A checkbox deveria estar (" + check + "), porém está (" + !check + ")")
-                .useCss();
+                .getAttribute(localizador, "id", function (id) {
+                    let str = util.aplicaRegexString(id.value, /.*\d+(?=\-)/g);
+                    let checkField = "div[id='" + str + "-innerWrapEl']";
+
+                    this.getAttribute(localizador, "checked", function (result) {
+                        resultadoCheck = Boolean(result.value)
+                        if (resultadoCheck != check) {
+                            if (config.deveDestacarElemento) {
+                                this.destacaElemento(checkField)
+                                this.assert.attributeEquals(localizador, "checked", check, "A checkbox deveria estar (" + check + "), porém está (" + !check + ")")
+                                    .useCss();
+
+                                return this;
+                            }
+                            this.assert.attributeEquals(localizador, "checked", check, "A checkbox deveria estar(" + check + "), porém está(" + !check + ")")
+                                .useCss();
+
+                            return this;
+                        }
+                    })
+                        .useCss();
+                })
+
         } else {
             this.useCss()
                 .waitForElementPresent('css selector', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
-                .assert.attributeEquals(localizador, "checked", check, "A checkbox deveria estar (" + check + "), porém está (" + !check + ")");
+                .getAttribute(localizador, "id", function (id) {
+                    let str = util.aplicaRegexString(id.value, /.*\d+(?=\-)/g);
+                    let checkField = "div[id='" + str + "-innerWrapEl']";
+
+                    this.getAttribute(localizador, "checked", function (result) {
+                        resultadoCheck = Boolean(result.value)
+                        if (resultadoCheck != check) {
+                            if (config.deveDestacarElemento) {
+                                this.destacaElemento(checkField)
+                                this.assert.attributeEquals(localizador, "checked", check, "A checkbox deveria estar (" + check + "), porém está (" + !check + ")")
+                                    .useCss();
+
+                                return this;
+                            }
+                            this.assert.attributeEquals(localizador, "checked", check, "A checkbox deveria estar(" + check + "), porém está(" + !check + ")")
+                                .useCss();
+
+                            return this;
+                        }
+                    })
+                })
         }
 
         return this;

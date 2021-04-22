@@ -29,6 +29,7 @@ module.exports = {
                 .waitForElementVisible('xpath', campo, "O campo informado não foi encontrado no tempo máximo previsto")
                 .getAttribute('xpath', campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let field = "input[id^='" + str + "'][id$='-inputEl']"
                     let lista = "//ul[starts-with(@id, '" + str + "')]";
 
                     this.click(campo)
@@ -41,12 +42,15 @@ module.exports = {
                                 }
                             });
                         })
+                        .expect.element(field, 'css selector').to.have.attribute("value").which.contains(opcao).before(5000)
+                    this
                         .useCss();
                 });
         } else {
             this.waitForElementVisible('css selector', campo, "O campo informado não foi encontrado no tempo máximo previsto")
                 .getAttribute(campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let field = "input[id^='" + str + "'][id$='-inputEl']"
                     let lista = "//ul[starts-with(@id, '" + str + "')]";
 
                     this.click(campo)
@@ -60,7 +64,8 @@ module.exports = {
                                     this.click(campo)
                                 }
                             });
-                        });
+                        })
+                        .expect.element(field, 'css selector').to.have.attribute("value").which.contains(opcao).before(5000)
                 });
         }
 

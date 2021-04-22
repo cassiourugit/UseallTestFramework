@@ -29,8 +29,10 @@ module.exports = {
                 .waitForElementVisible('xpath', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .getAttribute('xpath', campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let field = "input[id^='" + str + "'][id$='-dateRangeCombo-inputEl']"
                     let picker = "//div[@id='" + str + "-dateRangeCombo-trigger-picker']"
                     let lista = "//ul[starts-with(@id, '" + str + "')]";
+
                     this.click('xpath', picker)
                         .waitForElementVisible('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada na listagem do campo")
                         .click('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
@@ -41,12 +43,15 @@ module.exports = {
                                 }
                             });
                         })
+                        .expect.element(field, 'css selector').to.have.attribute("value").which.contains(opcao).before(5000)
+                    this
                         .useCss();
                 });
         } else {
             this.waitForElementVisible('css selector', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .getAttribute(campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let field = "input[id^='" + str + "'][id$='-dateRangeCombo-inputEl']"
                     let picker = "//div[@id='" + str + "-dateRangeCombo-trigger-picker']"
                     let lista = "//ul[starts-with(@id, '" + str + "')]";
 
@@ -61,7 +66,8 @@ module.exports = {
                                     this.click(campo)
                                 }
                             });
-                        });
+                        })
+                        .expect.element(field, 'css selector').to.have.attribute("value").which.contains(opcao).before(5000)
                 });
         }
 

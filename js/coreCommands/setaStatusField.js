@@ -37,6 +37,10 @@ module.exports = {
                     }
                 })
                 .click(campo)
+            if (marcar == "true") {
+                this.expect.element(campo, 'xpath').to.have.attribute("value").which.contains(status).before(5000)
+            }
+            this
                 .useCss();
 
         } else {
@@ -50,6 +54,9 @@ module.exports = {
                     }
                 })
                 .click(campo)
+            if (marcar == "true") {
+                this.expect.element(campo, 'css selector').to.have.attribute("value").which.contains(status).before(5000)
+            }
         }
 
         return this;

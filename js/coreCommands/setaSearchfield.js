@@ -52,6 +52,8 @@ module.exports = {
                         }
                         this.click(lista)
                             .useXpath()
+                            .expect.element(campo, 'xpath').to.have.attribute("value").which.contains(texto).before(5000)
+                        this
                             .assert.attributeContains(campo, "value", texto, "A opção selecionada não foi setada no campo")
                             .useCss();
                     })
@@ -82,6 +84,8 @@ module.exports = {
                             return this;
                         }
                         this.click(lista)
+                            .expect.element(campo, 'css selector').to.have.attribute("value").which.contains(texto).before(5000)
+                        this
                             .assert.attributeContains(campo, "value", texto, "A opção selecionada não foi setada no campo")
                     })
                 })

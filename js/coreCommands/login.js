@@ -48,14 +48,20 @@ module.exports = {
 
         if (elementoDeEspera != null) {
             if (util._isXpath(elementoDeEspera)) {
-                this.useXpath()
-                    .waitForElementVisible('xpath', elementoDeEspera, 30000, "O elemento de espera não apareceu após o tempo máximo previsto")
+                this
+                    .useXpath()
+                    .waitForElementPresent('xpath', elementoDeEspera, 30000, "O elemento de espera não está presente após o tempo máximo previsto")
+                    .waitForElementVisible('xpath', elementoDeEspera, 30000, "O elemento de espera não está visível após o tempo máximo previsto")
                     .useCss();
             } else {
-                this.waitForElementVisible('css selector', elementoDeEspera, 30000, "O elemento de espera não apareceu após o tempo máximo previsto")
+                this
+                    .waitForElementPresent('css selector', elementoDeEspera, 30000, "O elemento de espera não está presente após o tempo máximo previsto")
+                    .waitForElementVisible('css selector', elementoDeEspera, 30000, "O elemento de espera não está visível após o tempo máximo previsto")
             }
         } else {
-            this.waitForElementVisible('css selector', loc.geral.fotoUsuario, 30000, "O elemento de espera (foto do usuário), não apareceu no tempo máximo previsto");
+            this
+                .waitForElementPresent('css selector', loc.geral.fotoUsuario, 30000, "O elemento de espera (foto do usuário), não está presente após o tempo máximo previsto")
+                .waitForElementVisible('css selector', loc.geral.fotoUsuario, 30000, "O elemento de espera (foto do usuário), não está visível após o tempo máximo previsto");
         }
 
         return this;

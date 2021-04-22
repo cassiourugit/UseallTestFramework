@@ -13,7 +13,7 @@ module.exports = {
      * @author Cássio
     */
     command: function (elemento, timeout) {
-        this.pause(200);
+        this.pause(500);
         if (util._isXpath(elemento)) {
             this.useXpath()
                 .waitForElementNotPresent('xpath', elemento, timeout, "O loader da listagem não desapareceu após o tempo máximo previsto")

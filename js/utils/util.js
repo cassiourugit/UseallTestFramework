@@ -1,6 +1,7 @@
 // @ts-nocheck
 const fs = require("fs");
 const path = require('path');
+const moment = require('moment');
 
 module.exports = {
 
@@ -120,6 +121,23 @@ module.exports = {
     },
 
     /**
+         * @function getDataOntem
+         * @category Utils
+         * @module
+         * @description - Retorna uma string da data de ontem no formato "dd/mm/aaaa"
+         * @example 
+         * var data = util.getDataOntem();
+         * @author Cássio
+        */
+    getDataOntem: function () {
+        let today = new Date();
+        let data = (today.getDate() - 1).toString().padStart(2, '0')
+            + '/' + (today.getMonth() + 1).toString().padStart(2, '0')
+            + '/' + today.getFullYear();
+        return data;
+    },
+
+    /**
     * @function getDataHora
     * @category Utils
     * @module
@@ -180,15 +198,10 @@ module.exports = {
      * @author Cássio
     */
     getDiffData: function (data1, data2) {
-        const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+        var a = moment(data1, 'D/M/YYYY');
+        var b = moment(data2, 'D/M/YYYY');
 
-        let dataA = data1.split('/', 3)
-        let dataB = data2.split('/', 3)
-
-        const utc1 = Date.UTC(parseInt(dataA[2]), parseInt(dataA[1]), parseInt(dataA[0]));
-        const utc2 = Date.UTC(parseInt(dataB[2]), parseInt(dataB[1]), parseInt(dataB[0]));
-
-        return Math.floor((utc2 - utc1) / _MS_PER_DAY).toString();
+        return b.diff(a, 'days').toString();
     },
 
     /**
