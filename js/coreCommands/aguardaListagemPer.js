@@ -8,11 +8,11 @@ module.exports = {
      * @module
      * @description - Aguarda o elemento que indica o carregamento de algum processo aparecer e sumir antes de prosseguir com o teste
      * @param {string} elemento - Localizador **Css** ou **Xpath** do elemento que indica o carregamento
-     * @param {number} timeout - Tempo máximo em milissegundos que o teste irá esperar pela listagem carregar
+     * @param {number} [timeout = 10000] - **Opcional** Tempo máximo em milissegundos que o teste irá esperar pela listagem carregar
      * @example browser.aguardaListagemPer("//div[text()= 'Carregando...']", "5000")
      * @author Cássio
     */
-    command: function (elemento, timeout) {
+    command: function (elemento, timeout = 10000) {
         this.pause(500);
         if (util._isXpath(elemento)) {
             this.useXpath()

@@ -24,7 +24,7 @@ module.exports = {
         if (util._isXpath(botao)) {
             this.waitForElementVisible('xpath', botao, "O botão informado não está visível na tela")
                 .getAttribute('xpath', botao, 'id', function (result) {
-                    str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     botaoId = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
 
                     this.waitForElementVisible('xpath', botaoId, 5000, "Loader do botão não apareceu após 5 segundos")
@@ -36,7 +36,7 @@ module.exports = {
         } else {
             this.waitForElementVisible('css selector', botao, "O botão informado não está visível na tela")
                 .getAttribute('css selector', botao, 'id', function (result) {
-                    str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     botaoId = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
 
                     this.waitForElementVisible('xpath', botaoId, 5000, "Loader do botão não apareceu após 5 segundos")

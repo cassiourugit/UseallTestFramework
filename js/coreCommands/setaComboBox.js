@@ -28,7 +28,7 @@ module.exports = {
             this.useXpath()
                 .waitForElementVisible('xpath', campo, "O campo informado não foi encontrado no tempo máximo previsto")
                 .getAttribute('xpath', campo, 'id', function (result) {
-                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let field = "input[id^='" + str + "'][id$='-inputEl']"
                     let lista = "//ul[starts-with(@id, '" + str + "')]";
 
@@ -49,7 +49,7 @@ module.exports = {
         } else {
             this.waitForElementVisible('css selector', campo, "O campo informado não foi encontrado no tempo máximo previsto")
                 .getAttribute(campo, 'id', function (result) {
-                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let field = "input[id^='" + str + "'][id$='-inputEl']"
                     let lista = "//ul[starts-with(@id, '" + str + "')]";
 

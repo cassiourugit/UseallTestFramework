@@ -29,7 +29,7 @@ module.exports = {
             this.useXpath()
                 .waitForElementPresent('xpath', campo)
                 .getAttribute('xpath', campo, 'id', function (result) {
-                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let lista = "ul[id='" + str + "-picker-listEl'] li";
                     let grid = "//input[starts-with(@id, '" + str + "')]/ancestor::div[starts-with(@id, 'container-searchfield-multiselect')]/descendant::div[@class='x-grid-item-container']"
 
@@ -61,7 +61,7 @@ module.exports = {
             this.useCss()
                 .waitForElementPresent('css selector', campo)
                 .getAttribute('css selector', campo, 'id', function (result) {
-                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let lista = "ul[id='" + str + "-picker-listEl'] li";
                     let grid = "//input[starts-with(@id, '" + str + "')]/ancestor::div[starts-with(@id, 'container-searchfield-multiselect')]/descendant::div[@class='x-grid-item-container']"
 

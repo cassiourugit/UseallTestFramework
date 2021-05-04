@@ -28,7 +28,7 @@ module.exports = {
 
                     this.getAttribute('xpath', elemento, 'id', function (result) {
                         //Se houver um loader no botão, aguarda até ele finalizar
-                        str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                        str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                         elementoLoader = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
 
                         this.element('xpath', elementoLoader, function (elem) {
@@ -60,7 +60,7 @@ module.exports = {
 
                     this.getAttribute('css selector', elemento, 'id', function (result) {
                         //Se houver um loader no botão, aguarda até ele finalizar
-                        str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                        str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                         elementoLoader = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
 
                         this.element('xpath', elementoLoader, function (elem) {

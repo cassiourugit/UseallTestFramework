@@ -29,7 +29,7 @@ module.exports = {
             this.useXpath()
                 .waitForElementVisible('xpath', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .getAttribute('xpath', campo, 'id', function (result) {
-                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let lista = "ul[id='" + str + "-picker-listEl']";
 
                     this.clearValue(campo)
@@ -56,7 +56,7 @@ module.exports = {
             this.useCss()
                 .waitForElementVisible('css selector', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .getAttribute(campo, 'id', function (result) {
-                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let lista = "ul[id='" + str + "-picker-listEl']";
 
                     this.clearValue(campo)

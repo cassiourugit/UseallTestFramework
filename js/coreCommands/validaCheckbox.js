@@ -24,7 +24,7 @@ module.exports = {
             this.useXpath()
                 .waitForElementPresent('xpath', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
                 .getAttribute(localizador, "id", function (id) {
-                    let str = util.aplicaRegexString(id.value, /.*\d+(?=\-)/g);
+                    let str = util.aplicaRegexString(id.value, /.*\d+(?=\-)?/g);
                     let checkField = "div[id='" + str + "-innerWrapEl']";
 
                     this.getAttribute(localizador, "checked", function (result) {
@@ -50,7 +50,7 @@ module.exports = {
             this.useCss()
                 .waitForElementPresent('css selector', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
                 .getAttribute(localizador, "id", function (id) {
-                    let str = util.aplicaRegexString(id.value, /.*\d+(?=\-)/g);
+                    let str = util.aplicaRegexString(id.value, /.*\d+(?=\-)?/g);
                     let checkField = "div[id='" + str + "-innerWrapEl']";
 
                     this.getAttribute(localizador, "checked", function (result) {

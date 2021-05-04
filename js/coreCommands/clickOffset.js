@@ -30,15 +30,17 @@ module.exports = {
             return this;
         }
 
+        console.log("Width: " + xoffset + "\nHeigh: " + yoffset)
+
         if (util._isXpath(elemento)) {
             this.useXpath()
                 .waitForElementPresent('xpath', elemento, "O botão não está presente após o tempo máximo previsto")
-                .moveToElement(elemento, xoffset, yoffset)
+                .moveToElement('xpath', elemento, xoffset, yoffset)
                 .mouseButtonClick(0)
                 .useCss();
         } else {
             this.waitForElementPresent('css selector', elemento, "O botão não está presente após o tempo máximo previsto")
-                .moveToElement(elemento, xoffset, yoffset)
+                .moveToElement('css selector', elemento, xoffset, yoffset)
                 .mouseButtonClick(0)
         }
 

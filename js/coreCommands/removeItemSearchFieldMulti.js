@@ -29,7 +29,7 @@ module.exports = {
         if (util._isXpath(campo)) {
             this.waitForElementPresent('xpath', campo);
             this.getAttribute('xpath', campo, 'id', function (result) {
-                let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                 let btnRemover = "//input[starts-with(@id, '" + str + "')]/ancestor::div[starts-with(@id, 'container-searchfield-multiselect')] //div[contains(text(), '" + texto + "')]/ancestor::tr/descendant::div[@data-qtip='Remover']"
 
                 this.click('xpath', btnRemover)
@@ -41,7 +41,7 @@ module.exports = {
         } else {
             this.waitForElementPresent('css selector', campo);
             this.getAttribute('css selector', campo, 'id', function (result) {
-                let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                 let btnRemover = "//input[starts-with(@id, '" + str + "')]/ancestor::div[starts-with(@id, 'container-searchfield-multiselect')] //div[contains(text(), '" + texto + "')]/ancestor::tr/descendant::div[@data-qtip='Remover']"
 
                 this.click('xpath', btnRemover)

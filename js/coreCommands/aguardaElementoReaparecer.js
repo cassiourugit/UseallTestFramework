@@ -23,7 +23,7 @@ module.exports = {
         if (util._isXpath(campo)) {
             this.useXpath()
                 .getAttribute('xpath', campo, 'id', function (result) {
-                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let id = "[id^='" + str + "']";
 
                     this.waitForElementNotPresent('css selector', id, "Elemento: " + id + " não desapareceu após o tempo máximo previsto")
@@ -35,7 +35,7 @@ module.exports = {
         } else {
             this.useCss()
                 .getAttribute('css selector', campo, 'id', function (result) {
-                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)/g);
+                    let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let id = "[id^='" + str + "']";
 
                     this.waitForElementNotPresent('css selector', id, "Elemento: " + id + " não desapareceu após o tempo máximo previsto")

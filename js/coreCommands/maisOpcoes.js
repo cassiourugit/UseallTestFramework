@@ -27,17 +27,37 @@ module.exports = {
         if (util._isXpath(botao)) {
             this.useXpath()
                 .waitForElementVisible('xpath', botao, "O botão mais opções não foi encontrado no tempo máximo previsto")
-                .click(botao)
-                .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada")
-                .click('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
-                .useCss();
+                .getAttribute('xpath', botao, 'id', function (resultAttr) {
+                    let str = util.aplicaRegexString(resultAttr.value, /.*\d+(?=\-)?/g);
+                    let btnFull = "a[id='" + str + "']";
+
+                    this.getElementSize('css selector', btnFull, function (resultSize) {
+                        let height = resultSize.value.height / 2;
+                        let width = resultSize.value.width - (resultSize.value.width * .14);
+
+                        this.clickOffset(btnFull, width, height)
+                            .waitForElementVisible('xpath', "//div[@role='menu'][@aria-expanded='true'] //span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada")
+                            .click('xpath', "//div[@role='menu'][@aria-expanded='true'] //span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
+                            .useCss();
+                    })
+                })
+
         } else {
             this.waitForElementVisible('css selector', botao, "O botão mais opções não foi encontrado no tempo máximo previsto")
-                .click(botao)
-                .useXpath()
-                .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada")
-                .click('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
-                .useCss()
+                .getAttribute('css selector', botao, 'id', function (resultAttr) {
+                    let str = util.aplicaRegexString(resultAttr.value, /.*\d+(?=\-)?/g);
+                    let btnFull = "a[id='" + str + "']";
+
+                    this.getElementSize('css selector', btnFull, function (resultSize) {
+                        let height = resultSize.value.height / 2;
+                        let width = resultSize.value.width - (resultSize.value.width * .14);
+
+                        this.clickOffset(btnFull, width, height)
+                            .waitForElementVisible('xpath', "//div[@role='menu'][@aria-expanded='true'] //span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada")
+                            .click('xpath', "//div[@role='menu'][@aria-expanded='true'] //span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
+                            .useCss();
+                    })
+                })
         }
 
         return this;
