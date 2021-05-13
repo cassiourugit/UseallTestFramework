@@ -32,8 +32,8 @@ module.exports = {
                     let btnFull = "a[id='" + str + "']";
 
                     this.getElementSize('css selector', btnFull, function (resultSize) {
-                        let height = resultSize.value.height / 2;
-                        let width = resultSize.value.width - (resultSize.value.width * .14);
+                        let height = Math.trunc(resultSize.value.height / 2);
+                        let width = Math.trunc(resultSize.value.width - (resultSize.value.width * .14));
 
                         this.clickOffset(btnFull, width, height)
                             .waitForElementVisible('xpath', "//div[@role='menu'][@aria-expanded='true'] //span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada")
@@ -49,8 +49,8 @@ module.exports = {
                     let btnFull = "a[id='" + str + "']";
 
                     this.getElementSize('css selector', btnFull, function (resultSize) {
-                        let height = resultSize.value.height / 2;
-                        let width = resultSize.value.width - (resultSize.value.width * .14);
+                        let height = Math.trunc(resultSize.value.height / 2);
+                        let width = Math.trunc(resultSize.value.width - (resultSize.value.width * .14));
 
                         this.clickOffset(btnFull, width, height)
                             .waitForElementVisible('xpath', "//div[@role='menu'][@aria-expanded='true'] //span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada")

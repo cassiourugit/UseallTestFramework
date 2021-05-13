@@ -27,7 +27,7 @@ module.exports = {
                     let str = util.aplicaRegexString(id.value, /.*\d+(?=\-)?/g);
                     let checkField = "div[id='" + str + "-innerWrapEl']";
 
-                    this.getAttribute(localizador, "checked", function (result) {
+                    this.getElementProperty('xpath', localizador, "checked", function (result) {
                         resultadoCheck = Boolean(result.value)
                         if (resultadoCheck != check) {
                             if (config.deveDestacarElemento) {
@@ -53,7 +53,7 @@ module.exports = {
                     let str = util.aplicaRegexString(id.value, /.*\d+(?=\-)?/g);
                     let checkField = "div[id='" + str + "-innerWrapEl']";
 
-                    this.getAttribute(localizador, "checked", function (result) {
+                    this.getElementProperty(localizador, "checked", function (result) {
                         resultadoCheck = Boolean(result.value)
                         if (resultadoCheck != check) {
                             if (config.deveDestacarElemento) {

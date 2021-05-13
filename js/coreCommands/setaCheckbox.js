@@ -25,7 +25,7 @@ module.exports = {
                     .waitForElementPresent('xpath', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
                     .getElementProperty('xpath', localizador, "checked", function (result) {
                         if (result.value == false) {
-                            this.click(localizador);
+                            this.click('xpath', localizador);
                         }
                     })
                     .useCss();
@@ -34,7 +34,7 @@ module.exports = {
                     .waitForElementPresent('xpath', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
                     .getElementProperty('xpath', localizador, "checked", function (result) {
                         if (result.value == true) {
-                            this.click(localizador);
+                            this.click('xpath', localizador);
                         }
                     })
                     .useCss();
@@ -44,17 +44,19 @@ module.exports = {
             if (check) {
                 this.useCss()
                     .waitForElementPresent('css selector', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
-                    .getAttribute('css selector', localizador, "checked", function (result) {
+                    .getElementProperty('css selector', localizador, "checked", function (result) {
+                        console.log("A propriedade estava assim:" + result.value)
                         if (result.value == false) {
-                            this.click(localizador);
+                            this.click('css selector', localizador);
                         }
                     })
             } else {
                 this.useCss()
                     .waitForElementPresent('css selector', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
-                    .getAttribute('css selector', localizador, "checked", function (result) {
+                    .getElementProperty('css selector', localizador, "checked", function (result) {
+                        console.log("A propriedade estava assim:" + result.value)
                         if (result.value == true) {
-                            this.click(localizador);
+                            this.click('css selector', localizador);
                         }
                     })
             }

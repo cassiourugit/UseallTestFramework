@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UseallTestFramework setaNumberField</title>
+  <title>UseallTestFramework validaQuantidadeListagem</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -102,7 +102,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Module</p>
-                    <h1>setaNumberField</h1>
+                    <h1>validaQuantidadeListagem</h1>
                 </header>
                 
 
@@ -124,7 +124,7 @@
     
         
             <div class="description"><ul>
-<li>Digita o valor passado por parâmetro no campo numérico</li>
+<li>Verifica se a listagem está vazia, caso esteja, um erro será disparado.np</li>
 </ul></div>
         
 
@@ -166,7 +166,7 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>campo</code></td>
+      <td class="name"><code>listagem</code></td>
   
 
   <td class="type">
@@ -182,7 +182,7 @@
 
   
 
-  <td class="description last"><p>Localizador <strong>Css</strong> ou <strong>Xpath</strong> do campo numérico</p></td>
+  <td class="description last"><p>Localizador <strong>Css</strong> ou <strong>Xpath</strong> da listagem</p></td>
 </tr>
 
 
@@ -191,13 +191,13 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>numero</code></td>
+      <td class="name"><code>quantidade</code></td>
   
 
   <td class="type">
   
       
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
   
@@ -207,7 +207,7 @@
 
   
 
-  <td class="description last"><p>Número a ser digitado no campo</p></td>
+  <td class="description last"><p>Número de registros que a listagem deve apresentar</p></td>
 </tr>
 
 
@@ -260,9 +260,9 @@
 
     
         <p class="tag-source">
-            <a href="coreCommands_setaNumberField.js.html" class="button">View Source</a>
+            <a href="coreCommands_validaQuantidadeListagem.js.html" class="button">View Source</a>
             <span>
-                <a href="coreCommands_setaNumberField.js.html">coreCommands/setaNumberField.js</a>, <a href="coreCommands_setaNumberField.js.html#line5">line 5</a>
+                <a href="coreCommands_validaQuantidadeListagem.js.html">coreCommands/validaQuantidadeListagem.js</a>, <a href="coreCommands_validaQuantidadeListagem.js.html#line5">line 5</a>
             </span>
         </p>
     
@@ -291,7 +291,7 @@
     <h5>Example</h5>
     
     
-        <pre class="prettyprint"><code>browser.setaNumberField("input[data-test-id='Searchfield']", "3,00")Obs: Números decimais devem ter o separador na forma de vírgula.</code></pre>
+        <pre class="prettyprint"><code>browser.validaQuantidadeListagem()</code></pre>
     
 
 

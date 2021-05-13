@@ -23,7 +23,7 @@ module.exports = {
         toast: ".x-toast",
         loadmask: "[aria-describedby^='loadmask']",
         loadmaskRelX: "//div[text()= 'Emitindo relatório']",
-        messageBox: "div[id^='use-messagebox'][id$='msg']",
+        messageBox: "div[id^='messagebox'][id$='msg'], div[id^='use-messagebox'][id$='msg']",
         btnSimMessageBoxX: "//div[starts-with(@id, 'use-messagebox')] //span[contains(text(),'Sim')]",
         btnNaoMessageBoxX: "//div[starts-with(@id, 'use-messagebox')] //span[contains(text(),'Não')]",
         linkAtivo: "label[id^='use-linkativo']",
@@ -33,6 +33,7 @@ module.exports = {
         campoBuscaF2: "div[id*='pesquisageral-panel'] input",
         expandirFiltroRelatorio: "div[class^='x-tool'][id^='fieldset'][id$='legendToggle']",
         iframeRel: "iframe[id='pdf']",
+        bodyLoader: "body[class*='aguardando']",
     },
 
     documentos: {

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UseallTestFramework setaNumberField</title>
+  <title>UseallTestFramework coreCommands/validaQuantidadeListagem.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -101,227 +103,49 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Module</p>
-                    <h1>setaNumberField</h1>
+                    <p>Source</p>
+                    <h1>coreCommands/validaQuantidadeListagem.js</h1>
                 </header>
                 
 
 
 
-
-<section>
-
-<header>
     
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><ul>
-<li>Digita o valor passado por parâmetro no campo numérico</li>
-</ul></div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>campo</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>Localizador <strong>Css</strong> ou <strong>Xpath</strong> do campo numérico</p></td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>numero</code></td>
-  
-
-  <td class="type">
-  
-      
-<span class="param-type">string</span>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>Número a ser digitado no campo</p></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Cássio</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="coreCommands_setaNumberField.js.html" class="button">View Source</a>
-            <span>
-                <a href="coreCommands_setaNumberField.js.html">coreCommands/setaNumberField.js</a>, <a href="coreCommands_setaNumberField.js.html#line5">line 5</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Example</h5>
-    
-    
-        <pre class="prettyprint"><code>browser.setaNumberField("input[data-test-id='Searchfield']", "3,00")Obs: Números decimais devem ter o separador na forma de vírgula.</code></pre>
-    
-
-
-
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @ts-nocheck
+const util = require("usealltestframework/js/utils/util");
+
+module.exports = {
+    /**
+     * @function validaQuantidadeListagem
+     * @category Core commands
+     * @module
+     * @description - Verifica se a listagem está vazia, caso esteja, um erro será disparado.np
+     * @param {string} listagem - Localizador **Css** ou **Xpath** da listagem
+     * @param {number} quantidade - Número de registros que a listagem deve apresentar
+     * @example 
+     * browser.validaQuantidadeListagem()
+     * @author Cássio
+    */
+    command: function (listagem, quantidade) {
+        if (listagem == "" || listagem == null || listagem == undefined) {
+            this.assert.fail("O parâmetro 'listagem' não foi informado")
+            return this;
+        }
+
+        if (util._isXpath(listagem)) {
+            this.useXpath();
+            this.expect.elements(listagem + "//tr").count.to.equal(quantidade);
+            this.useCss();
+        } else {
+            this.useCss();
+            this.expect.elements(listagem + " tr").count.to.equal(quantidade);
+        }
+    },
+};</code></pre>
+        </article>
+    </section>
 
 
 

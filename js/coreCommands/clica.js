@@ -24,66 +24,39 @@ module.exports = {
             this.useXpath()
                 .waitForElementPresent('xpath', elemento, "O elemento não está presente após o tempo máximo previsto")
                 .click('xpath', elemento, function () {
-                    this.pause(200)
-
-                    this.getAttribute('xpath', elemento, 'id', function (result) {
-                        //Se houver um loader no botão, aguarda até ele finalizar
-                        str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
-                        elementoLoader = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
-
-                        this.element('xpath', elementoLoader, function (elem) {
-                            if (elem.status != -1) {
-                                this.waitForElementNotPresent('xpath', elementoLoader, 10000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
-                            }
-                        })
-
-                        //Se houver uma listagem, aguarda o carregamento da mesma
-                        this.element('css selector', loc.geral.loadmask, function (elem) {
-                            if (elem.status != -1) {
-                                this.waitForElementNotPresent('css selector', loc.geral.loadmask)
-                            }
-                        }).useCss()
-                        this.element('css selector', loc.geral.messageBox, function (messageBox) {
-                            if (messageBox.status != -1) {
-                                this.getAttribute('css selector', loc.geral.messageBox, 'innerText', function (texto) {
-                                    this.assert.elementNotPresent(loc.geral.messageBox, "A mensagem de erro a seguir apareceu na tela: ( " + texto.value + " )")
-                                })
-                            }
-                        })
-                    });
-                })
+                    this.pause(500)
+                    this.element('css selector', loc.geral.messageBox, function (messageBox) {
+                        if (messageBox.status != -1) {
+                            this.isVisible('css selector', loc.geral.messageBox, function (visible) {
+                                if (visible.value) {
+                                    this.getAttribute('css selector', loc.geral.messageBox, 'innerText', function (texto) {
+                                        this.assert.not.elementPresent(loc.geral.messageBox, "A mensagem de erro a seguir apareceu na tela: ( " + texto.value + " )")
+                                    })
+                                }
+                            })
+                        }
+                    })
+                });
         } else {
             this
                 .waitForElementPresent('css selector', elemento, "O elemento não está presente após o tempo máximo previsto")
                 .click('css selector', elemento, function () {
-                    this.pause(200)
-
-                    this.getAttribute('css selector', elemento, 'id', function (result) {
-                        //Se houver um loader no botão, aguarda até ele finalizar
-                        str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
-                        elementoLoader = "//a[@id='" + str + "']/descendant::span[@data-ref='btnIconEl'][contains(@class, 'icone-loader-button')]";
-
-                        this.element('xpath', elementoLoader, function (elem) {
-                            if (elem.status != -1) {
-                                this.waitForElementNotPresent('xpath', elementoLoader, 10000, "Loader do botão não desapareceu após o timeout máximo definido por padrão")
-                            }
-                        })
-
-                        //Se houver uma listagem, aguarda o carregamento da mesma
-                        this.element('css selector', loc.geral.loadmask, function (elem) {
-                            if (elem.status != -1) {
-                                this.waitForElementNotPresent('css selector', loc.geral.loadmask)
-                            }
-                        }).useCss()
-                        this.element('css selector', loc.geral.messageBox, function (messageBox) {
-                            if (messageBox.status != -1) {
-                                this.getAttribute('css selector', loc.geral.messageBox, 'innerText', function (texto) {
-                                    this.assert.elementNotPresent(loc.geral.messageBox, "A mensagem de erro a seguir apareceu na tela: ( " + texto.value + " )")
-                                })
-                            }
-                        })
-                    });
-                })
+                    console.log("Entrei no click")
+                    this.pause(500)
+                    this.element('css selector', loc.geral.messageBox, function (messageBox) {
+                        console.log("Entrei no element")
+                        console.log("Status: " + messageBox.status)
+                        if (messageBox.status != -1) {
+                            this.isVisible('css selector', loc.geral.messageBox, function (visible) {
+                                if (visible.value) {
+                                    this.getAttribute('css selector', loc.geral.messageBox, 'innerText', function (texto) {
+                                        this.assert.not.elementPresent(loc.geral.messageBox, "A mensagem de erro a seguir apareceu na tela: ( " + texto.value + " )")
+                                    })
+                                }
+                            })
+                        }
+                    })
+                });
         }
         return this;
     },
