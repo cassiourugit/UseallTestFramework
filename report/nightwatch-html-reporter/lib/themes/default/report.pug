@@ -1,0 +1,37 @@
+#container_header
+	<div class="header">
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQfjChUKLhxj4qw1AAADbklEQVRYw+2XS2jcVRSHv//k1ZC0NU2jtU000UhoKxRfhaKmPqpSkEpFQSgupUvbjVYIRiyWVkRxV6TuhJguCm4EtcRFCgpSXWhLk1ZiCC3VSR9pYvOazOciTTJz5/UPzEKxZzdz7rnfPfee8/vfC7ft32ZRqQHCKh5nO2uBWQbp4wypkmHxTcRtnnDcBUs7bJerLCui03OGNuUnri4TRrzXH8xn075tVAaMiAdMm98uuCk+JFHEt4YXCxbGfeyIv+BikBbaC/oiHiIRN5dikLXUF/HeTU05MpkmVcR7k7lyQEa4XMQ7wEw5IJf4saBvgv4YclHaxOcdLVDCJ1xZlnYUq+12Mg/iN7eWU1hq7fJKFiDtzz4lZYPcyuYFexzyqldN+ouHvH+5iBhnJ6yghQYgxSWSzJVR6P9jljdzIaKeJu6kApjhT5JMlt5boZ7NVGbNP8xIZZ6BFTzILrbTRgMJIMUog/TxrQMlz6ODXhoy6iLBBxwJAOIG33c4z3dkziHfs7lYZYlbg4LXbnMQW+wzZSFLecrOwhjxSceCmHdDyEb7LWXn3VUII77qTNC6e10SSKGRwzxRslTa+ZRnKZRNIqiOOa4vqrAAr7OzJAKglcNsLOBrpCLr9xSjmVLfwV6qYkHgUbq5I8xFgPVBJn8vQgR4mY6YCIDd7KM6Z8uqeCD4J8lfLDZOEy/l9NosZ/kV2MKmYBOgmjcZpEezgtaxORg3xLXFRH3OG0EV3fSIzVZYYasfO5GnzobdkVln4h6ngjGHbo0Q8WDOFEetdSF4hW/lLEL1jM8sYMQW+wL/lK+4uII6vwncF30sa401HnQ6D+Z397hSjGz1yxydGLBtCXJPzrX6uDWZxyqu9ou8zXnDr+32Q0/nUYpjVi5BOr0euPeHXS22+1NJPcjG75yfY75P1lOXNeMk5/MI+wW6GFlGmX/PKTIgzWRL/hTJMCIC+I53GI2JuMJRxqMMyJpgwDhjuVERpOnlIyZjIORzTmbv9mc5VdFSUGdrPWCyxGmk/coNocQfiwsBsdLXHCyCmPV4TvzyICBGPmJPxnM1M4c/7LIpO3r+wOcg45mQKP4oiEBP8wZPs5tt3EUdCWCWMYY5SS9nw5tABMLDtGW0RcQ4/UzGuJtUsY5mGqkGJrjMRa6R/v9e/W5bYP8A/JoURpzOBkQAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTktMTAtMjFUMTA6NDY6MjgtMDQ6MDDDGPj8AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE5LTEwLTIxVDEwOjQ2OjI4LTA0OjAwskVAQAAAAABJRU5ErkJggg==" alt="logo" class="logo">
+		h1 Resultados dos testes
+	</div>
+
+#container_body
+	if !hideSuccess
+		a.toggleSuccess(href='#') Show/Hide Successes
+
+	if testRun.errmessages.length > 0
+		div.errmessages
+			h2 Errors
+				span.count= ' (' + testRun.errmessages.length + ')'
+			ul.errors
+				each msg in testRun.errmessages
+					li= msg
+
+	each pkg in testRun.packages
+		div(class= (pkg.isFailure) ? 'package error' : 'package success')
+			h2.name!= (pkg.isFailure) ? '&#10005; ' + pkg.name : '&#10003; ' + pkg.name
+			div.suites
+				each suite in pkg.suites
+					div(class= (suite.isFailure) ? 'suite error' : 'suite success')
+						h3.name= suite.name
+						ul.testcases
+							each testCase in suite.cases
+								li(class= (testCase.isFailure) ? 'testcase error' : 'testcase success')
+									if testCase.isFailure
+										div.status &#10005;
+										div.name= testCase.message + " " + testCase.failure
+										each sshot in testCase.screenshots
+											div.screenshot
+												img(src= sshot)
+									else
+										div.status &#10003;
+										div.name= testCase.message + ((testCase.skipped) ? " (skipped)" : "")

@@ -1,0 +1,122 @@
+body{
+  margin: 10px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.8em;
+  background-color: rgba(51, 51, 51);
+}
+
+.header .logo {
+  float: left;
+  width: 45px;
+  height: auto;
+}
+
+.header h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+  color: white;
+}
+
+#container_body {
+  margin-top: 50px;
+}
+
+/* .logo{
+  float: left;
+  width: 50px;
+  height: auto;
+}
+
+h1{
+  position: relative;
+  margin-top: 50px;
+  margin-left: 100px;
+  color: white;
+} */
+
+h2{
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+h3{
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+.toggleSuccess, .toggleError{
+  margin-right: 10px;
+  color: white;
+}
+
+.errmessages{
+  background-color: rgba(238, 64, 64, 0.43);
+  border: 1px solid rgba(235, 28, 28, 0.78);
+  padding: 5px;
+}
+
+.errmessages h2{
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+.errmessages .errors{
+  display: none;
+}
+
+.suites {
+  margin: 0 0 0 30px;
+}
+
+.package {
+  margin: 15px 0;
+}
+.package > .name {
+  cursor: pointer;
+}
+
+.suite {
+  margin: 15px 0;
+}
+
+.suite > .name {
+  cursor: pointer;
+}
+
+ul{
+  list-style: none;
+}
+
+.testcases {
+}
+
+.status{
+  display: inline-block;
+}
+
+.testcase .name {
+  display: inline-block;
+  color: white;
+}
+
+.success{
+  color: rgb(36, 181, 36);
+}
+.testcase img{
+  max-width: 80%;
+}
+.package.error > .name{
+  color: rgb(230, 12, 12);
+}
+.suite.error > .name{
+  color: rgb(230, 12, 12);
+}
+
+.testcase.success .name{
+  color: rgb(36, 181, 36);
+}
+.testcase.error .status{
+  color: rgb(230, 12, 12);
+}

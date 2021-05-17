@@ -201,6 +201,35 @@ Pacotes NPM:</p>
 GPL Ghostscript 64-bit  
 XpdfReader 64-bit
 </code></pre>
+<h2>Html reporter</h2>
+<p>Agora, a ferramenta que gera os resultados dos testes em HTML já está integrada ao usealltestframework.</p>
+<p>Para utilizá-la basta adicionar as seguintes linhas de configuração no arquivo globals.js</p>
+<pre class="prettyprint source"><code>const fs = require('fs');
+const path = require('path');
+const HtmlReporter = require('./node_modules/usealltestframework/report/nightwatch-html-reporter');
+const reporter = new HtmlReporter({
+    openBrowser: false,
+    themeName: 'default',
+    reportsDirectory: __dirname + '/reports'
+});
+
+if (!fs.existsSync(__dirname + '/reports')) {
+    fs.mkdirSync(path.join(__dirname, '/reports'));
+    console.log(&quot;Diretório dos relatórios criado com sucesso!&quot;);
+}
+
+if (!fs.existsSync(__dirname + '/reports/Diff')) {
+    fs.mkdirSync(path.join(__dirname, '/reports/Diff'));
+    console.log(&quot;Diretório das imagens Diff criado com sucesso!&quot;);
+}
+
+module.exports = {
+    reporter: reporter.fn,
+};
+</code></pre>
+<p>A propriedade &quot;openBrowser&quot; define se o relatório dos testes será exibido automaticamente em uma aba do navegador após a execução. Por padrão essa funcionalidade vem desabilitada</p>
+<p>Segue abaixo um exemplo de como fica um relatório utilizando esse recurso:
+<img src="./img/html_report.png" alt="Exemplo relatório de testes"></p>
 <h2>Construído com:</h2>
 <ul>
 <li><a href="https://nightwatchjs.org/">Nighwatch</a> - Framework de automação de testes</li>
@@ -208,6 +237,7 @@ XpdfReader 64-bit
 <li><a href="https://github.cyeisom/sindresorhus/np#readme">Np</a> - Ferramenta para controlar o versionamento e a publicação de pacotes npm</li>
 <li><a href="https://jsdoc.app/">JSDocs</a> - Ferramenta de documentação</li>
 <li><a href="https://github.com/SoftwareBrothers/better-docs">Better-Docs</a> - Plugin para personalizar documentações do JSDocs</li>
+<li><a href="https://github.com/jls/nightwatch-html-reporter">Nightwatch-html-reporter</a> - Ferramenta que gera os relatórios de teste em HTML</li>
 </ul>
 <h2>Author</h2>
 <p><strong>Cássio Benincá</strong></p></article>

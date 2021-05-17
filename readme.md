@@ -108,12 +108,48 @@ XpdfReader 64-bit
 ```
 
 
+## Html reporter
+
+Agora, a ferramenta que gera os resultados dos testes em HTML já está integrada ao usealltestframework.
+
+Para utilizá-la basta adicionar as seguintes linhas de configuração no arquivo globals.js 
+```
+const fs = require('fs');
+const path = require('path');
+const HtmlReporter = require('./node_modules/usealltestframework/report/nightwatch-html-reporter');
+const reporter = new HtmlReporter({
+    openBrowser: false,
+    themeName: 'default',
+    reportsDirectory: __dirname + '/reports'
+});
+
+if (!fs.existsSync(__dirname + '/reports')) {
+    fs.mkdirSync(path.join(__dirname, '/reports'));
+    console.log("Diretório dos relatórios criado com sucesso!");
+}
+
+if (!fs.existsSync(__dirname + '/reports/Diff')) {
+    fs.mkdirSync(path.join(__dirname, '/reports/Diff'));
+    console.log("Diretório das imagens Diff criado com sucesso!");
+}
+
+module.exports = {
+    reporter: reporter.fn,
+};
+```
+A propriedade "openBrowser" define se o relatório dos testes será exibido automaticamente em uma aba do navegador após a execução. Por padrão essa funcionalidade vem desabilitada
+
+Segue abaixo um exemplo de como fica um relatório utilizando esse recurso:
+![Exemplo relatório de testes](./img/html_report.png)
+
+
 ## Construído com:
 * [Nighwatch](https://nightwatchjs.org/) - Framework de automação de testes
 * [Npm](https://www.npmjs.com/) - Gerênciador de pacotes javascript
 * [Np](https://github.cyeisom/sindresorhus/np#readme) - Ferramenta para controlar o versionamento e a publicação de pacotes npm
 * [JSDocs](https://jsdoc.app/) - Ferramenta de documentação
 * [Better-Docs](https://github.com/SoftwareBrothers/better-docs) - Plugin para personalizar documentações do JSDocs
+* [Nightwatch-html-reporter](https://github.com/jls/nightwatch-html-reporter) - Ferramenta que gera os relatórios de teste em HTML
 
 ## Author
 **Cássio Benincá**
