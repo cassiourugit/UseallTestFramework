@@ -132,7 +132,7 @@ module.exports = {
 
         if (mensagemToast != null) {
             this.waitForElementPresent("css selector", loc.geral.toast, "Não foi encontrado nenhum toast na tela");
-            this.getAttribute(loc.geral.toast, "textContent", function (result) {
+            this.getAttribute('css selector', loc.geral.toast, "textContent", function (result) {
                 this.assert.containsText(loc.geral.toast, mensagemToast, "O toast não exibiu a mensagem correta, a mensagem exibida foi: " + result.value)
 
                 this.pause(800);

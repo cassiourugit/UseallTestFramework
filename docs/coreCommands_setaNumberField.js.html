@@ -114,7 +114,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>// @ts-nocheck
-const util = require("usealltestframework/js/utils/util");
+const util = require("../utils/util");
 
 module.exports = {
     /**
@@ -145,15 +145,15 @@ module.exports = {
                 .waitForElementPresent('xpath', campo, "O campo não foi encontrado no tempo máximo previsto")
                 .click('xpath', campo)
                 .limpaCampoHard(campo)
-                .setValue(campo, numero)
+                .setValue('xpath', campo, numero)
                 .clickOffset(campo, -1, -1)
                 .useCss();
         } else {
             this.useCss()
                 .waitForElementPresent('css selector', campo, "O campo não foi encontrado no tempo máximo previsto")
-                .click(campo)
+                .click('css selector', campo)
                 .limpaCampoHard(campo)
-                .setValue(campo, numero)
+                .setValue('css selector', campo, numero)
                 .clickOffset(campo, -1, -1)
         }
 

@@ -147,13 +147,13 @@ module.exports = {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let lista = "ul[id='" + str + "-picker-listEl']";
 
-                    this.clearValue(campo)
-                        .setValue(campo, texto)
+                    this.clearValue('xpath', campo)
+                        .setValue('xpath', campo, texto)
                         .useCss()
                         .aguardaListagem()
                         .expect.elements(lista + " li", "css selector").count.to.equal(0);
 
-                    this.getAttribute(lista, 'textContent', function (result) {
+                    this.getAttribute('css selector', lista, 'textContent', function (result) {
                         if (result.value.includes("Nenhum registro encontrado") == false) {
                             if (config.deveDestacarElemento) {
                                 this.destacaElemento(lista)
@@ -170,16 +170,16 @@ module.exports = {
         } else {
             this.useCss()
                 .waitForElementVisible('css selector', campo, "O campo não foi encontrado no tempo máximo previsto")
-                .getAttribute(campo, 'id', function (result) {
+                .getAttribute('css selector', campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let lista = "ul[id='" + str + "-picker-listEl']";
 
-                    this.clearValue(campo)
-                        .setValue(campo, texto)
+                    this.clearValue('css selector', campo)
+                        .setValue('css selector', campo, texto)
                         .aguardaListagem()
                         .expect.elements(lista + " li", "css selector").count.to.equal(0);
 
-                    this.getAttribute(lista, 'textContent', function (result) {
+                    this.getAttribute('css selector', lista, 'textContent', function (result) {
                         if (result.value.includes("Nenhum registro encontrado") == false) {
                             if (config.deveDestacarElemento) {
                                 this.destacaElemento(lista)

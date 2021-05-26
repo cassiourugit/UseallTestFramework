@@ -154,7 +154,7 @@ module.exports = {
                         .element("xpath", campo, function (result) {
                             this.elementIdAttribute(result.value.ELEMENT, "aria-expanded", function (attribute) {
                                 if (attribute.value == "true") {
-                                    this.click(campo)
+                                    this.click("xpath", campo)
                                 }
                             });
                         })
@@ -164,7 +164,7 @@ module.exports = {
                 });
         } else {
             this.waitForElementVisible('css selector', campo, "O campo não foi encontrado no tempo máximo previsto")
-                .getAttribute(campo, 'id', function (result) {
+                .getAttribute('css selector', campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let field = "input[id^='" + str + "'][id$='-dateRangeCombo-inputEl']"
                     let picker = "//div[@id='" + str + "-dateRangeCombo-trigger-picker']"
@@ -178,7 +178,7 @@ module.exports = {
                         .element("css selector", campo, function (result) {
                             this.elementIdAttribute(result.value.ELEMENT, "aria-expanded", function (attribute) {
                                 if (attribute.value == "true") {
-                                    this.click(campo)
+                                    this.click('css selector', campo)
                                 }
                             });
                         })

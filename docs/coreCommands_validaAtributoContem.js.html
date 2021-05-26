@@ -149,7 +149,7 @@ module.exports = {
         if (util._isXpath(elemento)) {
             this.useXpath()
                 .waitForElementVisible('xpath', elemento, "O elemento: " + elemento + " não foi encontrado no tempo máximo previsto")
-                .getAttribute(elemento, atributo, function (result) {
+                .getAttribute('xpath', elemento, atributo, function (result) {
                     if (!result.value.includes(texto)) {
                         if (config.deveDestacarElemento) {
                             this.destacaElemento(elemento)
@@ -171,7 +171,7 @@ module.exports = {
 
         this.useCss()
             .waitForElementVisible('css selector', elemento, "O elemento: " + elemento + " não foi encontrado no tempo máximo previsto")
-            .getAttribute(elemento, atributo, function (result) {
+            .getAttribute('css selector', elemento, atributo, function (result) {
                 if (!result.value.includes(texto)) {
                     if (!config.deveDestacarElemento) {
                         this.assert.attributeContains(elemento, atributo, texto, "O atributo: " + atributo + " do elemento em destaque deveria conter (" + texto + "), porém contém (" + result.value + ")");

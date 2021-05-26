@@ -132,7 +132,7 @@ module.exports = {
             .useCss()
             .element("css selector", loc.geral.messageBox, function (visivel) {
                 if (visivel.status != -1) {
-                    this.getAttribute(loc.geral.messageBox, "textContent", function (result) {
+                    this.getAttribute('css selector', loc.geral.messageBox, "textContent", function (result) {
                         this.verify.fail(result.value);
                     });
                 }

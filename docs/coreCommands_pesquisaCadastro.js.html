@@ -151,23 +151,23 @@ module.exports = {
         if (util._isXpath(campoPesquisar)) {
             this.useXpath()
                 .waitForElementVisible('xpath', campoPesquisar)
-                .click(campoPesquisar)
-                .clearValue(campoPesquisar)
+                .click('xpath', campoPesquisar)
+                .clearValue('xpath', campoPesquisar)
             if (slowText) {
                 this.slowText(campoPesquisar, texto)
             } else {
-                this.setValue(campoPesquisar, texto)
+                this.setValue('xpath', campoPesquisar, texto)
             }
             this.useCss();
         } else {
             this.useCss()
-                .waitForElementVisible(campoPesquisar)
-                .click(campoPesquisar)
-                .clearValue(campoPesquisar)
+                .waitForElementVisible('css selector', campoPesquisar)
+                .click('css selector', campoPesquisar)
+                .clearValue('css selector', campoPesquisar)
             if (slowText) {
                 this.slowText(campoPesquisar, texto)
             } else {
-                this.setValue(campoPesquisar, texto)
+                this.setValue('css selector', campoPesquisar, texto)
             }
         }
 

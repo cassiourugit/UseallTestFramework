@@ -114,8 +114,8 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>// @ts-nocheck
-const util = require("usealltestframework/js/utils/util");
-const config = require("usealltestframework/js/utils/configDefinitions");
+const util = require("../utils/util");
+const config = require("../utils/configDefinitions");
 
 module.exports = {
     /**
@@ -149,7 +149,7 @@ module.exports = {
         if (util._isXpath(elemento)) {
             this.useXpath()
                 .waitForElementVisible('xpath', elemento, "O elemento: " + elemento + " não foi encontrado no tempo máximo previsto")
-                .getAttribute(elemento, atributo, function (result) {
+                .getAttribute('xpath', elemento, atributo, function (result) {
                     if (result.value != texto) {
                         if (config.deveDestacarElemento) {
                             this.destacaElemento(elemento)
@@ -171,7 +171,7 @@ module.exports = {
 
         this.useCss()
             .waitForElementVisible('css selector', elemento, "O elemento: " + elemento + " não foi encontrado no tempo máximo previsto")
-            .getAttribute(elemento, atributo, function (result) {
+            .getAttribute('css selector', elemento, atributo, function (result) {
                 if (result.value != texto) {
                     if (!config.deveDestacarElemento) {
                         this.assert.attributeEquals(elemento, atributo, texto, "O atributo: " + atributo + " do elemento em destaque deveria ser igual a (" + texto + "), porém é (" + result.value + ")");

@@ -164,7 +164,7 @@ module.exports = {
 
                             return this;
                         }
-                        this.click(lista)
+                        this.click('css selector', lista)
                             .waitForElementPresent('xpath', grid)
                             .useXpath()
                             .assert.attributeContains(grid, "textContent", texto, "A opção selecionada não foi encontrada na listagem do campo")
@@ -196,7 +196,7 @@ module.exports = {
 
                             return this;
                         }
-                        this.click(lista)
+                        this.click('css selector', lista)
                             .waitForElementPresent('xpath', grid)
                             .useXpath()
                             .assert.attributeContains(grid, "textContent", texto, "A opção selecionada não foi encontrada na listagem do campo")

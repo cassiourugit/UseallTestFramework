@@ -145,13 +145,13 @@ module.exports = {
             this
                 .useXpath()
                 .waitForElementPresent('xpath', campo, "O campo não foi encontrado no tempo máximo previsto")
-                .click(campo)
-                .getAttribute("//li[text()= '" + status + "']", "aria-selected", function (result) {
+                .click('xpath', campo)
+                .getAttribute('xpath', "//li[text()= '" + status + "']", "aria-selected", function (result) {
                     if (marcar != result.value) {
-                        this.click("//li[text()= '" + status + "']")
+                        this.click('xpath', "//li[text()= '" + status + "']")
                     }
                 })
-                .click(campo)
+                .click('xpath', campo)
             if (marcar == "true") {
                 this.expect.element(campo, 'xpath').to.have.attribute("value").which.contains(status).before(5000)
             }
@@ -162,13 +162,13 @@ module.exports = {
             this
                 .useCss()
                 .waitForElementPresent('css selector', campo, "O campo não foi encontrado no tempo máximo previsto")
-                .click(campo)
+                .click('css selector', campo)
                 .getAttribute("xpath", "//li[text()= '" + status + "']", "aria-selected", function (result) {
                     if (marcar != result.value) {
                         this.click("xpath", "//li[text()= '" + status + "']")
                     }
                 })
-                .click(campo)
+                .click('css selector', campo)
             if (marcar == "true") {
                 this.expect.element(campo, 'css selector').to.have.attribute("value").which.contains(status).before(5000)
             }

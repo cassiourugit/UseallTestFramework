@@ -134,13 +134,13 @@ module.exports = {
         }
 
         this.useCss()
-            .waitForElementVisible(loc.documentos.campoPesquisar)
-            .setValue(loc.documentos.campoPesquisar, texto)
-            .click(loc.documentos.campoPesquisar)
-            .click(loc.documentos.btnPesquisar)
+            .waitForElementVisible('css selector', loc.documentos.campoPesquisar)
+            .setValue('css selector', loc.documentos.campoPesquisar, texto)
+            .click('css selector', loc.documentos.campoPesquisar)
+            .click('css selector', loc.documentos.btnPesquisar)
             .aguardaListagem()
             .validaListagemVazia(loc.documentos.listagem)
-            .getAttribute(loc.documentos.colunaNome, "textContent", function (result) {
+            .getAttribute('css selector', loc.documentos.colunaNome, "textContent", function (result) {
                 if (!result.value.includes(texto)) {
                     if (config.deveDestacarElemento) {
                         this.destacaElemento(loc.documentos.colunaNome);

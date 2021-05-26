@@ -147,13 +147,13 @@ module.exports = {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let lista = "ul[id='" + str + "-picker-listEl'] li";
 
-                    this.clearValue(campo)
-                        .setValue(campo, texto)
+                    this.clearValue('xpath', campo)
+                        .setValue('xpath', campo, texto)
                         .useCss()
                         .aguardaListagem();
                     this.expect.elements(lista, 'css selector').count.to.equal(1);
 
-                    this.getAttribute(lista, 'textContent', function (result) {
+                    this.getAttribute('css selector', lista, 'textContent', function (result) {
                         if (result.value.includes(texto) == false) {
                             if (config.deveDestacarElemento) {
                                 this.destacaElemento(lista)
@@ -165,7 +165,7 @@ module.exports = {
 
                             return this;
                         }
-                        this.click(lista)
+                        this.click('css selector', lista)
                             .useXpath()
                             .expect.element(campo, 'xpath').to.have.attribute("value").which.contains(texto).before(5000)
                         this
@@ -177,12 +177,12 @@ module.exports = {
         } else {
             this.useCss()
                 .waitForElementVisible('css selector', campo, "Campo de busca não foi encontrado no tempo máximo previsto")
-                .getAttribute(campo, 'id', function (result) {
+                .getAttribute('css selector', campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let lista = "ul[id='" + str + "-picker-listEl'] li";
 
-                    this.clearValue(campo)
-                        .setValue(campo, texto)
+                    this.clearValue('css selector', campo)
+                        .setValue('css selector', campo, texto)
                         .aguardaListagem()
                         .expect.elements(lista, 'css selector').count.to.equal(1);
 
@@ -198,7 +198,7 @@ module.exports = {
 
                             return this;
                         }
-                        this.click(lista)
+                        this.click('css selector', lista)
                             .expect.element(campo, 'css selector').to.have.attribute("value").which.contains(texto).before(5000)
                         this
                             .assert.attributeContains(campo, "value", texto, "A opção selecionada não foi setada no campo")

@@ -141,15 +141,15 @@ Além disso também estão disponíveis funções para interagir com a mensageri
 <p>Se você já tem um projeto de testes automatizado utilizando nightwatch, você já atende aos requisitos necessários para utilizar esse framework.</p>
 <h2>Como instalar</h2>
 <p>Digite na linha de comando:</p>
-<pre class="prettyprint source"><code>npm install usealltestframework
+<pre class="prettyprint source"><code>npm install @useall/usealltestframework
 </code></pre>
 <h2>Como configurar</h2>
 <p>Você deve inserir as seguintes linhas dentro do &quot;module.exports&quot; no seu arquivo &quot;nightwatch.conf.js&quot;
 A linha terminada em &quot;coreCommands&quot; habilita as funções padrão para os sistemas da Useall.
 A linha terminada em &quot;msgCommands&quot; habilita as funções para controle de elementos da mensageria.</p>
 <pre class="prettyprint source"><code>    custom_commands_path: [
-        &quot;node_modules/usealltestframework/js/coreCommands&quot;,
-        &quot;node_modules/usealltestframework/js/msgCommands&quot;
+        &quot;node_modules/@useall/usealltestframework/js/coreCommands&quot;,
+        &quot;node_modules/@useall/usealltestframework/js/msgCommands&quot;
     ],
 
 </code></pre>

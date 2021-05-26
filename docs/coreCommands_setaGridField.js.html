@@ -148,21 +148,21 @@ module.exports = {
         if (util._isXpath(colGrid)) {
             this.useXpath()
                 .waitForElementPresent('xpath', colGrid, "A coluna da grid não foi encontrada no tempo máximo previsto")
-                .click(colGrid)
+                .click('xpath', colGrid)
                 .useCss()
         } else {
             this.waitForElementPresent('css selector', colGrid, "A coluna da grid não foi encontrada no tempo máximo previsto")
-                .click(colGrid)
+                .click('css selector', colGrid)
         }
 
         if (util._isXpath(campoGrid)) {
             this.useXpath()
                 .waitForElementPresent('xpath', campoGrid, "O campo da grid não foi encontrado no tempo máximo previsto")
-                .setValue(campoGrid, valor)
+                .setValue('xpath', campoGrid, valor)
                 .useCss()
         } else {
             this.waitForElementPresent('css selector', campoGrid, "O campo da grid não foi encontrado no tempo máximo previsto")
-                .setValue(campoGrid, valor)
+                .setValue('css selector', campoGrid, valor)
         }
 
         this.keys(this.Keys.TAB)

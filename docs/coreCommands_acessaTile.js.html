@@ -132,9 +132,9 @@ module.exports = {
         }
 
         this.useXpath()
-            .moveToElement("//div[@id='mainCenter-body'] //label[text()= '" + nomeDaTile + "']")
+            .moveToElement('xpath', "//div[@id='mainCenter-body'] //label[text()= '" + nomeDaTile + "']")
             .pause(300)
-            .click("//div[@id='mainCenter-body'] //label[text()= '" + nomeDaTile + "']")
+            .click('xpath', "//div[@id='mainCenter-body'] //label[text()= '" + nomeDaTile + "']")
             .useCss();
     },
 };</code></pre>

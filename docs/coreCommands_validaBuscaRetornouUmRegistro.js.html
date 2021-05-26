@@ -141,7 +141,7 @@ module.exports = {
         }
 
         this.useCss()
-            .waitForElementVisible(celula)
+            .waitForElementVisible('css selector', celula)
             .expect.elements(celula + " tr").count.to.equal(1)
     },
 };</code></pre>

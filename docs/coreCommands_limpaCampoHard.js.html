@@ -147,7 +147,7 @@ module.exports = {
             return this;
         }
 
-        this.waitForElementVisible(campo)
+        this.waitForElementVisible('css selector', campo)
             .execute(
                 function (campo) {
                     const field = document.querySelector(campo);

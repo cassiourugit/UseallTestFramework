@@ -143,12 +143,12 @@ module.exports = {
         if (util._isXpath(campoDoTipoFile)) {
             this.useXpath()
                 .waitForElementPresent('xpath', campoDoTipoFile)
-                .setValue(campoDoTipoFile, localDoARquivo)
+                .setValue('xpath', campoDoTipoFile, localDoARquivo)
                 .useCss();
         } else {
             this.useCss()
                 .waitForElementPresent('css selector', campoDoTipoFile)
-                .setValue(campoDoTipoFile, localDoARquivo);
+                .setValue('css selector', campoDoTipoFile, localDoARquivo);
         }
 
         return this;

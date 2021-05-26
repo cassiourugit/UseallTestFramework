@@ -159,11 +159,11 @@ module.exports = {
                 const field = document.querySelector(campo);
                 field.value = stringMaisUm;
             }, [campo, stringMaisUm]);
-        this.click(campo)
+        this.click('css selector', campo)
         this.keys(this.Keys.TAB);
         this.assert.attributeContains(campo, "aria-invalid", "true", "O campo passou do limite de caracteres e não foi destacado")
             .assert.attributeContains(campo, "data-errorqtip", "O tamanho máximo para este campo é " + limiteDeCaracteres, "O campo " + campo + " não possui o limite de caracteres previsto.")
-            .clearValue(campo);
+            .clearValue('css selector', campo);
 
         //Preenche com o limite exato do campo
         this.execute(
@@ -171,7 +171,7 @@ module.exports = {
                 const field = document.querySelector(campo);
                 field.value = string;
             }, [campo, string]);
-        this.click(campo)
+        this.click('css selector', campo)
         this.keys(this.Keys.TAB);
         this.assert.attributeContains(campo, "aria-invalid", "false", "O campo está com o número correto de caracteres inserido, porém está destacado como inválido");
 

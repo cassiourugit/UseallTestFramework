@@ -132,9 +132,9 @@ module.exports = {
         }
 
         this.useXpath()
-            .moveToElement("//div[starts-with(@id, 'mainWest-innerCt')] //div[@data-qtip='" + nomeDoMenu + "']", 25, 25)
+            .moveToElement('xpath', "//div[starts-with(@id, 'mainWest-innerCt')] //div[@data-qtip='" + nomeDoMenu + "']", 25, 25)
             .pause(300)
-            .click("//div[starts-with(@id, 'mainWest-innerCt')] //div[@data-qtip='" + nomeDoMenu + "']")
+            .click('xpath', "//div[starts-with(@id, 'mainWest-innerCt')] //div[@data-qtip='" + nomeDoMenu + "']")
             .useCss();
     },
 };</code></pre>

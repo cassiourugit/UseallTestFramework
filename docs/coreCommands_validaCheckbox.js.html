@@ -138,7 +138,7 @@ module.exports = {
         if (util._isXpath(localizador)) {
             this.useXpath()
                 .waitForElementPresent('xpath', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
-                .getAttribute(localizador, "id", function (id) {
+                .getAttribute('xpath', localizador, "id", function (id) {
                     let str = util.aplicaRegexString(id.value, /.*\d+(?=\-)?/g);
                     let checkField = "div[id='" + str + "-innerWrapEl']";
 
@@ -164,11 +164,11 @@ module.exports = {
         } else {
             this.useCss()
                 .waitForElementPresent('css selector', localizador, "A checkbox não foi encontrada no tempo máximo previsto")
-                .getAttribute(localizador, "id", function (id) {
+                .getAttribute('css selector', localizador, "id", function (id) {
                     let str = util.aplicaRegexString(id.value, /.*\d+(?=\-)?/g);
                     let checkField = "div[id='" + str + "-innerWrapEl']";
 
-                    this.getElementProperty(localizador, "checked", function (result) {
+                    this.getElementProperty('css selector', localizador, "checked", function (result) {
                         resultadoCheck = Boolean(result.value)
                         if (resultadoCheck != check) {
                             if (config.deveDestacarElemento) {

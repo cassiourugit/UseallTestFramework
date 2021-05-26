@@ -147,13 +147,13 @@ module.exports = {
                     let field = "input[id^='" + str + "'][id$='-inputEl']"
                     let lista = "//ul[starts-with(@id, '" + str + "')]";
 
-                    this.click(campo)
+                    this.click('xpath', campo)
                         .waitForElementVisible('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada na lista do campo")
                         .click('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
                         .element("xpath", campo, function (result) {
                             this.elementIdAttribute(result.value.ELEMENT, "aria-expanded", function (attribute) {
                                 if (attribute.value == "true") {
-                                    this.click(campo)
+                                    this.click('xpath', campo)
                                 }
                             });
                         })
@@ -163,12 +163,12 @@ module.exports = {
                 });
         } else {
             this.waitForElementVisible('css selector', campo, "O campo informado não foi encontrado no tempo máximo previsto")
-                .getAttribute(campo, 'id', function (result) {
+                .getAttribute('css selector', campo, 'id', function (result) {
                     let str = util.aplicaRegexString(result.value, /.*\d+(?=\-)?/g);
                     let field = "input[id^='" + str + "'][id$='-inputEl']"
                     let lista = "//ul[starts-with(@id, '" + str + "')]";
 
-                    this.click(campo)
+                    this.click('css selector', campo)
                         .useXpath()
                         .waitForElementVisible('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]", "A opção desejada não foi encontrada na lista do campo")
                         .click('xpath', lista + "//li[contains(text(),'" + opcao + "')] | " + lista + "//li/div[contains(text(),'" + opcao + "')]")
@@ -176,7 +176,7 @@ module.exports = {
                         .element("css selector", campo, function (result) {
                             this.elementIdAttribute(result.value.ELEMENT, "aria-expanded", function (attribute) {
                                 if (attribute.value == "true") {
-                                    this.click(campo)
+                                    this.click('css selector', campo)
                                 }
                             });
                         })

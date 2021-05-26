@@ -149,7 +149,7 @@ module.exports = {
         if (util._isXpath(botao)) {
             this.useXpath()
                 .waitForElementVisible('xpath', botao, "O botão mais opções não foi encontrado no tempo máximo previsto")
-                .click(botao)
+                .click('xpath', botao)
                 .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]", "A primeira opção não foi encontrada")
                 .click('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")
                 .waitForElementVisible('xpath', "//div[starts-with(@id, 'menuitem')] //span[text()= '" + opcao2 + "']", "A segunda opção não foi encontrada")
@@ -159,7 +159,7 @@ module.exports = {
         } else {
             this.useCss()
                 .waitForElementVisible('css selector', botao, "O botão mais opções não foi encontrado no tempo máximo previsto")
-                .click(botao)
+                .click('css selector', botao)
                 .useXpath()
                 .waitForElementVisible('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]", "A primeira opção não foi encontrada")
                 .click('xpath', "//span[contains(@id,'menuitem')][contains(text(),'" + opcao + "')]")

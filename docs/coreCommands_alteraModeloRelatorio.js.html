@@ -134,8 +134,8 @@ module.exports = {
         }
 
         this.useXpath()
-            .waitForElementVisible(loc.geral.campoModeloRelatorioX)
-            .click(loc.geral.campoModeloRelatorioTriggerX)
+            .waitForElementVisible('xpath', loc.geral.campoModeloRelX)
+            .click('xpath', loc.geral.campoModeloRelatorioTriggerX)
             .waitForElementVisible('xpath', "//li[contains(text(),'" + nomeModelo + "')] | //li/div[contains(text(), '" + nomeModelo + "')]")
             .click('xpath', "//li[contains(text(),'" + nomeModelo + "')] | //li/div[contains(text(), '" + nomeModelo + "')]")
             .element("xpath", loc.geral.campoModeloRelatorioX, function (result) {

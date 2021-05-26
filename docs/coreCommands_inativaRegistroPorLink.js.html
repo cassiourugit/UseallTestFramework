@@ -126,12 +126,12 @@ module.exports = {
      * @author Cássio
     */
     command: function () {
-        this.waitForElementVisible(loc.geral.linkAtivo)
-            .click(loc.geral.linkAtivo)
-            .waitForElementPresent(loc.geral.messageBox)
+        this.waitForElementVisible('css selector', loc.geral.linkAtivo)
+            .click('css selector', loc.geral.linkAtivo)
+            .waitForElementPresent('css selector', loc.geral.messageBox)
             .assert.attributeContains(loc.geral.messageBox, "textContent", "Ao inativar, não será mais possível utilizar o registro no sistema, confirma?")
             .useXpath()
-            .click(loc.geral.btnSimMessageBoxX)
+            .click('xpath', loc.geral.btnSimMessageBoxX)
             .useCss()
             .assert.attributeContains(loc.geral.linkAtivo, "textContent", "Ativar");
 

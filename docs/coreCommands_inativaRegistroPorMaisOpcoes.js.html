@@ -138,13 +138,13 @@ module.exports = {
             return this;
         }
 
-        this.waitForElementVisible(celula)
+        this.waitForElementVisible('css selector', celula)
             .assert.attributeEquals(celula, 'textContent', texto)
-            .click(celula)
+            .click('css selector', celula)
             .verify.cssProperty(celula, "border-right-color", "rgba(60, 190, 236, 0.5)", "O registro que deve ser inativado não está selecionado.")
             .useXpath()
-            .click(loc.geral.btnMaisOpcoesX)
-            .click("//span[contains(text(),'Inativar')]")
+            .click('xpath', loc.geral.btnMaisOpcoesX)
+            .click('xpath', "//span[contains(text(),'Inativar')]")
             .useCss();
         this.aguardaToast();
         this.validaRegistroInativo(celula);

@@ -133,7 +133,7 @@ module.exports = {
         }
 
         this.pesquisaDocumentos(texto)
-            .click(loc.documentos.colunaIcon)
+            .click('css selector', loc.documentos.colunaIcon)
             .aguardaListagem();
 
         return this;
