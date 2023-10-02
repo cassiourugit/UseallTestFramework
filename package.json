@@ -16,7 +16,7 @@
     "better-docs": "^2.3.2",
     "chromedriver": "^88.0.0",
     "jsdoc": "^3.6.5",
-    "nightwatch": "^1.4.2"
+    "nightwatch": "^3.2.0"
   },
   "devDependencies": {
     "documentation": "^13.1.1",
